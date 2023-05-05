@@ -1,3 +1,5 @@
+cp ../db/CourrierHub.sql ./CourrierHub.sql
+#server-courrierhub/test/build.sh
 docker build -t \
 courrier_hub_db . && \
 docker run --rm -i -p 5432:5432 \

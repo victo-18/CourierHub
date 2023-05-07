@@ -1,0 +1,10 @@
+.position-default .MuiSnackbar-root {
+  bottom: initial !important;
+  left: initial !important;
+  position: static;
+  margin-top: 8px;
+}
+
+.position-default{
+    align-items: flex-start !important;
+}

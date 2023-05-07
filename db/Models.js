@@ -325,6 +325,13 @@ User.init({
         type: DataTypes.STRING(255),
         allowNull: false
     },
+    role: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        validate: {
+            isIn: [['ADMIN', 'CLIENT', 'COURIER']],
+        },
+    },
     city_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -430,7 +437,7 @@ Transport.init({
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
     },
-    TYPE: {
+    type: {
         type: DataTypes.STRING(50),
         allowNull: false,
         validate: {
@@ -581,6 +588,7 @@ ListState.init({
 
 module.exports = {
     sequelize,
+    Country,
     State,
     City,
     User,

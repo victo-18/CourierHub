@@ -5,6 +5,18 @@
   margin-top: 8px;
 }
 
-.position-default{
-    align-items: flex-start !important;
+.position-default {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 767.98px) {
+  .position-default {
+    position: fixed;
+    bottom: 24px;
+    left: auto;
+    align-items: center;
+  }
 }

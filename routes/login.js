@@ -6,6 +6,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../db/Models');
+const { setMessage } = require('../middleware/aux');
 
 router.post('/', async (req, res) => {
   const { username, password } = req.body;
@@ -14,13 +15,19 @@ router.post('/', async (req, res) => {
   const user = await User.findOne({ where: { phone: username } });
 
   // Si no existe, envía un mensaje de error
-  if (!user) return res.status(400).json({ message: 'El usuario no existe' });
+  if (!user) {
+    setMessage(res, "El usuario no existe", "NOT_FOUND:USER")
+    return res.sendStatus(400);
+  }
 
   // Si existe, compara la contraseña ingresada con la almacenada en la base de datos
   const isPasswordMatch = await bcrypt.compare(password, user.password);
 
   // Si las contraseñas no coinciden, envía un mensaje de error
-  if (!isPasswordMatch) return res.status(400).json({ message: 'Usuario o contraseña incorrecta' });
+  if (!isPasswordMatch) {
+    setMessage(res, "Usuario o contraseña incorrecta", "NOT_MATCH:LOGIN")
+    return res.sendStatus(400);
+  }
 
   // Si las contraseñas coinciden, genera un token de autenticación y lo devuelve en la respuesta
   const token = jwt.sign({ phone: user.dataValues.phone }, process.env.SECRET, { expiresIn: "1d" });
@@ -30,7 +37,8 @@ router.post('/', async (req, res) => {
   delete user_copy.createdAt;
   delete user_copy.updatedAt;
 
-  res.json({ user: user_copy, token, message: "¡Genial!, iniciaste sesion correctamente" });
+  setMessage(res, "¡Genial!, iniciaste sesion correctamente", "SUCCESS:LOGIN")
+  res.status(200).json({ user: user_copy, token });
 });
 
 module.exports = router;

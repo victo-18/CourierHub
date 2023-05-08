@@ -1,10 +1,21 @@
 const jwt = require('jsonwebtoken');
+const { setMessage, setToken } = require('./aux');
 
+/**
+ * Middleware que verifica la autenticación del usuario mediante un token JWT.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función de middleware para llamar a continuación.
+ * @returns {void}
+ */
 const authMiddleware = (req, res, next) => {
     const token = req.headers.authorization;
 
     // Si no se proporciona un token, envía un mensaje de error
-    if (!token) return res.status(401).json({ message: 'No se proporcionó un token de autenticación', code: 'INVALID:TOKEN' });
+    if (!token) {
+        setMessage(res, "No se proporcionó un token de autenticación", "INVALID:TOKEN");
+        return res.sendStatus(401);
+    }
 
     try {
         // Verifica la validez del token
@@ -17,16 +28,15 @@ const authMiddleware = (req, res, next) => {
         const timeLeft = exp * 1000 - Date.now();
         const tenPercent = (exp - iat) * 100 * 0.1;
 
-        if (timeLeft <= tenPercent) {
-            res.setHeader('Access-Control-Expose-Headers', 'New-Authorization');
-            res.setHeader('New-Authorization', jwt.sign({ phone: decoded.phone }, process.env.SECRET, { expiresIn: "1h" }));
-        }
+        if (timeLeft <= tenPercent)
+            setToken(res, jwt.sign({ phone: decoded.phone }, process.env.SECRET, { expiresIn: "1h" }))
 
         // Continúa con la siguiente función del middleware
         next();
     } catch (error) {
         // Si el token no es válido, envía un mensaje de error
-        return res.status(401).json({ message: 'Autenticación inválida', code: 'INVALID:TOKEN' });
+        setMessage(res, "Autenticación inválida", "INVALID:TOKEN");
+        return res.sendStatus(401);
     }
 };
 

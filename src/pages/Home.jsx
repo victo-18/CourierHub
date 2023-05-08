@@ -16,24 +16,20 @@ export function Home() {
         location.href = "/logout";
     }
 
-    return (
-        <>
-            {
-                auth ?
-                    <Box sx={{ textAlign: "center" }}>
-                        <Typography>
-                            Te has autenticado correctamente
-                        </Typography>
-                        <Typography>
-                            {data ? data : ""}
-                        </Typography>
-                        <IconButton onClick={handleLogout}>
-                            <LogoutIcon />
-                        </IconButton>
-                    </Box>
-                    :
-                    <Navigate to="/login" />
-            }
-        </>
-    )
+    return auth ?
+        (<Box sx={{ textAlign: "center" }}>
+            <Typography>
+                Te has autenticado correctamente
+            </Typography>
+            <Typography>
+                {data ? data : ""}
+            </Typography>
+            <IconButton onClick={handleLogout}>
+                <LogoutIcon />
+            </IconButton>
+        </Box>)
+        :
+        (<Navigate to="/login" />)
+
+
 }

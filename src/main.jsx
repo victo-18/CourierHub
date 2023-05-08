@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
@@ -15,16 +15,16 @@ import { persistor, store } from "./hooks/redux/store";
 const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <HelmetProvider>
-          <ThemeProvider>
-            <SnackbarStack />
-            <RouterProvider router={router} />
-          </ThemeProvider>
-        </HelmetProvider>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <HelmetProvider>
+        <ThemeProvider>
+          <SnackbarStack />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </HelmetProvider>
+    </PersistGate>
+  </Provider>
+  // </React.StrictMode>
 );

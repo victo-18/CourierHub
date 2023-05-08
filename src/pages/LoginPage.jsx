@@ -10,13 +10,18 @@ export default function LoginPage() {
     return (
         <Box id="login-page">
             <Helmet>
-            <title>CourrierHub - Inicio de sesion</title>
+                <title>CourrierHub - Inicio de sesion</title>
             </Helmet>
             <CardMedia component="img" src={Banner} alt="Banner" id="banner" />
             <Box>
-                <Typography variant="h3">Iniciar sesión</Typography>
+                <Typography variant="h4">
+                    ¡Hola de nuevo!
+                </Typography>
+                <Typography variant="h6">
+                    Inicia sesión aquí para continuar tu aventura
+                </Typography>
                 <LoginForm />
-                <Typography>Olvidaste tu contraseña? Restablecela aqui</Typography>
+                <Typography sx={{ marginTop: "32px" }}>Olvidaste tu contraseña? Restablecela aqui</Typography>
                 <Tooltip title="Sobre nosotros, CourrierHub">
                     <CardMedia component="img" src={Logo} alt="Logo de la empresa" id="logo" />
                 </Tooltip>

@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import { TextField, Button, IconButton } from '@mui/material';
+import { TextField, Button, IconButton, LinearProgress } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { API_Login } from '../hooks/request';
+import { useNavigate } from "react-router-dom";
+import { setUser } from '../hooks/redux/actions/userActions';
+import { store } from '../hooks/redux/store';
 
 function LoginForm() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [values, setValues] = useState({ username: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -18,27 +23,48 @@ function LoginForm() {
     };
 
     const handleSubmit = async (event) => {
+        setLoading(true);
+
         event.preventDefault();
-        // Enviar los datos a la API_Login aquí
-        const response = await API_Login({ email, password });
-        console.log(response);
+        try {
+            // Enviar los datos a la API_Login aquí
+            const response = await API_Login(values);
+            const { data, status } = response;
+
+            if (status == 200) {
+                store.dispatch(setUser({ ...data.user }, data.token));
+                navigate("/dashboard");
+            }
+        } finally {
+            setLoading(false);
+        }
     };
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+
+        setValues(prev => ({ ...prev, [id]: value }))
+    }
 
     return (
         <form onSubmit={handleSubmit}>
             <TextField
-                label="Email"
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                label="Usuario"
+                type="text"
+                id="username"
+                defaultValue=""
+                // value={values.username}
+                onChange={handleChange}
                 fullWidth
                 margin="normal"
             />
             <TextField
                 label="Contraseña"
+                id="password"
                 type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                defaultValue=""
+                // value={values.password}
+                onChange={handleChange}
                 fullWidth
                 margin="normal"
                 InputProps={{
@@ -53,9 +79,14 @@ function LoginForm() {
                     ),
                 }}
             />
-            <Button type="submit" variant="contained" color="primary" fullWidth autoFocus>
-                Iniciar Sesión
-            </Button>
+            {
+                loading ?
+                    (<LinearProgress />)
+                    :
+                    (<Button type="submit" variant="contained" color="primary" fullWidth autoFocus>
+                        Iniciar Sesión
+                    </Button>)
+            }
         </form>
     );
 }

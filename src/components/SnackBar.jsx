@@ -20,7 +20,7 @@ function SnackbarStack() {
     };
 
     return (
-        <Stack className='position-default MuiSnackbar-root MuiSnackbar-anchorOriginBottomLeft css-cpgvjg-MuiSnackbar-root'>
+        <Stack className='position-default'>
             {
                 snackbars.map((snackbar) => (
                     <Snackbar

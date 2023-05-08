@@ -3,11 +3,15 @@ import { Helmet } from "react-helmet-async";
 import LoginForm from "../components/LoginForm";
 import Banner from "../assets/banner_login.png";
 import Logo from "../assets/logo.png";
+import { useSelector } from "react-redux";
 
 import "../styles/LoginPage.css";
+import { Navigate } from "react-router-dom";
 
 export default function LoginPage() {
-    return (
+    const { auth } = useSelector((state) => state.session);
+
+    return auth ? (<Navigate to="/dashboard" />) : (
         <Box id="login-page">
             <Helmet>
                 <title>CourrierHub - Inicio de sesion</title>

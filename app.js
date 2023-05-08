@@ -24,6 +24,9 @@ app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Servir los archivos estáticos desde la carpeta 'build'
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,6 +38,11 @@ app.use('/users', authMiddleware, adminMiddleware, usersRouter);
 app.use('/clients', authMiddleware, clientMiddleware, clientRouter);
 app.use('/courriers', authMiddleware, courierMiddleware, courrierRouter);
 app.use('/login', loginRouter);
+
+// Ruta para todas las rutas de React Router
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,4 +1,4 @@
-cp ../db/CourrierHub.sql ./CourrierHub.sql
+cp ../db/CourierHub.sql ./CourierHub.sql
 #server-courrierhub/test/build.sh
 docker build -t \
 courrier_hub_db . && \

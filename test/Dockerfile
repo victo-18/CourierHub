@@ -2,4 +2,4 @@ FROM postgres:latest
 ENV POSTGRES_USER postgres
 ENV POSTGRES_PASSWORD password
 ENV POSTGRES_DB database_name
-COPY CourrierHub.sql /docker-entrypoint-initdb.d/
+COPY CourierHub.sql /docker-entrypoint-initdb.d/

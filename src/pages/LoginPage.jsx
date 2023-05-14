@@ -14,7 +14,7 @@ export default function LoginPage() {
     return auth ? (<Navigate to="/dashboard" />) : (
         <Box id="login-page">
             <Helmet>
-                <title>CourrierHub - Inicio de sesion</title>
+                <title>CourierHub - Inicio de sesion</title>
             </Helmet>
             <CardMedia component="img" src={Banner} alt="Banner" id="banner" />
             <Box>
@@ -26,7 +26,7 @@ export default function LoginPage() {
                 </Typography>
                 <LoginForm />
                 <Typography sx={{ marginTop: "32px" }}>Olvidaste tu contraseña? Restablecela aqui</Typography>
-                <Tooltip title="Sobre nosotros, CourrierHub">
+                <Tooltip title="Sobre nosotros, CourierHub">
                     <CardMedia component="img" src={Logo} alt="Logo de la empresa" id="logo" />
                 </Tooltip>
             </Box>

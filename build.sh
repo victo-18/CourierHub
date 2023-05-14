@@ -1,4 +1,4 @@
 #bin/bash/
 
-rm -r ../server-courrierhub/dist/
-cp -r ./dist/ ../server-courrierhub/dist/
+rm -r ../server-courierhub/dist/
+cp -r ./dist/ ../server-courierhub/dist/

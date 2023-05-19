@@ -3,6 +3,7 @@ import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import { Logout } from '../pages/Logout';
+import AdminPage from '../pages/AdminPage';
 
 const routes = [
   {
@@ -12,6 +13,10 @@ const routes = [
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/AdminPage',
+    element: <AdminPage/>,
   },
   {
     path: '/logout',

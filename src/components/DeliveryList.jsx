@@ -8,26 +8,27 @@ import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import Divider from '@mui/material/Divider';
-import Navbar from '../utilities/Navbar';
+import Encabezado1 from '../utils/Emcabezado1';
 export default function DeliveryList() {
     return (
-        <List
+
+        <><Encabezado1 /><List id='list'
+
             sx={{
                 width: '100%',
                 maxWidth: 800,
                 bgcolor: 'background.paper',
                 height: '100%'
-
             }}
+
         >
-            <Navbar />
             <ListItem>
                 <ListItemAvatar>
                     <Avatar>
                         <ImageIcon />
                     </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                <ListItemText primary="Victor Alfonso Alomia" secondary="" />
                 <ListItemAvatar>
                     <Avatar>
                         <ImageIcon />
@@ -41,7 +42,7 @@ export default function DeliveryList() {
                         <WorkIcon />
                     </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary="Work" secondary="Jan 7, 2014" />
+                <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Libre" />
                 <ListItemAvatar>
                     <Avatar>
                         <ImageIcon />
@@ -133,6 +134,6 @@ export default function DeliveryList() {
                 </ListItemAvatar>
             </ListItem>
             <Divider variant="inset" component="li" />
-        </List>
+        </List></>
     );
 }

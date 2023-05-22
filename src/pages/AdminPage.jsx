@@ -5,7 +5,9 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import DeliveryList from '../components/DeliveryList';
 import DeliveryDay from '../components/DeliveryDay';
-
+import HederAdmin from '../components/HederAdmin';
+import '../styles/HederAdmin.css'
+//import NewRequest from '../components/NewRiquest';
 // const DeliveryDay = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === 'dark' ? '#00000' : '#fff',
 //   ...theme.typography.body2,
@@ -16,7 +18,8 @@ import DeliveryDay from '../components/DeliveryDay';
 
 export default function AdminPage() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box id='adminpage'sx={{ flexGrow: 1 }}>
+      <HederAdmin/>
       <Grid container spacing={2} columns={16}>
         <Grid item xs={8}>
          <DeliveryList/>
@@ -24,6 +27,9 @@ export default function AdminPage() {
         <Grid item xs={8}>
          <DeliveryDay/>
         </Grid>
+        {/* <Grid item xs={8}>
+        <NewRequest/>
+        </Grid> */}
       </Grid>
     </Box>
   );

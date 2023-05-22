@@ -6,7 +6,7 @@ var router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../db/Models');
-const { setMessage } = require('../middleware/aux');
+const { setMessage } = require('../middleware/react_aux');
 
 router.post('/', async (req, res) => {
   const { username, password } = req.body;

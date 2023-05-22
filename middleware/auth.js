@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { setMessage, setToken } = require('./aux');
+const { setMessage, setToken } = require('./react_aux');
 
 /**
  * Middleware que verifica la autenticación del usuario mediante un token JWT.

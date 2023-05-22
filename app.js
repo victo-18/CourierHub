@@ -65,7 +65,6 @@ app.use(function (err, req, res, next) {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
 
-    // await sequelize.sync({ force: true });
     insertDummy();
 
   } catch (error) {

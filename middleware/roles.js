@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../db/Models');
-const { setMessage } = require('./aux');
+const { setMessage } = require('./react_aux');
 /**
  * Middleware para comprobar si el usuario es un administrador
  * @param {Object} req - La solicitud HTTP

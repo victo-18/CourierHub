@@ -11,6 +11,7 @@ import ListaMensajeros from '../pages/ListaMensajeros';
 import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
+import UserProfile from '../pages/UserProfile';
 //import DeliveryDay from '../sections/DeliveryDay';
 import Entregas from '../pages/Entregas';
 import NewRequest from '../sections/NewRequest';

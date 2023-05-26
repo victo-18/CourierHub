@@ -8,9 +8,13 @@ import ListaMensajeros from '../pages/ListaMensajeros';
 import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
 import ListaMensajeros from '../pages/ListaMensajeros';
+import LoginPage from '../pages/LoginPage';
+import { Logout } from '../pages/Logout';
+import ErrorPage from '../pages/PageError';
 //import DeliveryDay from '../sections/DeliveryDay';
-import NewRequest from '../sections/NewRequest';
 import Entregas from '../pages/Entregas';
+import NewRequest from '../sections/NewRequest';
+
 const routes = [
   {
     path: "/dashboard",
@@ -31,6 +35,10 @@ const routes = [
   {
     path: '/nuevospedidos',
     element: <NewRequest />,
+  },
+  {
+    path: '/delivery',
+    element: <Delivery />,
   },
   {
     path: '/logout',

@@ -25,7 +25,7 @@ export default function LoginPage() {
                     Inicia sesión aquí para continuar tu aventura
                 </Typography>
                 <LoginForm />
-                <Typography sx={{ marginTop: "32px" }}>Olvidaste tu contraseña? Restablecela aqui</Typography>
+                <Typography sx={{ marginTop: "32px" }}>¿Olvidaste tu contraseña? Restablecela aqui</Typography>
                 <Tooltip title="Sobre nosotros, CourierHub">
                     <CardMedia component="img" src={Logo} alt="Logo de la empresa" id="logo" />
                 </Tooltip>

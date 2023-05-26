@@ -35,23 +35,7 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/mensajero',
-    element: < ListaMensajeros />,
-  },
-  {
-    path: '/entregas',
-    element: <Entregas />,
-  },
-  {
-    path: '/nuevospedidos',
-    element: <NewRequest />,
-  },
-  {
-    path: '/delivery',
-    element: <Delivery />,
-  },
-  {
-    path: "/logout",
+    path: '/logout',
     element: <Logout />,
   },
   {

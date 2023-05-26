@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
+import UserProfile from '../pages/UserProfile';
 import { Home } from '../pages/Home';
 import { Logout } from '../pages/Logout';
 
@@ -16,6 +17,10 @@ const routes = [
   {
     path: '/logout',
     element: <Logout />,
+  },
+  {
+    path: '/profile',
+    element: <UserProfile />
   },
   {
     children: [

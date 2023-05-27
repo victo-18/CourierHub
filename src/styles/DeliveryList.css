@@ -1,60 +1,18 @@
 .container {
     width: 100%;
-    /* background-color: #FAF9F9; */
-    background-color: white;
-    height: 100%;
+    align-content: center;
 }
 
-.contenedor__mensajeros {
-    display: flex;
-    margin-left: 15rem;
-    margin-right: 15rem;
+#list {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 
-}
+    width: 100%;
+    justify-content: center;
 
-@media (max-width: 412px) {
-    .contenedor__mensajeros {
-
-        margin-right: 0;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 414px) {
-    .contenedor__mensajeros {
-
-        margin-right: 0;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 820px) {
-    .contenedor__mensajeros {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 912px) {
-    .contenedor__mensajeros {
-        margin-right: 0;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 926px) {
-    .contenedor__mensajeros {
-        margin-right: 0;
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 1024px) {
-    .contenedor__mensajeros {
-        margin-right: 10;
-        margin-left: 10;
-    }
 }
 
 .avatar {
-    background-color: white;
+    background-color: wheat;
 }

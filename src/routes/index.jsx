@@ -37,7 +37,15 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: "/logout",
+    path: '/entregasdiarias',
+    element: <DeliveryDay />,
+  },
+  {
+    path: '/Admin/nuevospedidos',
+    element: <NewRequest />,
+  },
+  {
+    path: '/logout',
     element: <Logout />,
   },
   {

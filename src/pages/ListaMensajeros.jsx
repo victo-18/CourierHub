@@ -13,7 +13,7 @@ import moto from '../assets/camion.png'
 import camion from '../assets/camion.png'
 //import Encabezado1 from '../utils/Emcabezado1';
 import '../styles/DeliveryList.css'
-import NavaMensajeros from '../sections/NavaMensajeros'
+import NavaMensajeros from '../sections/NabarMensajeros'
 export default function ListaMensajeros() {
   return (
     <div className='container' >
@@ -33,7 +33,7 @@ export default function ListaMensajeros() {
 
           <ListItemAvatar>
             <Avatar className='avatar'>
-              {/* <ImageIcon /> */}
+              
               <Avatar alt="icono usuario" src={logo} />
             </Avatar>
           </ListItemAvatar>
@@ -51,7 +51,7 @@ export default function ListaMensajeros() {
               <WorkIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Libre" />
+          <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Disponible" />
           <ListItemAvatar>
           <Avatar className='avatar'>
             <Avatar alt="imagen veiculo" src={camion} />

@@ -1,7 +1,8 @@
-#entregas{
-    align-items: center;
-    justify-content: center;
+#nombres {
+    background-color: rgb(206, 212, 218);
 }
-#estado{
-    color: green;
+
+#tablaentrega {
+    width: 100%;
+    height: 100%;
 }

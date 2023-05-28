@@ -35,11 +35,11 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/Admin/mensajero',
+    path: '/mensajero',
     element: < ListaMensajeros />,
   },
   {
-    path: '/Admin/nuevospedidos',
+    path: '/nuevospedidos',
     element: <NewRequest />,
   },
   {

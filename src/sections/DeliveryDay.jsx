@@ -23,16 +23,17 @@ const rows = [
 
 export default function DeliveryDay() {
   return (
+    <div className='entregas'>
     <TableContainer id='tablaentrega' component={Paper}>
       <NabarMensajeros />
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow id='nombres'>
-            <TableCell>Nombre del cliente</TableCell>
+            <TableCell>Nombre cliente</TableCell>
             <TableCell align="right">Dirección</TableCell>
-            <TableCell align="right">Numero y tipo de paquete</TableCell>
-            <TableCell align="right">Estado del paquete</TableCell>
-            <TableCell align="right">Nombre del mensajero</TableCell>
+            <TableCell align="right">Descripcion</TableCell>
+            <TableCell align="right">Estado</TableCell>
+            <TableCell align="right">Mensajero</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,5 +55,6 @@ export default function DeliveryDay() {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 }

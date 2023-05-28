@@ -16,15 +16,15 @@ const routes = [
     element: <LoginPage />,
   },
   {
-    path: '/Admin/mensajero',
+    path: '/mensajero',
     element: < ListaMensajeros />,
   },
   {
-    path: '/entregasdiarias',
+    path: '/entregas',
     element: <DeliveryDay />,
   },
   {
-    path: '/Admin/nuevospedidos',
+    path:'/nuevospedidos',
     element: <NewRequest />,
   },
   {

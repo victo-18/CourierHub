@@ -9,13 +9,15 @@ import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import Divider from '@mui/material/Divider';
 import logo from '../assets/logo.png'
+import moto from '../assets/camion.png'
+import camion from '../assets/camion.png'
 //import Encabezado1 from '../utils/Emcabezado1';
 import '../styles/DeliveryList.css'
-import Nava from '../sections/NavaMensajeros'
+import NavaMensajeros from '../sections/NavaMensajeros'
 export default function ListaMensajeros() {
   return (
     <div className='container' >
-      <Nava />
+      <NavaMensajeros />
 
       <List id='list'
 
@@ -32,13 +34,13 @@ export default function ListaMensajeros() {
           <ListItemAvatar>
             <Avatar className='avatar'>
               {/* <ImageIcon /> */}
-              <Avatar alt="Travis Howard" src={logo} />
+              <Avatar alt="icono usuario" src={logo} />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Victor Alfonso Alomia" secondary="" />
+          <ListItemText primary="Victor Alfonso Alomia" secondary="Ocupado" />
           <ListItemAvatar>
-            <Avatar>
-              <ImageIcon />
+            <Avatar className='avatar'>
+            <Avatar alt="imagen veiculo" src={moto} />
             </Avatar>
           </ListItemAvatar>
         </ListItem>
@@ -51,8 +53,8 @@ export default function ListaMensajeros() {
           </ListItemAvatar>
           <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Libre" />
           <ListItemAvatar>
-            <Avatar>
-              <ImageIcon />
+          <Avatar className='avatar'>
+            <Avatar alt="imagen veiculo" src={camion} />
             </Avatar>
           </ListItemAvatar>
         </ListItem>

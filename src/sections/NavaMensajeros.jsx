@@ -15,8 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import logo from '../assets/logo.png'
 
-const pages = ['Lista de empleados', 'Entregas del dia', 'Nuevos servcios'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['empleados', 'Entregas', 'Solicitudes'];
+const settings = ['Perfil', 'Cuentas', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);

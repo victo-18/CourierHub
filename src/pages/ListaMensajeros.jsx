@@ -33,7 +33,7 @@ export default function ListaMensajeros() {
 
           <ListItemAvatar>
             <Avatar className='avatar'>
-              {/* <ImageIcon /> */}
+              
               <Avatar alt="icono usuario" src={logo} />
             </Avatar>
           </ListItemAvatar>
@@ -51,7 +51,7 @@ export default function ListaMensajeros() {
               <WorkIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Libre" />
+          <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Disponible" />
           <ListItemAvatar>
             <Avatar className='avatar'>
               <Avatar alt="imagen veiculo" src={camion} />

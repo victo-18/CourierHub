@@ -37,11 +37,11 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/entregasdiarias',
+    path: '/entregas',
     element: <DeliveryDay />,
   },
   {
-    path: '/Admin/nuevospedidos',
+    path: '/nuevospedidos',
     element: <NewRequest />,
   },
   {

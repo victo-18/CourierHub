@@ -1,16 +1,16 @@
 // import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "../styles/App.css";
 
 // theme
-import ThemeProvider from "../theme";
-import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import SnackbarStack from "../components/SnackBar";
 import { persistor, store } from "../hooks/redux/store";
 import routes from "../routes";
+import ThemeProvider from "../theme";
 
 const router = createBrowserRouter(routes);
 

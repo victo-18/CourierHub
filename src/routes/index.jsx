@@ -1,6 +1,4 @@
 import { Navigate } from 'react-router-dom';
-import { Delivery } from '../pages/Delivery';
-import Entregas from '../pages/Entregas';
 import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
@@ -42,7 +40,7 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/logout',
+    path: "/logout",
     element: <Logout />,
   },
   {

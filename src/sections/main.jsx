@@ -8,9 +8,9 @@ import '../styles/App.css';
 import ThemeProvider from '../theme';
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from 'react-redux';
-import routes from '../routes';
 import SnackbarStack from "../components/SnackBar";
 import { persistor, store } from "../hooks/redux/store";
+import routes from "../routes";
 
 const router = createBrowserRouter(routes);
 

@@ -496,14 +496,14 @@ Request.init({
 class Travel extends Model { };
 
 Travel.init({
-    request_code: {
+    RequestCode: {
         type: DataTypes.STRING(255),
         references: {
             model: 'requests',
             key: 'code',
         },
     },
-    transport_id: {
+    transportId: {
         type: DataTypes.INTEGER,
         references: {
             model: 'transports',
@@ -533,7 +533,7 @@ BranchOffice.init({
             key: 'id',
         },
     },
-    NAME: {
+    name: {
         type: DataTypes.STRING(255),
         allowNull: false,
     },
@@ -560,7 +560,7 @@ ListState.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    code: {
+    RequestCode: {
         type: DataTypes.STRING(255),
         allowNull: false,
         references: {
@@ -575,16 +575,23 @@ ListState.init({
     phase: {
         type: DataTypes.STRING(255),
         allowNull: false,
+        defaultValue: "SOLICITADO",
+        validate: {
+            isIn: [['SOLICITADO', 'EN_CAMINO', 'ENTREGADO']],
+        }
     },
     image: {
         type: DataTypes.STRING(255),
-        allowNull: false,
+        allowNull: true,
     },
 }, {
     sequelize,
     modelName: 'ListState',
     tableName: 'list_states'
 });
+
+ListState.belongsTo(Request, { foreignKey: "code" })
+Request.hasMany(ListState);
 
 module.exports = {
     sequelize,
@@ -599,4 +606,5 @@ module.exports = {
     Request,
     Travel,
     BranchOffice,
+    ListState
 };

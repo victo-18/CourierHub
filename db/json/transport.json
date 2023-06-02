@@ -1,0 +1,17 @@
+[
+  {
+    "name_transport": "Moto",
+    "capacity": 20,
+    "type": "LAND"
+  },
+  {
+    "name_transport": "Camioneta",
+    "capacity": 100,
+    "type": "LAND"
+  },
+  {
+    "name_transport": "Camion",
+    "capacity": 200,
+    "type": "LAND"
+  }
+]

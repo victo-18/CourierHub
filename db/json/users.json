@@ -1,6 +1,6 @@
 [
   {
-    "phone": 3217703016,
+    "phone": "3217703016",
     "firstname": "Johan",
     "lastname": "Ruiz",
     "address": "Calle 44B #8-142",
@@ -10,7 +10,7 @@
     "city_id": 20634
   },
   {
-    "phone": 3023460368,
+    "phone": "3023460368",
     "firstname": "Juan Sebastian",
     "lastname": "Camino Muñoz",
     "address": "Calle 44B #8-142",
@@ -20,7 +20,7 @@
     "city_id": 20634
   },
   {
-    "phone": 3122889687,
+    "phone": "3122889687",
     "firstname": "Andrés Felipe",
     "lastname": "Moreno",
     "address": "Cra 31A #30A 107",
@@ -30,7 +30,7 @@
     "city_id": 20634
   },
   {
-    "phone": 3163886726,
+    "phone": "3163886726",
     "firstname": "Victor Alfonso",
     "lastname": "Alomia Angulo",
     "address": "Cr 90 # 1-215 ",

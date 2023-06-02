@@ -1,4 +1,6 @@
 import { Navigate } from 'react-router-dom';
+import ErrorPage from '../pages/PageError';
+import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import ListaMensajeros from '../pages/ListaMensajeros';
 import LoginPage from '../pages/LoginPage';
@@ -11,11 +13,11 @@ import NewRequest from '../sections/NewRequest';
 
 const routes = [
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Home />
   },
   {
-    path: '/login',
+    path: "/login",
     element: <LoginPage />,
   },
   {
@@ -35,7 +37,7 @@ const routes = [
     element: <Delivery />,
   },
   {
-    path: '/logout',
+    path: "/logout",
     element: <Logout />,
   },
   {
@@ -45,12 +47,12 @@ const routes = [
   {
     children: [
       { element: <Navigate to="/dashboard" />, index: true },
-      { path: '404', element: <ErrorPage /> },
-      { path: '*', element: <Navigate to="/404" /> },
+      { path: "404", element: <ErrorPage /> },
+      { path: "*", element: <Navigate to="/404" /> },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <Navigate to="/404" replace />,
   },
 ];

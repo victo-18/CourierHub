@@ -3,25 +3,25 @@
  * El tipo de acción que se dispara cuando el usuario se autoriza.
  * @type {string}
  */
-export const AUTHORIZE = 'AUTHORIZE';
+export const AUTHORIZE = "AUTHORIZE";
 
 /**
  * El tipo de acción que se dispara cuando el usuario cierra sesión y se desautoriza.
  * @type {string}
  */
-export const UNAUTHORIZE = 'UNAUTHORIZE';
+export const UNAUTHORIZE = "UNAUTHORIZE";
 
 /**
  * El tipo de acción que se dispara para establecer el usuario actual en el estado de la aplicación.
  * @type {string}
  */
-export const SET_USER = 'SET_USER';
+export const SET_USER = "SET_USER";
 
 /**
  * El tipo de acción que se dispara para establecer el token de autenticación actual en el estado de la aplicación.
  * @type {string}
  */
-export const SET_TOKEN = 'SET_TOKEN';
+export const SET_TOKEN = "SET_TOKEN";
 
 /**
  * Creador de acciones de Redux que se utiliza para autorizar al usuario.
@@ -48,7 +48,7 @@ export const unAuthorize = () => {
 export const setUser = (user, token = "") => {
     return {
         type: SET_USER,
-        payload: { 'user': user, 'token': token }
+        payload: { "user": user, "token": token }
     }
 }
 

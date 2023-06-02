@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { TextField, Button, IconButton, LinearProgress } from '@mui/material';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { API_Login } from '../hooks/request';
+import { useState } from "react";
+import { TextField, Button, IconButton, LinearProgress } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { API_Login } from "../hooks/request";
 import { useNavigate } from "react-router-dom";
-import { setUser } from '../hooks/redux/actions/userActions';
-import { store } from '../hooks/redux/store';
+import { setUser } from "../hooks/redux/actions/userActions";
+import { store } from "../hooks/redux/store";
 
 function LoginForm() {
-    const [values, setValues] = useState({ username: '', password: '' });
+    const [values, setValues] = useState({ username: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -61,7 +61,7 @@ function LoginForm() {
             <TextField
                 label="Contraseña"
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 defaultValue=""
                 // value={values.password}
                 onChange={handleChange}

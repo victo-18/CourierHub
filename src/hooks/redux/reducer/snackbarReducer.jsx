@@ -1,4 +1,4 @@
-import { ADD_SNACKBAR, REMOVE_SNACKBAR } from '../actions/snackbarActions';
+import { ADD_SNACKBAR, REMOVE_SNACKBAR } from "../actions/snackbarActions";
 // Define un estado inicial para el reductor
 const initialState = {
     snackbars: [],

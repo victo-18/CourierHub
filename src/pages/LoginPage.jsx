@@ -1,4 +1,7 @@
-import { Box, CardMedia, Tooltip, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import CardMedia from "@mui/material/CardMedia";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
 import { Helmet } from "react-helmet-async";
 import LoginForm from "../components/LoginForm";
 import Banner from "../assets/banner_login.png";

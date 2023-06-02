@@ -1,16 +1,16 @@
 [
   {
-    "name_transport": "Moto",
+    "nameTransport": "Moto",
     "capacity": 20,
     "type": "LAND"
   },
   {
-    "name_transport": "Camioneta",
+    "nameTransport": "Camioneta",
     "capacity": 100,
     "type": "LAND"
   },
   {
-    "name_transport": "Camion",
+    "nameTransport": "Camion",
     "capacity": 200,
     "type": "LAND"
   }

@@ -1,4 +1,4 @@
-const { User, State, Country, City, sequelize, Customer, Request, Travel, Transport } = require("./Models");
+const { User, State, Country, City, sequelize, Customer, Request, Travel, Transport, ListState } = require("./Models");
 const fs = require('fs');
 
 async function insertDummy() {
@@ -12,6 +12,7 @@ async function insertDummy() {
     // const customers = JSON.parse(fs.readFileSync('./db/json/customers.json'));
     // const requests = JSON.parse(fs.readFileSync('./db/json/requests.json'));
     // const travels = JSON.parse(fs.readFileSync('./db/json/travels.json'));
+    // const listState = JSON.parse(fs.readFileSync('./db/json/listState.json'));
 
     // await Country.bulkCreate(countries, { ignoreDuplicates: true });
     // await State.bulkCreate(states, { ignoreDuplicates: true });
@@ -21,6 +22,7 @@ async function insertDummy() {
     // await Customer.bulkCreate(customers, { ignoreDuplicates: true });
     // await Request.bulkCreate(requests, { ignoreDuplicates: true });
     // await Travel.bulkCreate(travels, { ignoreDuplicates: true });
+    // await ListState.bulkCreate(listState, { ignoreDuplicates: true });
 }
 
 module.exports = { insertDummy }

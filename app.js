@@ -7,6 +7,7 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var requestRouter = require('./routes/request');
 var clientRouter = require('./routes/client');
 var courrierRouter = require('./routes/courrier');
 var loginRouter = require('./routes/login');
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', authMiddleware, adminMiddleware, usersRouter);
+app.use('/request', authMiddleware, clientMiddleware, requestRouter);
 app.use('/clients', authMiddleware, clientMiddleware, clientRouter);
 app.use('/courriers', authMiddleware, courierMiddleware, courrierRouter);
 app.use('/login', loginRouter);

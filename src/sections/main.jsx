@@ -10,6 +10,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import "../styles/App.css";
 
 // theme
+import "../styles/App.css";
+
+// theme
 import SnackbarStack from "../components/SnackBar";
 import { persistor, store } from "../hooks/redux/store";
 import routes from "../routes";

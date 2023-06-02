@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import axios from "axios";
 import { ConfigToken, StateError, StateResponse } from "./interceptors";
 
@@ -39,7 +38,7 @@ function getProxy() {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Login(data) {
-    return axios.post('/login', data);
+    return axios.post("/login", data);
 }
 
 /**
@@ -47,5 +46,5 @@ export function API_Login(data) {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Protected() {
-    return axios.get('/users');
+    return axios.get("/users");
 }

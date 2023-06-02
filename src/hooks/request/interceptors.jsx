@@ -18,7 +18,7 @@ export function StateResponse(response) {
         // Si el encabezado "x-message" está presente en la respuesta, 
         // muestra un mensaje en la barra de notificaciones
         if (headers.has("x-message"))
-            store.dispatch(addSnackbar(headers.get("x-message"), 'success', 6000));
+            store.dispatch(addSnackbar(headers.get("x-message"), "success", 6000));
 
         // Si el encabezado "x-authorization" está presente en la respuesta, 
         // actualiza el token de autorización
@@ -45,7 +45,7 @@ export function StateError(error) {
     // Si el encabezado "x-message" está presente en el error, muestra un mensaje de error en la barra de notificaciones
     if (headers.has("x-message")) {
         // Llama a la función dispatch para agregar el mensaje a la barra de notificaciones
-        store.dispatch(addSnackbar(headers.get("x-message"), 'error', 6000));
+        store.dispatch(addSnackbar(headers.get("x-message"), "error", 6000));
     }
 
     // Si el encabezado "x-code" está presente en el error, realiza una acción específica en función del código de error
@@ -78,8 +78,8 @@ export function ConfigToken(config) {
 
     // Si el encabezado "Authorization" no está presente en la configuración o no es igual al token almacenado,
     // agrega el token como un encabezado "Authorization" en la configuración
-    if (config.headers['Authorization'] !== token) {
-        config.headers['Authorization'] = `${token}`;
+    if (config.headers["Authorization"] !== token) {
+        config.headers["Authorization"] = `${token}`;
     }
 
     // Devuelve la misma configuración de la solicitud HTTP con el token de autorización agregado si es necesario

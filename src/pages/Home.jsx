@@ -1,12 +1,13 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import LabelBottomNavigation from "../components/Navbar";
 import { useFetchData } from "../hooks/consumer";
 import { API_Protected } from "../hooks/request";
-
-import LogoutIcon from '@mui/icons-material/Logout';
-import LabelBottomNavigation from "../components/Navbar";
-import { Helmet } from "react-helmet-async";
 
 export function Home() {
     const { auth } = useSelector((state) => state.session);
@@ -32,7 +33,7 @@ export function Home() {
             <IconButton onClick={handleLogout}>
                 <LogoutIcon />
             </IconButton>
-            <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+            <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
                 <LabelBottomNavigation />
             </Box>
         </Box>)

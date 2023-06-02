@@ -3,7 +3,6 @@ import { Delivery } from '../pages/Delivery';
 import Entregas from '../pages/Entregas';
 import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
-import UserProfile from '../pages/UserProfile';
 import { Home } from '../pages/Home';
 import ListaMensajeros from '../pages/ListaMensajeros';
 import { Logout } from '../pages/Logout';

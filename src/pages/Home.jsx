@@ -1,3 +1,4 @@
+import { Skeleton } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
@@ -5,7 +6,6 @@ import { Navigate } from "react-router-dom";
 import { CustomList } from "../components/LIst/CustomList";
 import { useFetchData } from "../hooks/consumer";
 import { API_AllRequest } from "../hooks/request";
-import { Skeleton } from "@mui/material";
 
 export function Home() {
     const { auth } = useSelector((state) => state.session);

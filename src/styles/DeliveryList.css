@@ -1,17 +1,64 @@
-.container{
+.container {
     width: 100%;
-    align-content: center;
+
     height: 100%;
 }
-#list {
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+.contenedor__mensajeros {
+    display: flex;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-
-    width: 100%;
-    justify-content: center;
-
+    margin-left: 15rem;
+    margin-right: 15rem;
 }
-.avatar{
+
+@media (max-width: 412px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 414px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 820px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 912px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 926px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contenedor__mensajeros {
+        /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); */
+        margin-right: 10;
+        margin-left: 10;
+    }
+}
+
+.avatar {
     background-color: white;
 }

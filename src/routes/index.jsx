@@ -3,8 +3,9 @@ import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import { Logout } from '../pages/Logout';
-import AdminPage from '../pages/AdminPage';
-
+import ListaMensajeros from '../pages/ListaMensajeros';
+import DeliveryDay from '../sections/DeliveryDay';
+import NewRequest from '../sections/NewRequest';
 const routes = [
   {
     path: '/dashboard',
@@ -15,8 +16,16 @@ const routes = [
     element: <LoginPage />,
   },
   {
-    path: '/AdminPage',
-    element: <AdminPage/>,
+    path: '/mensajero',
+    element: < ListaMensajeros />,
+  },
+  {
+    path: '/entregas',
+    element: <DeliveryDay />,
+  },
+  {
+    path:'/nuevospedidos',
+    element: <NewRequest />,
   },
   {
     path: '/logout',

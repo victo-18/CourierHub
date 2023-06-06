@@ -1,0 +1,13 @@
+#nombres{
+    background-color: rgb(206, 212, 218);
+}
+
+.entregas{
+    height: 100%;
+    width: 100%;
+} 
+/* @media (max-width: 780px) {
+    .entregas{
+        width: 100%;
+    }
+  } */

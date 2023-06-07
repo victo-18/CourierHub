@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import '../styles/DeliveryDay.css'
 export default function DeliveryDay() {
   return (
-    <Card sx={{ minWidth: 300 }}>
+    <Card sx={{ minWidth: 275 }}>
       <CardContent >
         <Typography variant="h5" component="div">
           Usuario: Victor Alfonso Alomia Angulo
@@ -23,7 +23,8 @@ export default function DeliveryDay() {
 
         </Typography>
         <Typography variant="body2">
-          Descripción: Este paquete contiene cristaleria
+          Descripción: Este paquete contiene cristaleria,
+          por favor tratar con delicadesa
         </Typography>
         <br />
         <Typography variant="h7" component="div">

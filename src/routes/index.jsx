@@ -4,8 +4,9 @@ import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import { Logout } from '../pages/Logout';
 import ListaMensajeros from '../pages/ListaMensajeros';
-import DeliveryDay from '../sections/DeliveryDay';
+//import DeliveryDay from '../sections/DeliveryDay';
 import NewRequest from '../sections/NewRequest';
+import Entregas from '../pages/Entregas';
 const routes = [
   {
     path: '/dashboard',
@@ -21,7 +22,7 @@ const routes = [
   },
   {
     path: '/entregas',
-    element: <DeliveryDay />,
+    element: <Entregas/>,
   },
   {
     path:'/nuevospedidos',

@@ -39,6 +39,10 @@ const routes = [
     element: < ListaMensajeros />,
   },
   {
+    path: '/entregas',
+    element: <Entregas />,
+  },
+  {
     path: '/nuevospedidos',
     element: <NewRequest />,
   },

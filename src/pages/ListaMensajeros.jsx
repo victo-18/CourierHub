@@ -1,17 +1,18 @@
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import Divider from '@mui/material/Divider';
-import logo from '../assets/logo.png'
-import moto from '../assets/camion.png'
-import camion from '../assets/camion.png'
+// import List from '@mui/material/List';
+// import ListItem from '@mui/material/ListItem';
+// import ListItemText from '@mui/material/ListItemText';
+// import ListItemAvatar from '@mui/material/ListItemAvatar';
+// import Avatar from '@mui/material/Avatar';
+// import ImageIcon from '@mui/icons-material/Image';
+// import WorkIcon from '@mui/icons-material/Work';
+// import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+// import Divider from '@mui/material/Divider';
+// import logo from '../assets/logo.png'
+// import moto from '../assets/camion.png'
+// import camion from '../assets/camion.png'
 //import Encabezado1 from '../utils/Emcabezado1';
+import Mensajero from '../components/Mensajero'
 import '../styles/DeliveryList.css'
 import NavaMensajeros from '../sections/NabarMensajeros'
 export default function ListaMensajeros() {
@@ -20,8 +21,8 @@ export default function ListaMensajeros() {
       <div className='header'>
         <NavaMensajeros />
       </div>
-
-      <div className='contenedor__mensajeros'>
+      <Mensajero />
+      {/* <div className='contenedor__mensajeros'>
         <List id="lista"
 
           sx={{
@@ -146,7 +147,7 @@ export default function ListaMensajeros() {
           </ListItem>
           <Divider variant="inset" component="li" />
         </List>
-      </div>
+      </div> */}
     </div>
   );
 }

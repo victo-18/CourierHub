@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var clientRouter = require('./routes/client');
 var courrierRouter = require('./routes/courrier');
 var loginRouter = require('./routes/login');
+var citiesRouter = require('./routes/city');
 
 const { sequelize } = require('./db/Models');
 const { insertDummy } = require('./db/dummy');
@@ -37,7 +38,9 @@ app.use('/', indexRouter);
 app.use('/users', authMiddleware, adminMiddleware, usersRouter);
 app.use('/clients', authMiddleware, clientMiddleware, clientRouter);
 app.use('/courriers', authMiddleware, courierMiddleware, courrierRouter);
+app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 app.use('/login', loginRouter);
+
 
 // Ruta para todas las rutas de React Router
 app.get('/*', function (req, res) {

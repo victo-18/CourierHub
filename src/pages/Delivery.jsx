@@ -1,27 +1,15 @@
 import React from "react";
-import { Container, Box ,Grid} from "@mui/material";
-import { DeliverySearch } from "../components/DeliverySearch";
-import { DeliveryAcept } from "../components/DeliveryAcept";
-
+import {Box, Stack} from "@mui/material";
+import { DeliveryTabs } from "../components/DeliveryTabs";
+import { DeliveryAppBar } from "../components/DeliveryAppBar";
 export function Delivery () {
-    
     return(
-        <Container fixed >
-            <Grid container spacing={4} columns={10} justifyContent="center">
-                <Grid item xs={8} sm>
-                    <DeliverySearch />
-                </Grid>
-                <Grid item xs={8}>
-                    <DeliveryAcept />
-                </Grid>
-            </Grid>
-                   
-        </Container>
-            
-            
-            
         
-            
-        
-    );
+        <Box>
+            <Stack>
+                <DeliveryAppBar />
+                <DeliveryTabs />
+            </Stack>
+        </Box>          
+        );
 }

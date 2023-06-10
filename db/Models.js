@@ -22,7 +22,7 @@ Country.init({
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci'
     },
-    numeric_code: {
+    numericCode: {
         type: DataTypes.CHAR(3),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci'
@@ -47,12 +47,12 @@ Country.init({
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci'
     },
-    currency_name: {
+    currencyName: {
         type: DataTypes.STRING(255),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci'
     },
-    currency_symbol: {
+    currencySymbol: {
         type: DataTypes.STRING(255),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci'
@@ -148,7 +148,7 @@ State.init({
         collate: 'utf8mb4_unicode_ci',
         allowNull: false
     },
-    country_id: {
+    countryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -156,13 +156,13 @@ State.init({
             key: 'id'
         }
     },
-    country_code: {
+    countryCode: {
         type: DataTypes.STRING(2),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci',
         allowNull: false
     },
-    fips_code: {
+    fipsCode: {
         type: DataTypes.STRING(255),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci',
@@ -188,11 +188,11 @@ State.init({
         type: DataTypes.DECIMAL(11, 8),
         defaultValue: null
     },
-    created_at: {
+    createdAt: {
         type: DataTypes.DATE,
         defaultValue: null
     },
-    updated_at: {
+    updatedAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
     },
@@ -231,7 +231,7 @@ City.init({
         collate: 'utf8mb4_unicode_ci',
         allowNull: false,
     },
-    state_id: {
+    stateId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -239,13 +239,13 @@ City.init({
             key: 'id',
         },
     },
-    state_code: {
+    stateCode: {
         type: DataTypes.STRING(255),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci',
         allowNull: false,
     },
-    country_id: {
+    countryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -253,7 +253,7 @@ City.init({
             key: 'id',
         },
     },
-    country_code: {
+    countryCode: {
         type: DataTypes.CHAR(2),
         charset: 'utf8mb4',
         collate: 'utf8mb4_unicode_ci',
@@ -267,12 +267,12 @@ City.init({
         type: DataTypes.DECIMAL(11, 8),
         allowNull: false,
     },
-    created_at: {
+    createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: '2014-01-01 06:31:01',
     },
-    updated_at: {
+    updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
@@ -332,7 +332,7 @@ User.init({
             isIn: [['ADMIN', 'CLIENT', 'COURIER']],
         },
     },
-    city_id: {
+    cityId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -398,7 +398,7 @@ DeliveryCourier.init({
 class Delegate extends Model { };
 
 Delegate.init({
-    customer_id: {
+    customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -406,7 +406,7 @@ Delegate.init({
             key: 'id'
         }
     },
-    delivery_id: {
+    deliveryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -429,7 +429,7 @@ Transport.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    name_transport: {
+    nameTransport: {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
@@ -458,7 +458,7 @@ Request.init({
         type: DataTypes.STRING(255),
         primaryKey: true,
     },
-    customer_id: {
+    customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -466,7 +466,7 @@ Request.init({
             key: 'id',
         },
     },
-    date_request: {
+    dateRequest: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW,
     },
@@ -482,7 +482,7 @@ Request.init({
         type: DataTypes.STRING(255),
         allowNull: false,
     },
-    number_packages: {
+    numberPackages: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -496,14 +496,14 @@ Request.init({
 class Travel extends Model { };
 
 Travel.init({
-    request_code: {
+    RequestCode: {
         type: DataTypes.STRING(255),
         references: {
             model: 'requests',
             key: 'code',
         },
     },
-    transport_id: {
+    transportId: {
         type: DataTypes.INTEGER,
         references: {
             model: 'transports',
@@ -525,7 +525,7 @@ BranchOffice.init({
         type: DataTypes.STRING(255),
         primaryKey: true,
     },
-    customer_id: {
+    customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -533,7 +533,7 @@ BranchOffice.init({
             key: 'id',
         },
     },
-    NAME: {
+    name: {
         type: DataTypes.STRING(255),
         allowNull: false,
     },
@@ -560,7 +560,7 @@ ListState.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    code: {
+    RequestCode: {
         type: DataTypes.STRING(255),
         allowNull: false,
         references: {
@@ -575,16 +575,23 @@ ListState.init({
     phase: {
         type: DataTypes.STRING(255),
         allowNull: false,
+        defaultValue: "SOLICITADO",
+        validate: {
+            isIn: [['SOLICITADO', 'EN_CAMINO', 'ENTREGADO']],
+        }
     },
     image: {
         type: DataTypes.STRING(255),
-        allowNull: false,
+        allowNull: true,
     },
 }, {
     sequelize,
     modelName: 'ListState',
     tableName: 'list_states'
 });
+
+ListState.belongsTo(Request, { foreignKey: "code" })
+Request.hasMany(ListState);
 
 module.exports = {
     sequelize,
@@ -599,4 +606,5 @@ module.exports = {
     Request,
     Travel,
     BranchOffice,
+    ListState
 };

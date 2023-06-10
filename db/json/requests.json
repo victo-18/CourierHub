@@ -1,0 +1,34 @@
+[
+  {
+    "code": "1000000001",
+    "customerId": 1,
+    "origin": "Calle 44# 11-111",
+    "destination": "Calle 48B# 11-111",
+    "description": "Pedido de prueba",
+    "numberPackages": 2
+  },
+  {
+    "code": "1000000002",
+    "customerId": 2,
+    "origin": "Calle 44# 11-111",
+    "destination": "Calle 48B# 11-111",
+    "description": "Pedido de prueba",
+    "numberPackages": 3
+  },
+  {
+    "code": "1000000003",
+    "customerId": 3,
+    "origin": "Calle 44# 11-111",
+    "destination": "Calle 48B# 11-111",
+    "description": "Pedido de prueba",
+    "numberPackages": 4
+  },
+  {
+    "code": "1000000004",
+    "customerId": 4,
+    "origin": "Calle 44# 11-111",
+    "destination": "Calle 48B# 11-111",
+    "description": "Pedido de prueba",
+    "numberPackages": 5
+  }
+]

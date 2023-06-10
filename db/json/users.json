@@ -1,42 +1,42 @@
 [
   {
-    "phone": 3217703016,
+    "phone": "3217703016",
     "firstname": "Johan",
     "lastname": "Ruiz",
     "address": "Calle 44B #8-142",
     "email": "johanruiz0237@gmail.com",
     "password": "$2a$12$Yuq4/IOsjlgDVFQQYUlDCu6e0y47r.1yhUpLVyPUaX/.cvUhnp1sK",
     "role": "ADMIN",
-    "city_id": 20634
+    "cityId": 20634
   },
   {
-    "phone": 3023460368,
+    "phone": "3023460368",
     "firstname": "Juan Sebastian",
     "lastname": "Camino Muñoz",
     "address": "Calle 44B #8-142",
     "email": "juansecamino96@gmail.com",
     "password": "$2a$12$1J3Xsd.dEpw0SPemO0hhvOwzzHEWwXZqG/XlRS7AmR/wbjKIYeaVq",
     "role": "ADMIN",
-    "city_id": 20634
+    "cityId": 20634
   },
   {
-    "phone": 3122889687,
+    "phone": "3122889687",
     "firstname": "Andrés Felipe",
     "lastname": "Moreno",
     "address": "Cra 31A #30A 107",
     "email": "andres.moreno.delgado@correounivalle.edu.co",
     "password": "$2a$12$UPNqc4obqN5UmirXymqnQOO1bnuBJ5q/QlBaBKKnyZFknJDWVNXw6",
     "role": "ADMIN",
-    "city_id": 20634
+    "cityId": 20634
   },
   {
-    "phone": 3163886726,
+    "phone": "3163886726",
     "firstname": "Victor Alfonso",
     "lastname": "Alomia Angulo",
     "address": "Cr 90 # 1-215 ",
     "email": "victor.alomia@correounivalle.edu.co",
     "password": "$2a$12$nKoRCvSUTMh4bXuAki19/OTO0vq0qXFwNwgv1PupnOvE2kcS8WT.K",
     "role": "ADMIN",
-    "city_id": 20634
+    "cityId": 20634
   }
 ]

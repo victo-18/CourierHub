@@ -29,7 +29,7 @@ axios.interceptors.response.use(
  * Devuelve una cadena que representa la dirección URL del servidor proxy en el que se está ejecutando la aplicación.
  */
 function getProxy() {
-    return `http://${window.location.hostname}:8080`;
+    return `http://${window.location.hostname}:8080/api/v1/`;
 }
 
 /**
@@ -48,3 +48,12 @@ export function API_Login(data) {
 export function API_Protected() {
     return axios.get("/users");
 }
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllRequest() {
+    return axios.get("/request");
+}
+

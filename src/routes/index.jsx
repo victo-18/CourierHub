@@ -3,6 +3,8 @@ import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import { Logout } from '../pages/Logout';
+import { Delivery } from '../pages/Delivery';
+import UserProfile from '../pages/UserProfile';
 
 const routes = [
   {

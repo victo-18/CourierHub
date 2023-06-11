@@ -22,7 +22,8 @@ export default function Mesajero() {
            src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
         <ListItemText className='text-position'
-          primary="Victor Alfonso Alomia Angulo"
+          // primary= {`${data.firstname} ${data.lastname}`}
+          primary='Victor Alfonso Alomia Angulo'
           secondary={
             <React.Fragment>
               <Typography

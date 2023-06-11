@@ -15,139 +15,35 @@
 import Mensajero from '../components/Mensajero'
 import '../styles/DeliveryList.css'
 import NavaMensajeros from '../sections/NabarMensajeros'
+import { useState, useEffect } from 'react';
+import { Axios } from 'axios';
+import { route } from '../../../Servidor/routes/users';
 export default function ListaMensajeros() {
+  const { data, setData } = useState(null)
+  useEffect(() => {
+    const apiFetch = async () => {
+      const { status, data } = await Axios.get(
+        route.get('/')
+      );
+      if (status === 200) {
+        setData(data.result)
+      }
+    };
+    if(data===null){
+      apiFetch(data)
+    }
+})
   return (
     <div className='container' >
       <div className='header'>
         <NavaMensajeros />
       </div>
-      <Mensajero />
-      {/* <div className='contenedor__mensajeros'>
-        <List id="lista"
-
-          sx={{
-            width: '100%',
-            bgcolor: 'background.paper',
-            height: '100%'
-          }}
-
-        >
-          <ListItem>
-
-            <ListItemAvatar>
-              <Avatar className='avatar'>
-
-                <Avatar alt="icono usuario" src={logo} />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Victor Alfonso Alomia" secondary="Ocupado" />
-            <ListItemAvatar>
-              <Avatar className='avatar'>
-                <Avatar alt="imagen veiculo" src={moto} />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <WorkIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Johan Andres Ruiz Bermudez" secondary="Disponible" />
-            <ListItemAvatar>
-              <Avatar className='avatar'>
-                <Avatar alt="imagen veiculo" src={camion} />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <BeachAccessIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Vacation" secondary="July 20, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-            <ListItemAvatar>
-              <Avatar>
-                <ImageIcon />
-              </Avatar>
-            </ListItemAvatar>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-        </List>
-      </div> */}
+      <div className='contenedor__mensajeros'>
+      <Mensajero 
+      data={data}/>
+      
+      
+      </div> 
     </div>
   );
 }

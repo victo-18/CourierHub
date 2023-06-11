@@ -1,0 +1,87 @@
+#login-page.MuiBox-root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#login-page.MuiBox-root #banner {
+  max-width: 45vw;
+  max-height: 100vh;
+  object-fit: contain;
+}
+
+#login-page.MuiBox-root .MuiLinearProgress-root {
+  width: 33ch;
+  /* margin: 16px; */
+  margin-top: calc(8px + 26px);
+  margin-bottom: calc(26px);
+}
+
+#login-page.MuiBox-root #logo {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+  margin: 32px auto 0px auto;
+}
+
+#login-page .MuiTextField-root {
+  max-width: 33ch;
+}
+
+#login-page form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-page form .MuiFormControl-root,
+#login-page form .MuiButton-root {
+  margin-top: 8px;
+}
+
+#login-page form .MuiButton-root {
+  padding-top: 15.75px;
+  padding-bottom: 15.75px;
+  max-width: calc(33ch + 38px);
+}
+
+#login-page.MuiBox-root > .MuiBox-root {
+  min-width: 45vw;
+  text-align: center;
+}
+
+#login-page.MuiBox-root > .MuiBox-root .MuiTypography-h6 {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 767.98px) {
+  #login-page.MuiBox-root {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* justify-content: normal; */
+    justify-content: center;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+  }
+
+  #login-page.MuiBox-root > .MuiBox-root {
+    padding: 0px 16px;
+  }
+
+  /* #login-page.MuiBox-root > .MuiBox-root .MuiTypography-h4 {
+    margin-top: 16px;
+  } */
+
+  #login-page.MuiBox-root #banner {
+    /* max-width: 82vw; */
+    display: none;
+  }
+}

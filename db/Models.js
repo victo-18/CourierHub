@@ -152,7 +152,7 @@ State.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'countries',
+            model: Country,
             key: 'id'
         }
     },
@@ -235,7 +235,7 @@ City.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'states',
+            model: State,
             key: 'id',
         },
     },
@@ -249,7 +249,7 @@ City.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'countries',
+            model: Country,
             key: 'id',
         },
     },
@@ -303,7 +303,7 @@ User.init({
     phone: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        primaryKey: true
+        primaryKey: true // Unique
     },
     firstname: {
         type: DataTypes.STRING(255),
@@ -336,7 +336,7 @@ User.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'cities',
+            model: City,
             key: 'id'
         }
     }
@@ -360,7 +360,7 @@ Customer.init({
         type: DataTypes.STRING(255),
         allowNull: false,
         references: {
-            model: 'users',
+            model: User,
             key: 'phone'
         }
     }
@@ -384,7 +384,7 @@ DeliveryCourier.init({
         type: DataTypes.STRING(255),
         allowNull: false,
         references: {
-            model: 'users',
+            model: User,
             key: 'phone'
         }
     }
@@ -402,7 +402,7 @@ Delegate.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'customers',
+            model: Customer,
             key: 'id'
         }
     },
@@ -410,7 +410,7 @@ Delegate.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'delivery_couriers',
+            model: DeliveryCourier,
             key: 'id'
         }
     }
@@ -462,7 +462,7 @@ Request.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'customers',
+            model: Customer,
             key: 'id',
         },
     },
@@ -496,17 +496,17 @@ Request.init({
 class Travel extends Model { };
 
 Travel.init({
-    RequestCode: {
+    requestCode: {
         type: DataTypes.STRING(255),
         references: {
-            model: 'requests',
+            model: Request,
             key: 'code',
         },
     },
     transportId: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'transports',
+            model: Transport,
             key: 'id',
         },
     },
@@ -529,7 +529,7 @@ BranchOffice.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'customers',
+            model: Customer,
             key: 'id',
         },
     },
@@ -560,11 +560,11 @@ ListState.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    RequestCode: {
+    requestCode: {
         type: DataTypes.STRING(255),
         allowNull: false,
         references: {
-            model: 'requests',
+            model: Request,
             key: 'code',
         },
     },
@@ -590,8 +590,10 @@ ListState.init({
     tableName: 'list_states'
 });
 
-ListState.belongsTo(Request, { foreignKey: "code" })
-Request.hasMany(ListState);
+Request.hasMany(ListState, { foreignKey: "requestCode" });
+Request.belongsTo(Customer, { foreignKey: "customerId" })
+Customer.belongsTo(User, { foreignKey: "phone" });
+DeliveryCourier.belongsTo(User, { foreignKey: "phone" });
 
 module.exports = {
     sequelize,

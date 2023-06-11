@@ -1,25 +1,31 @@
 [
   {
-    "RequestCode": "1000000001"
+    "requestCode": "1000000001"
   },
   {
-    "RequestCode": "1000000002",
+    "requestCode": "1000000002",
     "date": "2023-06-01 23:50:00.000000+00"
   },
   {
-    "RequestCode": "1000000002",
+    "requestCode": "1000000002",
     "phase": "EN_CAMINO",
     "date": "2023-06-02 00:00:00.000000+00"
   },
   {
-    "RequestCode": "1000000002",
+    "requestCode": "1000000002",
     "phase": "ENTREGADO",
     "date": "2023-06-02 00:45:27.000000+00"
   },
   {
-    "RequestCode": "1000000003"
+    "requestCode": "1000000003",
+    "date": "2023-06-01 00:53:00.000000+00"
   },
   {
-    "RequestCode": "1000000004"
+    "requestCode": "1000000003",
+    "phase": "EN_CAMINO",
+    "date": "2023-06-02 00:00:00.000000+00"
+  },
+  {
+    "requestCode": "1000000004"
   }
 ]

@@ -1,18 +1,18 @@
 [
   {
-    "RequestCode": "1000000001",
+    "requestCode": "1000000001",
     "transportId": 1
   },
   {
-    "RequestCode": "1000000002",
+    "requestCode": "1000000002",
     "transportId": 2
   },
   {
-    "RequestCode": "1000000003",
+    "requestCode": "1000000003",
     "transportId": 3
   },
   {
-    "RequestCode": "1000000004",
+    "requestCode": "1000000004",
     "transportId": 3
   }
 ]

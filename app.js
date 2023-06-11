@@ -6,7 +6,7 @@ var logger = require('morgan');
 const cors = require('cors');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var adminRouter = require("./routes/admin/index");
 var requestRouter = require('./routes/request');
 var clientRouter = require('./routes/client');
 var courrierRouter = require('./routes/courrier');
@@ -40,7 +40,6 @@ app.use('/users', authMiddleware, adminMiddleware, usersRouter);
 app.use('/request', authMiddleware, clientMiddleware, requestRouter);
 app.use('/clients', authMiddleware, clientMiddleware, clientRouter);
 app.use('/courriers', authMiddleware, courierMiddleware, courrierRouter);
-app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 app.use('/login', loginRouter);
 
 

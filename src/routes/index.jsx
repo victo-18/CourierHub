@@ -2,9 +2,17 @@ import { Navigate } from 'react-router-dom';
 import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
+import ListaMensajeros from '../pages/ListaMensajeros';
+import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
-import { Delivery } from '../pages/Delivery';
+import ListaMensajeros from '../pages/ListaMensajeros';
+import LoginPage from '../pages/LoginPage';
+import { Logout } from '../pages/Logout';
+import ErrorPage from '../pages/PageError';
 import UserProfile from '../pages/UserProfile';
+//import DeliveryDay from '../sections/DeliveryDay';
+import Entregas from '../pages/Entregas';
+import NewRequest from '../sections/NewRequest';
 
 const routes = [
   {
@@ -14,6 +22,18 @@ const routes = [
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: '/mensajero',
+    element: < ListaMensajeros />,
+  },
+  {
+    path: '/entregas',
+    element: <Entregas />,
+  },
+  {
+    path: '/nuevospedidos',
+    element: <NewRequest />,
   },
   {
     path: '/delivery',

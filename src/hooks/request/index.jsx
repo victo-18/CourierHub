@@ -49,3 +49,11 @@ export function API_Login(data) {
 export function API_Protected() {
     return axios.get('/users');
 }
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
+ * @returns {result} Un resultado que se contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryInProgress() {
+    return axios.get('/request/inProgress');
+}

@@ -1,19 +1,17 @@
-import LogoutIcon from "@mui/icons-material/Logout";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import LabelBottomNavigation from "../components/Navbar";
+import { CustomList } from "../components/LIst/CustomList";
 import { useFetchData } from "../hooks/consumer";
-import { API_Protected } from "../hooks/request";
+import { API_AllRequest } from "../hooks/request";
+import { Skeleton } from "@mui/material";
 
 export function Home() {
     const { auth } = useSelector((state) => state.session);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { data, loading } = auth ? useFetchData(API_Protected) : { data: null, loading: null };
+    const [shipments, loadingShipments] = useFetchData(API_AllRequest);
 
     const handleLogout = () => {
         location.href = "/logout";
@@ -24,18 +22,22 @@ export function Home() {
             <Helmet>
                 <title>CourierHub</title>
             </Helmet>
-            <Typography>
+            {loadingShipments ?
+                <Skeleton />
+                : <CustomList data={shipments} />
+            }
+            {/* <Typography>
                 Te has autenticado correctamente
             </Typography>
             <Typography>
                 {loading ? " " : data}
-            </Typography>
-            <IconButton onClick={handleLogout}>
+            </Typography> */}
+            {/* <IconButton onClick={handleLogout}>
                 <LogoutIcon />
             </IconButton>
             <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
                 <LabelBottomNavigation />
-            </Box>
+            </Box> */}
         </Box>)
         :
         (<Navigate to="/login" />)

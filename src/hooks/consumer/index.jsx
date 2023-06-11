@@ -28,5 +28,5 @@ export const useFetchData = (apiFunction, dependencies = []) => {
         // eslint-disable-next-line
     }, dependencies); // Se usa el hook useEffect para llamar a fetchData en función de las dependencias.
 
-    return { data, loading }; // Devuelve un objeto que contiene los datos y el estado de carga.
+    return [data, loading]; // Devuelve un objeto que contiene los datos y el estado de carga.
 };

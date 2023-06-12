@@ -2,8 +2,11 @@ import { Navigate } from 'react-router-dom';
 import Entregas from '../pages/Entregas';
 import { Home } from '../pages/Home';
 import ListaMensajeros from '../pages/ListaMensajeros';
-import LoginPage from '../pages/LoginPage';
+//import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
+//import ListaMensajeros from '../pages/ListaMensajeros';
+import LoginPage from '../pages/LoginPage';
+//import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
 import UserProfile from '../pages/UserProfile';
 import NewRequest from '../sections/NewRequest';
@@ -29,6 +32,10 @@ const routes = [
     path: '/nuevospedidos',
     element: <NewRequest />,
   },
+  // {
+  //   path: '/delivery',
+  //   element: <Delivery />,
+  // },
   {
     path: "/logout",
     element: <Logout />,

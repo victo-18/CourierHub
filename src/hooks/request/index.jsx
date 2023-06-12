@@ -29,7 +29,7 @@ axios.interceptors.response.use(
  * Devuelve una cadena que representa la dirección URL del servidor proxy en el que se está ejecutando la aplicación.
  */
 function getProxy() {
-    return `http://${window.location.hostname}:8080/api/v1/`;
+    return `http://${window.location.hostname}:8080`;
 }
 
 /**
@@ -56,4 +56,18 @@ export function API_Protected() {
 export function API_AllRequest() {
     return axios.get("/request");
 }
+/**
+ * Realiza una solicitud al servidor para traer los nombres de los mensajeros 
+ * @returns {User fullName}
+ */
 
+export function API_AllDelyvery(){
+return axios.get('api/v1/admin/couriers')
+}
+/**
+ * Realiza una consulta al servidor para tarer los datos del usuario
+ * @returns {Userifo}
+ */
+ export function API_UserName(){
+    return axios.get('api/v1/admin/Customer')
+ }

@@ -3,12 +3,12 @@ import ErrorPage from '../pages/PageError';
 import LoginPage from '../pages/LoginPage';
 import { Home } from '../pages/Home';
 import ListaMensajeros from '../pages/ListaMensajeros';
-import LoginPage from '../pages/LoginPage';
+//import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
-import ListaMensajeros from '../pages/ListaMensajeros';
-import LoginPage from '../pages/LoginPage';
-import { Logout } from '../pages/Logout';
-import ErrorPage from '../pages/PageError';
+//import ListaMensajeros from '../pages/ListaMensajeros';
+//import LoginPage from '../pages/LoginPage';
+//import { Logout } from '../pages/Logout';
+//import ErrorPage from '../pages/PageError';
 import UserProfile from '../pages/UserProfile';
 //import DeliveryDay from '../sections/DeliveryDay';
 import Entregas from '../pages/Entregas';
@@ -35,10 +35,10 @@ const routes = [
     path: '/nuevospedidos',
     element: <NewRequest />,
   },
-  {
-    path: '/delivery',
-    element: <Delivery />,
-  },
+  // {
+  //   path: '/delivery',
+  //   element: <Delivery />,
+  // },
   {
     path: "/logout",
     element: <Logout />,

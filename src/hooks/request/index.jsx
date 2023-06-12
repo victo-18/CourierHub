@@ -39,7 +39,7 @@ function getProxy() {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Login(data) {
-    return axios.post('/login', data);
+    return axios.post('api/v1/login', data);
 }
 
 /**
@@ -47,13 +47,13 @@ export function API_Login(data) {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Protected() {
-    return axios.get('/users');
+    return axios.get('api/v1/users');
 }
 
 /**
  * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
- * @returns {result} Un resultado que se contiene todos los datos de los pedidos solicitados.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryInProgress() {
-    return axios.get('/request/inProgress');
+    return axios.get('api/v1/request/inProgress');
 }

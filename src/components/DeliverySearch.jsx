@@ -1,18 +1,27 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { List, ListItemButton, ListItemIcon, ListItemText, Divider, Grid, 
-         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button} from "@mui/material";
+         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button,
+         Skeleton, Box} from "@mui/material";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
+import { useFetchData } from "../hooks/consumer";
+import { API_DeliveryInProgress } from "../hooks/request";
 
 export function DeliverySearch(){
 
     const [open, setOpen] = React.useState(false);
+    const [refresh,setRefresh] = React.useState(false)
+    const [dataPedidos,cargando] = useFetchData(API_DeliveryInProgress,[refresh]); 
+    const [dataSolicitada,setDataSolicitada] = React.useState();
+ 
 
-    const handleClickOpen = () => {
-      setOpen(true);
+    const handleClickOpen = (infoPedidos) => {
+        setDataSolicitada(infoPedidos)
+        setOpen(true);
+
     };
   
     const handleClose = () => {
@@ -33,22 +42,35 @@ export function DeliverySearch(){
                 overflow: 'auto'
                 }}
                 >
-                <ListItemButton onClick={handleClickOpen} >
-                    <ListItemIcon>
-                        <DeliveryDiningIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Pedido 1" secondary="carrera 7L # 25- 88"/>
-                </ListItemButton>
-                <Divider/>
+                {
+                    cargando ?
+                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    : dataPedidos.map((solicitado)=>(
+                        <Box
+                         key={solicitado.code}
+                         >
+                            <ListItemButton onClick={() => handleClickOpen(solicitado)} >
+                                <ListItemIcon>
+                                    <DeliveryDiningIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary={"Pedido "+ solicitado.code} secondary={solicitado.destination}/>
+                            </ListItemButton>
+                            <Divider/>
+                        </Box>
+                    )) 
+                }
+                
             </List>
+            { dataSolicitada &&
+
             <Dialog
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
-                    >
+                    >   
                     <DialogTitle id="alert-dialog-title">
-                        {"Aqui iría el nombre del pedido"}
+                        {"Pedido "+dataSolicitada.code}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
@@ -63,6 +85,7 @@ export function DeliverySearch(){
                         </Button>
                     </DialogActions>
                 </Dialog>
+            }
             </Grid>
         </Grid>
     );

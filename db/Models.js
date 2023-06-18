@@ -591,8 +591,11 @@ ListState.init({
 });
 
 Request.hasMany(ListState, { foreignKey: "requestCode" });
-Request.belongsTo(Customer, { foreignKey: "customerId" })
+Request.belongsTo(Customer, { foreignKey: "customerId" });
 Customer.belongsTo(User, { foreignKey: "phone" });
+City.belongsTo(State, { foreignKey: 'stateId' });
+State.belongsTo(Country, { foreignKey: 'countryId' });
+User.hasOne(City, { foreignKey: 'cityId' });
 DeliveryCourier.belongsTo(User, { foreignKey: "phone" });
 
 module.exports = {

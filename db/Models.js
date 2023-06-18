@@ -344,6 +344,20 @@ User.init({
     sequelize,
     modelName: 'User',
     tableName: 'users',
+    hooks: {
+        beforeCreate: async (user) => {
+            if (user.password && !user.password.startsWith('$2')) {
+                const hashedPassword = await bcrypt.hash(user.password, 10);
+                user.password = hashedPassword;
+            }
+        },
+        beforeUpdate: async (user) => {
+            if (user.changed('password') && !user.password.startsWith('$2')) {
+                const hashedPassword = await bcrypt.hash(user.password, 10);
+                user.password = hashedPassword;
+            }
+        }
+    }
 });
 
 

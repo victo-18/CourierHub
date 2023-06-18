@@ -2,7 +2,6 @@ var express = require('express');
 const { User } = require('../db/Models');
 var router = express.Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/Models');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {

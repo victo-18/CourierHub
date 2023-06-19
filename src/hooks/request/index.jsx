@@ -30,7 +30,7 @@ axios.interceptors.response.use(
  * Devuelve una cadena que representa la dirección URL del servidor proxy en el que se está ejecutando la aplicación.
  */
 function getProxy() {
-    return `http://${window.location.hostname}:8080`;
+    return `http://${window.location.hostname}:8080/api/v1`;
 }
 
 /**
@@ -39,7 +39,7 @@ function getProxy() {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Login(data) {
-    return axios.post('api/v1/login', data);
+    return axios.post('/login', data);
 }
 
 /**
@@ -47,7 +47,7 @@ export function API_Login(data) {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Protected() {
-    return axios.get('api/v1/users');
+    return axios.get('/users');
 }
 
 /**
@@ -55,5 +55,5 @@ export function API_Protected() {
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryInProgress() {
-    return axios.get('api/v1/request/inProgress');
+    return axios.get('/request/inProgress');
 }

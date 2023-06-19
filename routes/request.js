@@ -15,7 +15,7 @@ router.get('/', async function (req, res) {
 // => hostname/api/v1/request/inProgress
 router.get('/inProgress', async function (req, res) {
     const result = await Request.findAll({
-        attributes: ["code", "destination"],
+        attributes: ["code", "destination","description"],
         include: [{
             model: ListState,
             attributes: ["date", "phase", "image"],

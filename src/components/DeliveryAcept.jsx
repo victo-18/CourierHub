@@ -1,9 +1,10 @@
 import React from "react";
 import { List, ListItem, ListItemIcon, ListItemText, ListItemButton,Divider, IconButton, Grid, Box, 
          Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Stepper, Step,
-         StepLabel, StepContent, Paper , Input } from "@mui/material";
+         StepLabel, StepContent, Paper , Input, Alert} from "@mui/material";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import DeleteIcon from '@mui/icons-material/Delete';
+import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 
 const steps = [
@@ -27,6 +28,7 @@ const steps = [
 
 export function DeliveryAcept(){
   const [open, setOpen] = React.useState(false);
+  const [openAlertF, setOpenAletF] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
   const [foto, setFoto] = React.useState("");
   const handleClickOpen = () => {
@@ -40,6 +42,7 @@ export function DeliveryAcept(){
   const handleNext = (indexValue) => {
     if(foto==""){
       console.log("Ingrese la foto")
+      setOpenAletF(true)
     }
     else {
       if(indexValue==1){
@@ -125,10 +128,10 @@ export function DeliveryAcept(){
                                     <div>
                                     <Input
                                       sx={{ mt: 1, mr: 1 }}
-                                      variant="contained"
                                       disabled={index === 1}
                                       type="file"
-                                      onChange={e => handleFoto(e.target.value)}
+                                      variant="outlined"
+                                      onChange={e => handleFoto(e.target.files[0])}
                                       >
                                       </Input>
                                       <Button
@@ -161,6 +164,25 @@ export function DeliveryAcept(){
                             </Paper>
                           )}
                         </Box>
+                        { openAlertF === true && (<Alert severity="info"
+                          action={
+                               <IconButton
+                                 aria-label="close"
+                                 color="inherit"
+                                 size="small"
+                                 onClick={() => {
+                                   setOpenAletF(false);
+                                 }}
+                               >
+                                 <CloseIcon fontSize="inherit" />
+                               </IconButton>
+                             }
+                             sx={{ mb: 2 }}>
+                               ingrese una foto del pedido
+                          </Alert>)
+                          
+                        }
+                        
                     </DialogContent>
                 </Dialog>
         </Grid>

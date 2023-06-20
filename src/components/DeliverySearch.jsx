@@ -74,11 +74,15 @@ export function DeliverySearch(){
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            {"Nombre cliente: "+ dataSolicitada.Customer.User.firstname 
-                             +" "+ dataSolicitada.Customer.User.lastname 
-                             +"  Telefono: "+ dataSolicitada.Customer.User.phone
-                             +"  Descripcion: "+ dataSolicitada.description +" Ubicacion: " + dataSolicitada.destination }Aqui iria la ubicacion del pedido en texto y abajo puede que este
-                            el mapa en google maps.
+                                {"Nombre cliente: "+ dataSolicitada.Customer.User.firstname
+                                 +" "+ dataSolicitada.Customer.User.lastname
+                                }
+                                {"  Telefono de contacto: "+ dataSolicitada.Customer.User.phone
+                                }
+                                {
+                                    " Ubicacion: " + dataSolicitada.destination 
+                                }
+                                {"  Descripcion: "+ dataSolicitada.description+" "}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

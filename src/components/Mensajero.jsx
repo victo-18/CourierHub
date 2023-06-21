@@ -7,7 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import '../styles/Mensajero.css'
-import { Box, Skeleton } from '@mui/material';
+import { Box, Divider, Skeleton } from '@mui/material';
 import { API_AllDelyvery } from '../hooks/request';
 import { useFetchData } from '../hooks/consumer';
 
@@ -46,6 +46,7 @@ export default function Mensajero() {
                 <Avatar sx={{ width: 50, height: 50 }} className='avatar-vehiculo' alt="icono veiculo" src="/static/images/avatar/1.jpg" />
               </ListItemAvatar>
             </ListItem>
+            <Divider variant="inset" component="li" />
           </Box>
         ))}
     </List>

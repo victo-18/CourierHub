@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
 import MopedIcon from '@mui/icons-material/Moped';
-import { Stack, Tooltip } from '@mui/material';
+import { Stack, Tooltip, useMediaQuery } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -45,6 +45,8 @@ CustomIndicator.propTypes = {
 }
 
 export default function CustomItem({ shipment }) {
+    const theme = useTheme();
+    const isWide = useMediaQuery(theme.breakpoints.up('sm'));
     const states = useListStates();
     const userFullname = shipment.Customer.User.firstname + " " + shipment.Customer.User.lastname;
     const phase = shipment.ListStates[0].phase;
@@ -72,7 +74,7 @@ export default function CustomItem({ shipment }) {
                 </>
             }
             alignItems="flex-start"
-            sx={{ width: "calc(50% - (8px * 0.2) * 2)", border: 1, borderColor: 'divider', m: 0.2 }}
+            sx={{ width: isWide ? "calc(50% - (8px * 0.2) * 2)" : "calc(100% - (8px * 0.2) * 2)", border: 1, borderColor: 'divider', m: 0.2 }}
             className='custom-item'
         >
             <ListItemAvatar>

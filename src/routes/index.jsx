@@ -12,6 +12,7 @@ import EditarPerfil from '../pages/EditarPerfil';
 const routes = [
   {
     path: "/dashboard",
+    label: "Inicio",
     element: <Home />
   },
   {

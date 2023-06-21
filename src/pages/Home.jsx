@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { CustomList } from "../components/LIst/CustomList";
 import { useFetchData } from "../hooks/consumer";
 import { API_AllRequest } from "../hooks/request";
+import HideAppBar from "../components/Navbar";
 
 export function Home() {
     const { auth } = useSelector((state) => state.session);
@@ -13,34 +14,23 @@ export function Home() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [shipments, loadingShipments] = useFetchData(API_AllRequest);
 
-    const handleLogout = () => {
-        location.href = "/logout";
-    }
+    // const handleLogout = () => {
+    //     location.href = "/logout";
+    // }
 
     return auth ?
         (<Box sx={{ textAlign: "center" }}>
             <Helmet>
                 <title>CourierHub</title>
             </Helmet>
-            {loadingShipments ?
-                <Skeleton />
-                : <CustomList data={shipments} />
-            }
-            {/* <Typography>
-                Te has autenticado correctamente
-            </Typography>
-            <Typography>
-                {loading ? " " : data}
-            </Typography> */}
-            {/* <IconButton onClick={handleLogout}>
-                <LogoutIcon />
-            </IconButton>
-            <Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-                <LabelBottomNavigation />
-            </Box> */}
+            <HideAppBar>
+                {
+                    loadingShipments ?
+                        <Skeleton />
+                        : <CustomList data={shipments} />
+                }
+            </HideAppBar>
         </Box>)
         :
         (<Navigate to="/login" />)
-
-
 }

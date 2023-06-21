@@ -3,7 +3,6 @@ import AllInboxIcon from '@mui/icons-material/AllInbox';
 import MopedIcon from '@mui/icons-material/Moped';
 import { Stack, Tooltip } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-// import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
@@ -54,33 +53,31 @@ export default function CustomItem({ shipment }) {
         <ListItem
             secondaryAction={
                 <>
-                    {/* // <Stack direction="row"> */}
-                    <CustomIndicator
-                        title={"Vehiculo: Moto"}
-                        bgcolor={states[phase].color}
-                        textSecondary={`${states[phase].content}`}
-                        sx={{ minWidth: "67px" }}
-                    >
-                        <MopedIcon />
-                    </CustomIndicator>
-                    <CustomIndicator
-                        title={"Cantidad de paquetes"}
-                        textSecondary={`2`}
-                    >
-                        <AllInboxIcon />
-                    </CustomIndicator>
-                    {/* // </Stack> */}
+                    <Stack direction="row">
+                        <CustomIndicator
+                            title={"Vehiculo: Moto"}
+                            bgcolor={states[phase].color}
+                            textSecondary={`${states[phase].content}`}
+                            sx={{ minWidth: "67px" }}
+                        >
+                            <MopedIcon />
+                        </CustomIndicator>
+                        <CustomIndicator
+                            title={"Cantidad de paquetes"}
+                            textSecondary={`2`}
+                        >
+                            <AllInboxIcon />
+                        </CustomIndicator>
+                    </Stack>
                 </>
             }
             alignItems="flex-start"
-            sx={{ width: "50%" }}
+            sx={{ width: "calc(50% - (8px * 0.2) * 2)", border: 1, borderColor: 'divider', m: 0.2 }}
             className='custom-item'
         >
-
             <ListItemAvatar>
                 <Avatar alt={`Una foto de perfil de ${userFullname}`} />
             </ListItemAvatar>
-
             <ListItemText
                 primary={userFullname}
                 secondary={
@@ -90,6 +87,7 @@ export default function CustomItem({ shipment }) {
                             component="span"
                             variant="body2"
                             color="text.primary"
+                            noWrap
                         >
                             {shipment.destination}
                         </Typography>

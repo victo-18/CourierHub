@@ -1,7 +1,6 @@
 var express = require('express');
 const { Op, Sequelize } = require("sequelize");
 const { Request, ListState, User, Customer, sequelize, Travel, Transport } = require('../db/Models');
-const { request } = require('../app');
 var router = express.Router();
 
 router.get('/', async function (req, res) {
@@ -27,24 +26,45 @@ router.post('/', async function (req, res) {
   res.status(200).json(request);
 });
 
-// => hostname/api/v1/request/inProgress
 router.get("/inProgress", async function (req, res) {
-  const result = await ListState.findAll({
-    attributes: ["id", "date", "phase", "image", "requestCode"],
-    where: { phase: "SOLICITADO" },
+  const result = await Request.findAll({
+    attributes: ["code"],
     include: [
-      {
-        model: Request,
-        attributes: ["code", "destination", "description"],
-        include: [{
-          model: User,
-          attributes: ["phone", "firstname", "lastname", "address", "email"],
-        }],
-      }
-    ],
+      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
+    ]
   });
-  // console.log(result);
-  res.status(200).json(result);
+
+  const r = result.filter((item) => item.ListStates.length == 1);
+  res.status(200).json(r);
+});
+
+// => hostname/api/v1/request/inProgress
+router.get("/onWay", async function (req, res) {
+  const result = await Request.findAll({
+    attributes: ["code"],
+    include: [
+      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
+    ]
+  });
+
+  const r = result.filter((item) => item.ListStates.length == 2);
+  res.status(200).json(r);
+});
+
+// => hostname/api/v1/request/inProgress
+router.get("/finished", async function (req, res) {
+  const result = await Request.findAll({
+    attributes: ["code"],
+    include: [
+      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
+    ]
+  });
+
+  const r = result.filter((item) => item.ListStates.length == 3);
+  res.status(200).json(r);
 });
 
 router.post("/updateStatus1", async function (req, res) {

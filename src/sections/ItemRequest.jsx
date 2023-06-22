@@ -6,24 +6,27 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 // import ListItemAvatar from '@mui/material/ListItemAvatar';
 // import Avatar from '@mui/material/Avatar';
-//import {API_AllRequest } from '../hooks/request';
+//import {API_AllDelyvery} from '../hooks/request';
 import Typography from "@mui/material/Typography";
+//import { useFetchData } from "../hooks/consumer";
 //import propTypes from 'prop-types';
 //import { useFetchData } from '../hooks/consumer';
 //import { Box } from '@mui/material';
 
 export default function ItemRequest({ data }) {
   // const [data, loading] = useFetchData(API_AllRequest)
-
+  //const [name ] = useFetchData(API_AllDelyvery)
   return (
+    
     <List
       id="item"
       sx={{ width: "100%", maxWidth: 600, bgcolor: "background.paper" }}
     >
       <ListItem alignItems="flex-start">
-        <ListItemText id="pedido" primary={data.code} />
+        <ListItemText id="pedido" primary={`Solicitud: ${data.code}`} />
         <ListItemText
-          primary={`User id: ${data.dateRequest}`}
+          primary={`User: ${''}`}
+          
           secondary={
             <React.Fragment>
               <Typography
@@ -33,19 +36,14 @@ export default function ItemRequest({ data }) {
                 color="text.primary"
               >
                 <ListItemText secondary={`Origen: ${data.origin}`} />
-                {/* <ListItemText
-                    secondary={data.dateRequest}
-                  /> */}
-                <ListItemText secondary="Telefono: 3163886726" />
-                {/* <ListItemText
-                    secondary={data.description}
-                  /> */}
+                <ListItemText secondary={`Fecha solicitud: ${''}`} /> 
+                <ListItemText secondary={`N° paquetes:${data.numberPackages}`} />
+                
                 <Divider variant="inset" component="li" />
-                <ListItemText primary="Destinatario: Rosa Marulanda Castillo Cuero" />
-                <ListItemText secondary="Telelefon: 3057889635" />
-                {/* <ListItemText
-                    secondary={data.description}
-                  /> */}
+                <ListItemText primary={`Destinatario:${''}`} />
+                <ListItemText secondary={`Destino:${data.destination}`} />
+                 <ListItemText secondary={`Telefono:${''}`} /> 
+                 <ListItemText secondary={`Descripción:${data.description}`}/>
               </Typography>
             </React.Fragment>
           }
@@ -53,4 +51,5 @@ export default function ItemRequest({ data }) {
       </ListItem>
     </List>
   );
+
 }

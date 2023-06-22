@@ -344,6 +344,20 @@ User.init({
     sequelize,
     modelName: 'User',
     tableName: 'users',
+    hooks: {
+        beforeCreate: async (user) => {
+            if (user.password && !user.password.startsWith('$2')) {
+                const hashedPassword = await bcrypt.hash(user.password, 10);
+                user.password = hashedPassword;
+            }
+        },
+        beforeUpdate: async (user) => {
+            if (user.changed('password') && !user.password.startsWith('$2')) {
+                const hashedPassword = await bcrypt.hash(user.password, 10);
+                user.password = hashedPassword;
+            }
+        }
+    }
 });
 
 
@@ -398,16 +412,13 @@ class Request extends Model { };
 
 Request.init({
     code: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
         primaryKey: true,
     },
     customerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: Customer,
-            key: 'id',
-        },
     },
     dateRequest: {
         type: DataTypes.DATE,
@@ -496,18 +507,10 @@ class Travel extends Model { };
 
 Travel.init({
     requestCode: {
-        type: DataTypes.STRING(255),
-        references: {
-            model: Request,
-            key: 'code',
-        },
+        type: DataTypes.BIGINT,
     },
     transportId: {
         type: DataTypes.INTEGER,
-        references: {
-            model: Transport,
-            key: 'id',
-        },
     },
 }, {
     sequelize,
@@ -560,12 +563,8 @@ ListState.init({
         autoIncrement: true,
     },
     requestCode: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.BIGINT,
         allowNull: false,
-        references: {
-            model: Request,
-            key: 'code',
-        },
     },
     date: {
         type: DataTypes.DATE,
@@ -590,8 +589,13 @@ ListState.init({
 });
 
 Request.hasMany(ListState, { foreignKey: "requestCode" });
-Request.belongsTo(Customer, { foreignKey: "customerId" });
-Customer.belongsTo(User, { foreignKey: "phone" });
+
+Transport.belongsToMany(Request, { through: Travel, foreignKey: "transportId" });
+Request.belongsToMany(Transport, { through: Travel, foreignKey: "requestCode" });
+
+User.belongsToMany(Request, { through: Customer, foreignKey: "phone" });
+Request.belongsToMany(User, { through: Customer, sourceKey: "customerId", foreignKey: "id" });
+
 City.belongsTo(State, { foreignKey: 'stateId' });
 State.belongsTo(Country, { foreignKey: 'countryId' });
 User.hasOne(City, { foreignKey: 'cityId' });

@@ -35,3 +35,8 @@ body {
   justify-content: center;
   width: 100%;
 }
+
+.MuiSkeleton-root {
+  transform-origin: 0 !important;
+  transform: none !important;
+}

@@ -7,8 +7,9 @@ import { Logout } from '../pages/Logout';
 import LoginPage from '../pages/LoginPage';
 //import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
-import UserProfile from '../pages/UserProfile';
-import NewRequest from '../pages/NewRequest';
+import Perfil from '../pages/Perfil';
+import NewRequest from '../sections/NewRequest';
+import EditarPerfil from '../pages/EditarPerfil';
 
 const routes = [
   {
@@ -38,7 +39,10 @@ const routes = [
   },
   {
     path: '/profile',
-    element: <UserProfile />
+    element: <Perfil />,
+    children: [
+      { path: "edit", element: <EditarPerfil /> }
+    ]
   },
   {
     children: [

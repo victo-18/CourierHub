@@ -1,5 +1,7 @@
 var express = require('express');
+const { Op, Sequelize } = require("sequelize");
 const { Request, ListState, User, Customer, sequelize, Travel, Transport } = require('../db/Models');
+const { request } = require('../app');
 var router = express.Router();
 
 router.get('/', async function (req, res) {
@@ -27,17 +29,21 @@ router.post('/', async function (req, res) {
 
 // => hostname/api/v1/request/inProgress
 router.get("/inProgress", async function (req, res) {
+    const [otherPhase] = await ListState.findAll({
+        attributes:["requestCode"],
+        where:{
+            "phase":"EN_CAMINO"
+        }
+    });
+    
+    console.log(otherPhase);
     const result = await ListState.findAll({
       attributes: ["id","date", "phase", "image","requestCode"],
-      where: {
-          "phase": "SOLICITADO"
-       /* 
-        [Op.and]:[{
-      
-        },{
-          "phase":"SOLICITADO"
-        }]*/
-      },
+        where:{
+           /* "requestCode":{
+                [Op.notIn]: otherPhase
+            }*/
+        },
       include:[
         {
           model:Request,

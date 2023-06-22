@@ -26,6 +26,7 @@ export default function Nuevos() {
         const { status } = await API_NewRequest(data);
         if (status == 200) {
             dispatch(addSnackbar("¡El pedido ha sido solicitado!", "success"))
+            handleBack();
         } else {
             dispatch(addSnackbar("Se ha producido un error, intentalo mas tarde", "error"))
         }

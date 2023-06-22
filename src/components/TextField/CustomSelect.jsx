@@ -10,6 +10,7 @@ import { Controller } from 'react-hook-form'
 import { useFetchData } from '../../hooks/consumer'
 import { SelectValidator } from './validators'
 import { endpoints } from '../../hooks/endpoints'
+import useSmall from '../../hooks/breakpoints/useSmall'
 
 function CustomSelect({ input, control, rules, watchRef }) {
   if (input.dependsOn)
@@ -41,13 +42,14 @@ function MySelect({ input, control, rules, dependencyValue }) {
   const [options, optionsLoading] = useFetchData(consumer, dependencyArr)
 
   const label = input.label + (rules.required ? ' *' : '')
+  const isSmall = useSmall();
 
   return (
     optionsLoading
-      ? <Skeleton sx={{ width: 'calc(50% - 8px)', height: 56, m: 0.5, ...input?.sx }} />
+      ? <Skeleton sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', height: 56, m: 0.5, ...input?.sx }} />
       : <Controller
         render={({ field }) => (
-          <FormControl sx={{ width: 'calc(50% - 8px)', m: 0.5, ...input?.sx }}>
+          <FormControl sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', m: 0.5, ...input?.sx }}>
             <InputLabel>{label}</InputLabel>
             <Select
               required={input?.rules?.required}

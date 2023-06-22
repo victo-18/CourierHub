@@ -48,10 +48,10 @@ export default function CustomItem({ shipment }) {
     const theme = useTheme();
     const isWide = useMediaQuery(theme.breakpoints.up('sm'));
     const states = useListStates();
-    const userFullname = shipment.Users[0].firstname + " " + shipment.Users[0].lastname;
-    const transport = shipment.Transports[0];
-    const numberPackages = shipment.numberPackages;
-    const phase = shipment.ListStates[0].phase;
+    const userFullname = shipment?.Users[0]?.firstname + " " + shipment?.Users[0]?.lastname;
+    const transport = shipment?.Transports[0];
+    const numberPackages = shipment?.numberPackages;
+    const phase = shipment?.ListStates[0]?.phase;
 
     return (
         <ListItem
@@ -60,8 +60,8 @@ export default function CustomItem({ shipment }) {
                     <Stack direction="row">
                         <CustomIndicator
                             title={`Vehiculo: ${transport.nameTransport}`}
-                            bgcolor={states[phase].color}
-                            textSecondary={`${states[phase].content}`}
+                            bgcolor={states[phase]?.color ?? 'red'}
+                            textSecondary={`${states[phase]?.content ?? 'ERROR'}`}
                             sx={{ minWidth: "67px" }}
                         >
                             {transportIcon[transport.id]}

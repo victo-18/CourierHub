@@ -4,10 +4,10 @@ import Box from "@mui/material/Box";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { Link, Navigate, Outlet } from "react-router-dom";
-import { CustomList } from "../components/LIst/CustomList";
 import HideAppBar from "../components/Navbar";
 import { useFetchData } from "../hooks/consumer";
 import { API_AllRequest } from "../hooks/request";
+import { CustomList } from '../components/List/CustomList';
 
 export function Home() {
     const { auth } = useSelector((state) => state.session);

@@ -18,6 +18,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import routes from '../routes';
+import { Link } from 'react-router-dom';
 
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -97,7 +98,7 @@ export default function HideAppBar(props) {
                         </Typography>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                             {routes.map((item) => item.label ? (
-                                <Button key={item.path} sx={{ color: '#fff' }}>
+                                <Button component={Link} to={item.path} key={item.path} sx={{ color: '#fff' }}>
                                     {item.label}
                                 </Button>
                             ) : null)}

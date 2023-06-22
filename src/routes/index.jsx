@@ -1,23 +1,23 @@
 import { Navigate } from 'react-router-dom';
-import ErrorPage from '../pages/PageError';
-import LoginPage from '../pages/LoginPage';
+import Entregas from '../pages/Entregas';
 import { Home } from '../pages/Home';
 import ListaMensajeros from '../pages/ListaMensajeros';
 import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
-import ListaMensajeros from '../pages/ListaMensajeros';
-import LoginPage from '../pages/LoginPage';
-import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
-import UserProfile from '../pages/UserProfile';
-//import DeliveryDay from '../sections/DeliveryDay';
-import Entregas from '../pages/Entregas';
+import Perfil from '../pages/Perfil';
 import NewRequest from '../sections/NewRequest';
+import EditarPerfil from '../pages/EditarPerfil';
+import { NuevoPedido } from '../pages/NuevoPedido';
 
 const routes = [
   {
     path: "/dashboard",
-    element: <Home />
+    label: "Inicio",
+    element: <Home />,
+    children: [
+      { path: "nuevo", element: <NuevoPedido /> }
+    ]
   },
   {
     path: "/login",
@@ -36,16 +36,16 @@ const routes = [
     element: <NewRequest />,
   },
   {
-    path: '/delivery',
-    element: <Delivery />,
-  },
-  {
     path: "/logout",
     element: <Logout />,
   },
   {
     path: '/profile',
-    element: <UserProfile />
+    label: 'Perfil',
+    element: <Perfil />,
+    children: [
+      { path: "edit", element: <EditarPerfil /> }
+    ]
   },
   {
     children: [

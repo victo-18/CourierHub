@@ -14,6 +14,7 @@ var courrierRouter = require('./routes/courrier');
 var generalRouter = require("./routes/general");
 var loginRouter = require('./routes/login');
 var citiesRouter = require('./routes/city');
+var delegatesRouter = require('./routes/delegates');
 
 const { sequelize } = require('./db/Models');
 const { insertDummy } = require('./db/dummy');
@@ -44,6 +45,7 @@ app.use('/api/v1/admin/', authMiddleware, adminMiddleware, adminRouter);
 
 app.use('/api/v1/request', authMiddleware, clientMiddleware, requestRouter);
 app.use('/api/v1/clients', authMiddleware, clientMiddleware, clientRouter);
+app.use('/api/v1/delegates', authMiddleware, clientMiddleware, delegatesRouter);
 app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 
 app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);

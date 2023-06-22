@@ -394,63 +394,6 @@ DeliveryCourier.init({
     tableName: 'delivery_couriers'
 });
 
-
-class Delegate extends Model { };
-
-Delegate.init({
-    customerId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: Customer,
-            key: 'id'
-        }
-    },
-    deliveryId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: DeliveryCourier,
-            key: 'id'
-        }
-    }
-}, {
-    sequelize,
-    modelName: 'Delegate',
-    tableName: 'delegates'
-});
-
-
-class Transport extends Model { };
-
-Transport.init({
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
-    nameTransport: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-    },
-    capacity: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-    },
-    type: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        validate: {
-            isIn: [['AIR', 'SEA', 'LAND']],
-        },
-    },
-}, {
-    sequelize,
-    modelName: 'Transport',
-    tableName: 'transports'
-});
-
-
 class Request extends Model { };
 
 Request.init({
@@ -490,6 +433,62 @@ Request.init({
     sequelize,
     modelName: 'Request',
     tableName: 'requests'
+});
+
+
+class Delegate extends Model { };
+
+Delegate.init({
+    courierId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: DeliveryCourier,
+            key: 'id'
+        }
+    },
+    deliveryId: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+        references: {
+            model: Request,
+            key: 'code'
+        }
+    }
+}, {
+    sequelize,
+    modelName: 'Delegate',
+    tableName: 'delegates'
+});
+
+
+class Transport extends Model { };
+
+Transport.init({
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    nameTransport: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+    },
+    capacity: {
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+    },
+    type: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        validate: {
+            isIn: [['AIR', 'SEA', 'LAND']],
+        },
+    },
+}, {
+    sequelize,
+    modelName: 'Transport',
+    tableName: 'transports'
 });
 
 

@@ -1,4 +1,4 @@
-const { User, State, Country, City, sequelize, Customer, Request, Travel, Transport, ListState, DeliveryCourier } = require("./Models");
+const { User, State, Country, City, sequelize, Customer, Request, Travel, Transport, ListState, DeliveryCourier, Delegate } = require("./Models");
 const fs = require('fs');
 
 async function insertDummy() {

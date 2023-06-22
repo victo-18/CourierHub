@@ -28,7 +28,7 @@ router.post('/', async function (req, res) {
 
 router.get("/inProgress", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code"],
+    attributes: ["code","destination","description"],
     include: [
       { model: ListState, attributes: ["date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
@@ -42,7 +42,7 @@ router.get("/inProgress", async function (req, res) {
 // => hostname/api/v1/request/inProgress
 router.get("/onWay", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code"],
+    attributes: ["code","destination","description"],
     include: [
       { model: ListState, attributes: ["date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
@@ -56,7 +56,7 @@ router.get("/onWay", async function (req, res) {
 // => hostname/api/v1/request/inProgress
 router.get("/finished", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code"],
+    attributes: ["code","destination","description"],
     include: [
       { model: ListState, attributes: ["date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }

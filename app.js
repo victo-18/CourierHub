@@ -7,9 +7,11 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require("./routes/admin/index");
+var userRouter = require("./routes/users");
 var requestRouter = require('./routes/request');
 var clientRouter = require('./routes/client');
 var courrierRouter = require('./routes/courrier');
+var generalRouter = require("./routes/general");
 var loginRouter = require('./routes/login');
 var citiesRouter = require('./routes/city');
 
@@ -20,7 +22,7 @@ const { clientMiddleware, adminMiddleware, courierMiddleware } = require('./midd
 
 var app = express();
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: ['http://localhost:5173', "http://192.168.1.5:5173"], credentials: true }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,12 +37,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/v1/', indexRouter);
+app.use('/api/v1/general/', authMiddleware, generalRouter);
+app.use('/api/v1/user/', authMiddleware, userRouter);
+
 app.use('/api/v1/admin/', authMiddleware, adminMiddleware, adminRouter);
-app.use('/api/v1/request', authMiddleware, clientMiddleware, requestRouter);
+
+app.use('/api/v1/request', authMiddleware, courierMiddleware, requestRouter);
 app.use('/api/v1/clients', authMiddleware, clientMiddleware, clientRouter);
-app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);
 app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
+
+app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);
+
 app.use('/api/v1/login', loginRouter);
 
 // Ruta para todas las rutas de React Router

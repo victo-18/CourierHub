@@ -1,6 +1,5 @@
 import { useTheme } from '@emotion/react';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
-import MopedIcon from '@mui/icons-material/Moped';
 import { Stack, Tooltip, useMediaQuery } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
@@ -10,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import "@styles/Item.css";
 import PropTypes from "prop-types";
 import { Fragment } from 'react';
+import { transportIcon } from './constant';
 
 const useListStates = () => {
     const theme = useTheme();
@@ -48,7 +48,9 @@ export default function CustomItem({ shipment }) {
     const theme = useTheme();
     const isWide = useMediaQuery(theme.breakpoints.up('sm'));
     const states = useListStates();
-    const userFullname = shipment.Customer.User.firstname + " " + shipment.Customer.User.lastname;
+    const userFullname = shipment.Users[0].firstname + " " + shipment.Users[0].lastname;
+    const transport = shipment.Transports[0];
+    const numberPackages = shipment.numberPackages;
     const phase = shipment.ListStates[0].phase;
 
     return (
@@ -57,16 +59,16 @@ export default function CustomItem({ shipment }) {
                 <>
                     <Stack direction="row">
                         <CustomIndicator
-                            title={"Vehiculo: Moto"}
+                            title={`Vehiculo: ${transport.nameTransport}`}
                             bgcolor={states[phase].color}
                             textSecondary={`${states[phase].content}`}
                             sx={{ minWidth: "67px" }}
                         >
-                            <MopedIcon />
+                            {transportIcon[transport.id]}
                         </CustomIndicator>
                         <CustomIndicator
                             title={"Cantidad de paquetes"}
-                            textSecondary={`2`}
+                            textSecondary={numberPackages}
                         >
                             <AllInboxIcon />
                         </CustomIndicator>

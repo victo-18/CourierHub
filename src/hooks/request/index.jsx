@@ -57,3 +57,12 @@ export function API_Protected() {
 export function API_DeliveryInProgress() {
     return axios.get('/request/inProgress');
 }
+
+/**
+ * Realiza una solicitud al servidor para ingresar datos a la BD que cambien el estado de el pedido a EN_CAMINO.
+ * @param {Object} code - Un objeto que contiene el codigo del pedido a actualizar su estado.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryStatusUpdate1(code) {
+    return axios.post('/request/updateStatus1',{code})
+}

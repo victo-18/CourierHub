@@ -8,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import { useFetchData } from "../hooks/consumer";
-import { API_DeliveryInProgress } from "../hooks/request";
+import { API_DeliveryInProgress, API_DeliveryStatusUpdate1 } from "../hooks/request";
 
 export function DeliverySearch(){
 
@@ -24,9 +24,14 @@ export function DeliverySearch(){
 
     };
   
-    const handleClose = () => {
+    const handleCloseCancel= () => {
       setOpen(false);
     };
+    const handleCloseAcept = (codeRequest) => {
+        setOpen(false);
+        console.log(codeRequest)
+        API_DeliveryStatusUpdate1(codeRequest);
+      };
   
     return(
         <Grid container columns={1} justifyContent="center">
@@ -47,13 +52,13 @@ export function DeliverySearch(){
                     <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                     : dataPedidos.map((solicitado)=>(
                         <Box
-                         key={solicitado.code}
+                         key={solicitado.id}
                          >
                             <ListItemButton onClick={() => handleClickOpen(solicitado)} >
                                 <ListItemIcon>
                                     <DeliveryDiningIcon/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Pedido "+ solicitado.code} secondary={solicitado.destination}/>
+                                <ListItemText primary={"Pedido "+ solicitado.requestCode} secondary={solicitado.Request.destination}/>
                             </ListItemButton>
                             <Divider/>
                         </Box>
@@ -65,29 +70,29 @@ export function DeliverySearch(){
 
             <Dialog
                     open={open}
-                    onClose={handleClose}
+                    onClose={handleCloseCancel}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                     >   
                     <DialogTitle id="alert-dialog-title">
-                        {"Pedido "+dataSolicitada.code}
+                        {"Pedido "+dataSolicitada.requestCode}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                                {"Nombre cliente: "+ dataSolicitada.Customer.User.firstname
-                                 +" "+ dataSolicitada.Customer.User.lastname
+                                {"Nombre cliente: "+ dataSolicitada.Request.Users.firstname
+                                 +" "+ dataSolicitada.Request.Users.lastname
                                 }
-                                {"  Telefono de contacto: "+ dataSolicitada.Customer.User.phone
+                                {"  Telefono de contacto: "+ dataSolicitada.Request.Users.phone
                                 }
                                 {
-                                    " Ubicacion: " + dataSolicitada.destination 
+                                    " Ubicacion: " + dataSolicitada.Request.destination 
                                 }
-                                {"  Descripcion: "+ dataSolicitada.description+" "}
+                                {"  Descripcion: "+ dataSolicitada.Request.description+" "}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancelar</Button>
-                        <Button onClick={handleClose} autoFocus>
+                        <Button onClick={handleCloseCancel}>Cancelar</Button>
+                        <Button onClick={() =>handleCloseAcept(dataSolicitada.requestCode)} autoFocus>
                             Aceptar
                         </Button>
                     </DialogActions>

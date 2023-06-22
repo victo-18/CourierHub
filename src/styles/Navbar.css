@@ -1,0 +1,59 @@
+#navbar-main .MuiBottomNavigationAction-root {
+  color: white;
+}
+
+#navbar-main .MuiBadge-badge {
+  transform: initial;
+  min-width: 10px;
+  line-height: 1;
+  padding: 0;
+  height: 10px;
+  border-radius: 5px;
+  z-index: 1;
+  /* background-color: #009407; */
+  color: #fff;
+  right: 0px;
+  bottom: 0px;
+}
+
+#navbar-main .MuiBadge-badge .MuiSvgIcon-root {
+  width: 10px;
+  height: 10px;
+}
+
+#navbar-main .MuiBottomNavigationAction-root.Mui-selected {
+  color: #555b6e;
+  background-color: #bee3db;
+}
+
+#navbar-main {
+  z-index: 1000;
+}
+
+@media (min-width: 767.98px) {
+  #navbar-main {
+    /* width: 50%; */
+    border-radius: 16px 16px 0px 0px;
+    height: 64px;
+    /* justify-content: space-evenly; */
+  }
+
+  #navbar-main > * {
+    width: 168px;
+  }
+
+  #navbar-main > :first-child {
+    border-radius: 16px 0px 0px 0px;
+  }
+
+  #navbar-main > :last-child {
+    border-radius: 0px 16px 0px 0px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #navbar-main {
+    width: 100%;
+    height: 72px;
+  }
+}

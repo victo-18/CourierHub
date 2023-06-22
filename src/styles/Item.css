@@ -1,0 +1,39 @@
+.custom-item span.MuiBadge-badge {
+    top: 0px;
+    right: 0px;
+    transform: none;
+    transform-origin: 0%;
+
+    height: 100%;
+    min-width: 0;
+    padding: 0;
+    width: 8px;
+
+    transition: width 4s;
+}
+
+.custom-item .MuiBadge-root:hover {
+    cursor: pointer;
+}
+
+.custom-item span.MuiBadge-root:hover span.MuiBadge-badge {
+    height: auto;
+    min-width: 92px;
+    padding: 0 6px;
+    width: auto;
+}
+
+.custom-item .MuiBadge-root:hover span.MuiBadge-badge .MuiTypography-root {
+    display: block;
+}
+
+.custom-item .MuiListItemText-secondary {
+    width: calc(100% - 75px);
+}
+
+.custom-item .MuiListItemText-primary {
+    width: calc(100% - 75px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

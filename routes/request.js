@@ -26,24 +26,41 @@ router.post('/', async function (req, res) {
 });
 
 // => hostname/api/v1/request/inProgress
-router.get('/inProgress', async function (req, res) {
-    const result = await Request.findAll({
-        attributes: ["code", "destination", "description"],
-        include: [{
-            model: ListState,
-            attributes: ["date", "phase", "image"],
-            where: { phase: 'SOLICITADO' }
-        }, {
-            model: Customer,
-            attributes: ["id"],
-            include: { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] },
-        }]
+router.get("/inProgress", async function (req, res) {
+    const result = await ListState.findAll({
+      attributes: ["id","date", "phase", "image","requestCode"],
+      where: {
+          "phase": "SOLICITADO"
+       /* 
+        [Op.and]:[{
+      
+        },{
+          "phase":"SOLICITADO"
+        }]*/
+      },
+      include:[
+        {
+          model:Request,
+          attributes: ["code","destination","description"], 
+          include:[{
+            model: User,
+            attributes: ["phone", "firstname", "lastname", "address", "email"],
+          }],
+        }
+      ],
     });
-
     // console.log(result);
     res.status(200).json(result);
-});
-
+  });
+  
+  router.post("/updateStatus1", async function (req, res) {
+    const { code } = req.body;
+    console.log(code);
+    const enCamino = await ListState.create({
+      requestCode: code,
+      phase: "EN_CAMINO",
+    });
+  });
 router.post('/', async function (req, res) {
     // COMMIT
     // Request.create({...datos})

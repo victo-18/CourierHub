@@ -588,7 +588,10 @@ ListState.init({
     tableName: 'list_states'
 });
 
-Request.hasMany(ListState, { foreignKey: "requestCode" });
+Request.hasMany(ListState, { foreignKey: "id" });
+User.belongsToMany(Request, { through: Customer, foreignKey: "phone" });
+Request.belongsToMany(User, { through: Customer, sourceKey: "customerId", foreignKey: "id" });
+ListState.belongsTo(Request,{ foreignKey: "requestCode"});
 
 Transport.belongsToMany(Request, { through: Travel, foreignKey: "transportId" });
 Request.belongsToMany(Transport, { through: Travel, foreignKey: "requestCode" });

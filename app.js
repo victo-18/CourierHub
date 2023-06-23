@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 const multer = require('multer');
+const application = require("express")
 
 var indexRouter = require('./routes/index');
 var adminRouter = require("./routes/admin/index");
@@ -16,6 +17,8 @@ var generalRouter = require("./routes/general");
 var loginRouter = require('./routes/login');
 var citiesRouter = require('./routes/city');
 var delegatesRouter = require('./routes/delegates');
+//prueba img
+var imgRouter = require('./routes/uploadF')
 
 const { sequelize } = require('./db/Models');
 const { insertDummy } = require('./db/dummy');
@@ -30,6 +33,34 @@ app.use(cors({ origin: ['http://localhost:5173', "http://192.168.1.5:5173"], cre
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// pruebas multer para img en server
+//Pruebas IMG MULTER
+application['img']=''
+
+const storage =multer.diskStorage({
+  destination: './requestImg',
+  filename: async (req,file,cb) =>{
+    const ext = file.originalname.split('.').pop()
+    let nameImg = `${Date.now()}_${file.originalname}`;
+    application['img'] = nameImg;
+    cb(null,nameImg)
+  }
+});
+
+const uploadF = multer({storage: storage})
+/*
+  const storage =multer.diskStorage({
+  destination: (req,file,cb) =>{
+    cb(null, './requestImg')
+  },
+  filename:(req,file,cb) =>{
+    const ext = file.originalname.split('.').pop()
+    cb(null, `${Date.now()}.${ext}`)
+  }
+});
+
+const uploadF = multer({storage})
+*/
 // Servir los archivos estáticos desde la carpeta 'build'
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -52,24 +83,21 @@ app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);
 
 app.use('/api/v1/login', loginRouter);
-//prueba multer
-// pruebas multer para img en server
-const storage =multer.diskStorage({
-  destination: (req,file,cb) =>{
-    cb(null, './requestImg')
-  },
-  filename:(req,file,cb) =>{
-    const ext = file.originalname.split('.').pop()
-    cb(null, `${Date.now()}.${ext}`)
-  }
-});
 
-const uploadF = multer({storage})
+//prueba peticion post multer
+app.use('/api/v1/uploadF',imgRouter)
 
-app.post('/upLoadF',uploadF.single('file'),async function (req, res){
+
+app.post('/api/v1/imgFile',uploadF.single('file'),(req, res)=>{
+  
+  console.log(req.file.filename)
+  res.send({data:'imagen cargada'})
+})
+/*
+app.post('/upLoadF',uploadF.single('file'),(req, res)=>{
   res.send({data:'imagen cargada'})
 });
-
+*/
 // Ruta para todas las rutas de React Router
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

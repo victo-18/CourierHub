@@ -26,7 +26,6 @@ router.post('/', async function (req, res) {
 
   res.status(200).json(request);
 });
-
 router.get("/inProgress", async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code","destination","description"],
@@ -46,7 +45,7 @@ router.get("/onWay", async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code","destination","description"],
     include: [
-      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: ListState, attributes: ["id","date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
     ]
   });
@@ -54,6 +53,9 @@ router.get("/onWay", async function (req, res) {
   const r = result.filter((item) => item.ListStates.length == 2);
   res.status(200).json(r);
 });
+// multer
+
+
 
 // => hostname/api/v1/request/inProgress
 router.get("/finished", async function (req, res) {

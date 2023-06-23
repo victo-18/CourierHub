@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const multer = require('multer');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require("./routes/admin/index");
@@ -51,6 +52,23 @@ app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);
 
 app.use('/api/v1/login', loginRouter);
+//prueba multer
+// pruebas multer para img en server
+const storage =multer.diskStorage({
+  destination: (req,file,cb) =>{
+    cb(null, './requestImg')
+  },
+  filename:(req,file,cb) =>{
+    const ext = file.originalname.split('.').pop()
+    cb(null, `${Date.now()}.${ext}`)
+  }
+});
+
+const uploadF = multer({storage})
+
+app.post('/upLoadF',uploadF.single('file'),async function (req, res){
+  res.send({data:'imagen cargada'})
+});
 
 // Ruta para todas las rutas de React Router
 app.get('/*', function (req, res) {

@@ -3,6 +3,7 @@ const { Op, Sequelize } = require("sequelize");
 const { Request, ListState, User, Customer, sequelize, Travel, Transport } = require('../db/Models');
 var router = express.Router();
 
+
 router.get('/', async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code", "destination", "numberPackages"],
@@ -38,6 +39,7 @@ router.get("/inProgress", async function (req, res) {
   const r = result.filter((item) => item.ListStates.length == 1);
   res.status(200).json(r);
 });
+
 
 // => hostname/api/v1/request/inProgress
 router.get("/onWay", async function (req, res) {

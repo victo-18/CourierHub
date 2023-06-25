@@ -9,7 +9,7 @@ import ItemRequest from '../sections/ItemRequest'
 export default function NewRequest() {
     const [data, loading] = useFetchData(API_AllRequest)
 //  const [listname] = useFetchData(API_AllDelyvery)
-//     console.log("lista"+ ""+ listname.firstname)
+    // console.log('soy datos '+ ''+data)
     return (
         <Fragment>
             <Navbar />

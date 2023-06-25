@@ -35,15 +35,15 @@ export default function ItemRequest({ data }) {
                 variant="body2"
                 color="text.primary"
               >
-                <ListItemText secondary={`Origen: ${data.origin}`} />
+                <ListItemText secondary={`Origen: ${''}`} />
                 <ListItemText secondary={`Fecha solicitud: ${''}`} /> 
-                <ListItemText secondary={`N° paquetes:${data.numberPackages}`} />
+                <ListItemText secondary={`N° paquetes:${''}`} />
                 
                 <Divider variant="inset" component="li" />
                 <ListItemText primary={`Destinatario:${''}`} />
-                <ListItemText secondary={`Destino:${data.destination}`} />
+                <ListItemText secondary={`Destino:${''}`} />
                  <ListItemText secondary={`Telefono:${''}`} /> 
-                 <ListItemText secondary={`Descripción:${data.description}`}/>
+                 <ListItemText secondary={`Descripción:${''}`}/>
               </Typography>
             </React.Fragment>
           }

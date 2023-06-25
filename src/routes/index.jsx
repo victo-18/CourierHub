@@ -8,7 +8,7 @@ import LoginPage from '../pages/LoginPage';
 //import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
 import Perfil from '../pages/Perfil';
-import NewRequest from '../sections/NewRequest';
+import ItemRequest from '../sections/ItemRequest';
 import EditarPerfil from '../pages/EditarPerfil';
 
 const routes = [
@@ -30,7 +30,7 @@ const routes = [
   // },
   {
     path: '/solicitudes',
-    element: <NewRequest />,
+    element: <ItemRequest />,
   },
  
   {

@@ -8,11 +8,11 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import '../styles/Mensajero.css'
 import { Box, Divider, Skeleton } from '@mui/material';
-import { API_AllDelyvery } from '../hooks/request';
+import { API_Protected } from '../hooks/request';
 import { useFetchData } from '../hooks/consumer';
 
 export default function Mensajero() {
-  const [data, loading] = useFetchData(API_AllDelyvery)
+  const [data, loading] = useFetchData(API_Protected)
 
   return (
     <List id="item-mensajero" sx={{ width: '100%', maxWidth: 500 }}>

@@ -10,11 +10,16 @@ import ErrorPage from '../pages/PageError';
 import Perfil from '../pages/Perfil';
 import ItemRequest from '../sections/ItemRequest';
 import EditarPerfil from '../pages/EditarPerfil';
+import { NuevoPedido } from '../pages/NuevoPedido';
 
 const routes = [
   {
     path: "/dashboard",
-    element: <Home />
+    label: "Inicio",
+    element: <Home />,
+    children: [
+      { path: "nuevo", element: <NuevoPedido /> }
+    ]
   },
   {
     path: "/login",
@@ -39,6 +44,7 @@ const routes = [
   },
   {
     path: '/profile',
+    label: 'Perfil',
     element: <Perfil />,
     children: [
       { path: "edit", element: <EditarPerfil /> }

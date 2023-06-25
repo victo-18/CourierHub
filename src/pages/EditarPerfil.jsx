@@ -1,44 +1,21 @@
+import { Backdrop, CircularProgress } from '@mui/material'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
-import Stack from '@mui/material/Stack'
 import '@styles/NuevoCliente.css'
 import PropTypes from 'prop-types'
+import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addSnackbar } from '../hooks/redux/actions/snackbarActions'
-import { CreateFields, InputTypes } from './constant'
-import { useRef } from 'react'
+import SwitchTypes from '../components/SwitchTypes'
 import { useFetchData } from '../hooks/consumer'
+import { addSnackbar } from '../hooks/redux/actions/snackbarActions'
 import { API_Profile, API_UpdateProfile } from '../hooks/request'
-import { Backdrop, CircularProgress } from '@mui/material'
 import { filterObj } from '../utils/filterObject'
-
-function SwitchTypes(props) {
-  const { arr, ...other } = props
-
-  return (
-    <Stack
-      flexDirection='row'
-      justifyContent='center'
-      flexWrap='wrap'
-    >
-      {
-        arr.map((input) => {
-          const Component = InputTypes[input.type ?? 'default']
-          return (<Component key={input.id} input={input} {...other} rules={input.rules} />)
-        })
-      }
-    </Stack>
-  )
-}
-
-SwitchTypes.propTypes = {
-  arr: PropTypes.array.isRequired
-}
+import { CreateFields } from './constant'
 
 function EditarPerfil() {
   const [user, userLoading] = useFetchData(API_Profile);

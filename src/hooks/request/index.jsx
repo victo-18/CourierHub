@@ -84,6 +84,15 @@ export function API_AllRequest() {
  * Realiza una solicitud al servidor para obtener información protegida.
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
+export function API_NewRequest(data) {
+    return axios.post("request", data);
+}
+
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
 export function API_AllCities(stateId) {
     return axios.get("general/cities/" + stateId);
 }
@@ -95,3 +104,12 @@ export function API_AllCities(stateId) {
 export function API_AllStates() {
     return axios.get("general/states/");
 }
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllTransport() {
+    return axios.get("general/transport/");
+}
+

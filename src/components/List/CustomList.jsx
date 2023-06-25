@@ -6,10 +6,10 @@ function CustomList({ data, ...others }) {
     return (
         <List component={Stack} sx={{ bgcolor: 'background.paper', flexDirection: "row", flexWrap: "wrap" }} {...others}>
             {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
+            {/* {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
             {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
             {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
-            {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
-            {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)}
+            {data.map((shipment) => <CustomItem key={shipment.code} shipment={shipment} />)} */}
         </List>
     )
 }

@@ -6,6 +6,8 @@ var logger = require('morgan');
 const cors = require('cors');
 const multer = require('multer');
 const application = require("express")
+const { route } = require('express/lib/application');
+const { Request, ListState} = require('./db/Models');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require("./routes/admin/index");
@@ -17,8 +19,6 @@ var generalRouter = require("./routes/general");
 var loginRouter = require('./routes/login');
 var citiesRouter = require('./routes/city');
 var delegatesRouter = require('./routes/delegates');
-//prueba img
-var imgRouter = require('./routes/uploadF')
 
 const { sequelize } = require('./db/Models');
 const { insertDummy } = require('./db/dummy');
@@ -35,19 +35,19 @@ app.set('view engine', 'pug');
 
 // pruebas multer para img en server
 //Pruebas IMG MULTER
-application['img']=''
 
 const storage =multer.diskStorage({
   destination: './requestImg',
   filename: async (req,file,cb) =>{
     const ext = file.originalname.split('.').pop()
     let nameImg = `${Date.now()}_${file.originalname}`;
-    application['img'] = nameImg;
+    imgName = nameImg;
     cb(null,nameImg)
   }
 });
 
 const uploadF = multer({storage: storage})
+
 /*
   const storage =multer.diskStorage({
   destination: (req,file,cb) =>{
@@ -83,15 +83,31 @@ app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);
 app.use('/api/v1/courriers', authMiddleware, courierMiddleware, courrierRouter);
 
 app.use('/api/v1/login', loginRouter);
-
 //prueba peticion post multer
-app.use('/api/v1/uploadF',imgRouter)
 
-
-app.post('/api/v1/imgFile',uploadF.single('file'),(req, res)=>{
-  
+app.post('/api/v1/imgFileF',uploadF.single('file'),(req, res)=>{
+  const {file} = req.file
+  console.log(req.body.code)
   console.log(req.file.filename)
-  res.send({data:'imagen cargada'})
+  const updatePhase = ListState.create({
+    requestCode: req.body.code,
+    image: req.file.filename,
+    phase:"ENTREGADO"
+  });
+  res.send({file:'imagen cargada',"name": file})
+})
+
+app.post('/api/v1/imgFileS',uploadF.single('file'),(req, res)=>{
+  const {file} = req.file
+  console.log(req.body.code)
+  console.log(req.file.filename)
+  const updatePhase = ListState.update({
+    image: req.file.filename},{
+    where:{
+      id: req.body.code
+    }
+  });
+  res.send({file:'imagen cargada',"name": file})
 })
 /*
 app.post('/upLoadF',uploadF.single('file'),(req, res)=>{

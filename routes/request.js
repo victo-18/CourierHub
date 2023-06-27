@@ -1,8 +1,7 @@
 var express = require('express');
-const { Op, Sequelize } = require("sequelize");
+const { Op, Sequelize, where } = require("sequelize");
 const { Request, ListState, User, Customer, sequelize, Travel, Transport } = require('../db/Models');
 var router = express.Router();
-
 
 router.get('/', async function (req, res) {
   const result = await Request.findAll({
@@ -30,7 +29,7 @@ router.get("/inProgress", async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code","destination","description"],
     include: [
-      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: ListState, attributes: ["id","date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
     ]
   });
@@ -45,12 +44,13 @@ router.get("/onWay", async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code","destination","description"],
     include: [
-      { model: ListState, attributes: ["id","date", "image", "phase"] },
+      { model: ListState, attributes: ["id","date", "image", "phase"]
+      },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
     ]
   });
 
-  const r = result.filter((item) => item.ListStates.length == 2);
+  const r = result.filter((item) => (item.ListStates.length ==2 ));
   res.status(200).json(r);
 });
 // multer
@@ -62,12 +62,12 @@ router.get("/finished", async function (req, res) {
   const result = await Request.findAll({
     attributes: ["code","destination","description"],
     include: [
-      { model: ListState, attributes: ["date", "image", "phase"] },
+      { model: ListState, attributes: ["id","date", "image", "phase"]},
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
     ]
   });
 
-  const r = result.filter((item) => item.ListStates.length == 3);
+  const r = result.filter((item) => item.ListStates.length ==3);
   res.status(200).json(r);
 });
 
@@ -78,7 +78,19 @@ router.post("/updateStatus1", async function (req, res) {
     requestCode: code,
     phase: "EN_CAMINO",
   });
+  res.sendStatus(200);
 });
+/*
+router.post("/updateStatus2", async function (req, res) {
+  const { code } = req.body;
+  console.log(code);
+  const enCamino = await ListState.create({
+    requestCode: code,
+    phase: "ENTREGADO",
+  });
+  res.sendStatus(200); 
+});
+*/
 router.post('/', async function (req, res) {
   // COMMIT
   // Request.create({...datos})

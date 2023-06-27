@@ -13,9 +13,10 @@ import Typography from "@mui/material/Typography";
 //import { useFetchData } from '../hooks/consumer';
 //import { Box } from '@mui/material';
 
-export default function ItemRequest({ data }) {
+export  function ItemRequest({ data }) {
   // const [data, loading] = useFetchData(API_AllRequest)
   //const [name ] = useFetchData(API_AllDelyvery)
+  console.log('Soy data'+ ' '+ data)
   return (
     
     <List
@@ -23,7 +24,7 @@ export default function ItemRequest({ data }) {
       sx={{ width: "100%", maxWidth: 600, bgcolor: "background.paper" }}
     >
       <ListItem alignItems="flex-start">
-        <ListItemText id="pedido" primary={`Solicitud: ${data.code}`} />
+        <ListItemText id="pedido" primary={`Solicitud: ${data}`} />
         <ListItemText
           primary={`User: ${''}`}
           

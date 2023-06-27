@@ -7,7 +7,6 @@ export default function ListaMensajeros() {
   return (
     <div className='container' >
       <Navbar/>
-
       <div className='centrado'>
       <Mensajero/>
       </div>

@@ -1,15 +1,14 @@
 import Navbar from '../sections/NavbarMensajeros'
 import '../styles/NewRequest.css'
 import { useFetchData } from '../hooks/consumer'
-import {API_AllRequest } from '../hooks/request'
+//import { API_AllUsers} from '../hooks/request'
 import { Skeleton } from '@mui/material'
 import { Fragment } from 'react'
-import ItemRequest from '../sections/ItemRequest'
+import {ItemRequest} from '../sections/ItemRequest'
 
-export default function NewRequest() {
-    const [data, loading] = useFetchData(API_AllRequest)
-//  const [listname] = useFetchData(API_AllDelyvery)
-    // console.log('soy datos '+ ''+data)
+export default function VerPedidosAdmin() {
+     const [data, loading] = useFetchData()
+    console.log('Data desde ver pedidos'+' ' + data)
     return (
         <Fragment>
             <Navbar />

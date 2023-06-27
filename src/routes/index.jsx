@@ -8,7 +8,8 @@ import LoginPage from '../pages/LoginPage';
 //import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
 import Perfil from '../pages/Perfil';
-import ItemRequest from '../sections/ItemRequest';
+//import {ItemRequest} from '../sections/ItemRequest';
+import  VerPedidosAdmin from '../pages/VerPedidosAdmin'
 import EditarPerfil from '../pages/EditarPerfil';
 import { NuevoPedido } from '../pages/NuevoPedido';
 
@@ -35,7 +36,7 @@ const routes = [
   // },
   {
     path: '/solicitudes',
-    element: <ItemRequest />,
+    element: <VerPedidosAdmin />,
   },
  
   {

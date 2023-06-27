@@ -113,3 +113,6 @@ export function API_AllTransport() {
     return axios.get("general/transport/");
 }
 
+export function API_AllUsers(){
+    return axios.get("user/all");
+}

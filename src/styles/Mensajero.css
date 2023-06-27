@@ -18,9 +18,15 @@
     /* background-color: #bdbdbd; */
 }
 
-.avatar-vehiculo {
-    top: -5px;
-    right: -14px;
+.MuiSvgIcon-root{
+    margin-top: 20px;
+}
+.MuiSvgIcon-root:hover{
+    cursor: pointer;
+    color: red;
+    width: 2em;
+    height: 2em;
+    margin-top: 0;
 }
 
 .text-position {

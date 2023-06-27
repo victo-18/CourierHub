@@ -1,14 +1,20 @@
 import React from "react";
 import { List, ListItem, ListItemIcon, ListItemText, ListItemButton,Divider, IconButton, Grid, Box, 
-         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@mui/material";
+         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Skeleton} from "@mui/material";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
+import { useFetchData } from "../hooks/consumer";
+import { API_DeliveryFinish } from "../hooks/request";
 
 export function DeliveryHistory(){
   const [open, setOpen] = React.useState(false);
+  const [refresh,setRefresh] = React.useState(false);
+  const [dataPedidosF,cargando] = useFetchData(API_DeliveryFinish,[refresh])
+  const [dataSolicitadaF,setDataSolicitada] = React.useState(); 
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (infoPedidos) => {
+    setDataSolicitada(infoPedidos)
     setOpen(true);
   };
 
@@ -29,32 +35,52 @@ export function DeliveryHistory(){
               bgcolor: 'background.paper',
               overflow: 'auto',
               }}>
-                <ListItem>
-                  <ListItemButton onClick={handleClickOpen}>
-                    <ListItemIcon>
-                      <DeliveryDiningIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Pedido 1" secondary="carrera 7L # 25- 88"/>
-                  </ListItemButton>
-                </ListItem>
-                <Divider/>
-            </List>                
-            <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Aqui iría el nombre del pedido"}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            Aqui iria la ubicacion del pedido en texto y abajo puede que este
-                            el mapa en google maps.
-                        </DialogContentText>
-                    </DialogContent>
-                </Dialog>
+                { cargando ?
+                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    : dataPedidosF.map((finish) =>(
+                      <Box
+                      key={finish.code}
+                      >
+                        <ListItem>
+                          <ListItemButton onClick={() => handleClickOpen(finish)}>
+                            <ListItemIcon>
+                              <DeliveryDiningIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={finish.ListStates[0].date} secondary={"Pedido:" + finish.code}/>
+                          </ListItemButton>
+                        </ListItem>
+                        <Divider/>
+                      </Box>
+                    ))                  
+                }
+            </List>   
+            { dataSolicitadaF &&
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                    {"Pedido: " + dataSolicitadaF.code}
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description">
+                    <Typography>
+                      {"Nombre cliente: "+ dataSolicitadaF.Users[0].firstname
+                                 +" "+ dataSolicitadaF.Users[0].lastname
+                        } 
+                      {"  Telefono de contacto: "+ dataSolicitadaF.Users[0].phone
+                        }
+                      {
+                                    " Ubicacion: " + dataSolicitadaF.destination 
+                      }
+                      {"  Descripcion: "+ dataSolicitadaF.description+" "}
+                    </Typography>
+                  </DialogContentText>
+                </DialogContent>
+              </Dialog>
+            }             
         </Grid>
       </Grid>
     );

@@ -2,12 +2,18 @@ import React from "react";
 import {AppBar, Toolbar, IconButton, Menu, MenuItem} from "@mui/material";
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Navigate } from "react-router-dom";
+
 export function DeliveryAppBar () {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleLogout = () => {
+    setAnchorEl(null);
+    location.href = "/logout";
+}
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -38,8 +44,7 @@ export function DeliveryAppBar () {
               }}
             >
               <MenuItem onClick={handleClose}>Usuario</MenuItem>
-              <MenuItem onClick={handleClose}>Historial</MenuItem>
-              <MenuItem onClick={handleClose}>Cerrar sesion</MenuItem>
+              <MenuItem onClick={handleLogout}>Cerrar sesion</MenuItem>
             </Menu>
             <Typography variant="h5" color="inherit" component="div">
               Pedidos

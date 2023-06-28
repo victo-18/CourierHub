@@ -65,19 +65,28 @@ export function DeliveryHistory(){
                     {"Pedido: " + dataSolicitadaF.code}
                 </DialogTitle>
                 <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                    <Typography>
-                      {"Nombre cliente: "+ dataSolicitadaF.Users[0].firstname
-                                 +" "+ dataSolicitadaF.Users[0].lastname
-                        } 
-                      {"  Telefono de contacto: "+ dataSolicitadaF.Users[0].phone
-                        }
-                      {
-                                    " Ubicacion: " + dataSolicitadaF.destination 
-                      }
-                      {"  Descripcion: "+ dataSolicitadaF.description+" "}
-                    </Typography>
-                  </DialogContentText>
+                  <Typography>
+                    {"Recogido en: " + dataSolicitadaF.origin}
+                  </Typography>
+                  <Typography>
+                    {"El destino fue: " + dataSolicitadaF.destination}
+                  </Typography>
+                  <Typography>
+                    {"Nombre cliente: "+ dataSolicitadaF.Users[0].firstname
+                    +" "+ dataSolicitadaF.Users[0].lastname}
+                  </Typography> 
+                  <Typography>
+                    {"  Telefono de contacto: "+ dataSolicitadaF.Users[0].phone}
+                  </Typography>
+                  <Typography>
+                    {"  Descripcion: "+ dataSolicitadaF.description}
+                  </Typography>
+                  <Typography>
+                    {"transportado en: " + dataSolicitadaF.Transports[0].nameTransport}
+                  </Typography>
+                  <Typography>
+                    {"  Cantidad: "+  dataSolicitadaF.numberPackages}
+                  </Typography>
                 </DialogContent>
               </Dialog>
             }             

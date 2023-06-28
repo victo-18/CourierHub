@@ -8,6 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import {API_DeliveryOnWay, API_DeliveryStatusCreateF} from "../hooks/request";
 import { useFetchData } from "../hooks/consumer";
+import { Fragment } from "react";
 
 const steps = [
   {
@@ -17,8 +18,8 @@ const steps = [
     foto: "no",  
   },
   {
-    label: 'Entreha realizada',
-    description: `Coloca la foto qe muestra que se entrego lo pedido`,
+    label: 'Entrega realizada',
+    description: `Coloca la foto que muestra que el pedido llego al destino`,
     foto: "si",
   },
 ];
@@ -131,7 +132,16 @@ export function DeliveryAcept(){
                             <ListItemIcon>
                               <DeliveryDiningIcon/>
                             </ListItemIcon>
-                            <ListItemText primary={"Pedido:"+ enCamino.code} secondary={enCamino.destination} />
+                            <ListItemText>
+                              <Fragment>
+                                <Typography>
+                                  {"Pedido: " +enCamino.code}
+                                </Typography>
+                                <Typography>
+                                  {"En Camino a: " +enCamino.destination}
+                                </Typography>
+                              </Fragment>
+                            </ListItemText>
                           </ListItemButton>
                         </ListItem>
                     <Divider/>
@@ -144,23 +154,28 @@ export function DeliveryAcept(){
               open={open}
               onClose={handleClose}
               aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
               >
               <DialogTitle id="alert-dialog-title">
                   {"Pedido " + dataSolicitadaE.code }
               </DialogTitle>
               <DialogContent>
-                  <DialogContentText id="alert-dialog-description">
-                  {"Nombre cliente: "+ dataSolicitadaE.Users[0].firstname
-                                 +" "+ dataSolicitadaE.Users[0].lastname
-                                }
-                                {"  Telefono de contacto: "+ dataSolicitadaE.Users[0].phone
-                                }
-                                {
-                                    " Ubicacion: " + dataSolicitadaE.destination
-                                }
-                                {"  Descripcion: "+ dataSolicitadaE.description+" "}
-                  </DialogContentText>
+                    <Typography>
+                      {"Nombre cliente: "+ dataSolicitadaE.Users[0].firstname+
+                       " "+ dataSolicitadaE.Users[0].lastname}
+                      </Typography>
+                      <Typography>
+                        {"  Telefono de contacto: "+ dataSolicitadaE.Users[0].phone
+                        }
+                        </Typography>
+                         <Typography>
+                            {"Fue recogido en: " + dataSolicitadaE.origin}
+                        </Typography>
+                         <Typography>       
+                                {"  Descripcion: "+ dataSolicitadaE.description}
+                          </Typography>
+                        <Typography>
+                            {"  Cantidad: "+  dataSolicitadaE.numberPackages}
+                        </Typography>
                   <Box sx={{ maxWidth: 400 }}>
                     <Stepper activeStep={activeStep} orientation="vertical">
                       {steps.map((step, index) => (

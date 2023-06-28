@@ -92,7 +92,19 @@ export function DeliverySearch(){
                                 <ListItemIcon>
                                     <DeliveryDiningIcon/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Pedido "+ solicitado.code} secondary={solicitado.destination}/>
+                                <ListItemText>
+                                    <Fragment>
+                                        <Typography>
+                                            {"Pedido: " +solicitado.code}
+                                        </Typography>
+                                        <Typography>
+                                            {"Recoger en: " +solicitado.origin}
+                                        </Typography>
+                                        <Typography>
+                                            {"transportar en: " +solicitado.Transports[0].nameTransport}
+                                        </Typography>
+                                    </Fragment>
+                                </ListItemText>
                             </ListItemButton>
                             <Divider/>
                         </Box>
@@ -106,23 +118,34 @@ export function DeliverySearch(){
                     open={open}
                     onClose={handleCloseCancel}
                     aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
                     >   
                     <DialogTitle id="alert-dialog-title">
                         {"Pedido "+dataSolicitada.code}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                                {"Nombre cliente: "+ dataSolicitada.Users[0].firstname
-                                 +" "+ dataSolicitada.Users[0].lastname
-                                }
-                                {"  Telefono de contacto: "+ dataSolicitada.Users[0].phone
-                                }
-                                {
-                                    " Ubicacion: " + dataSolicitada.destination 
-                                }
-                                {"  Descripcion: "+ dataSolicitada.description+" "}
-                        </DialogContentText>
+                        <Typography>
+                            {"Recoger en: " + dataSolicitada.origin}
+                        </Typography>
+                        <Typography>
+                            {"Destino: " + dataSolicitada.destination}
+                        </Typography>
+                        <Typography>
+                            {"Nombre cliente: "+ dataSolicitada.Users[0].firstname
+                                 +" "+ dataSolicitada.Users[0].lastname}
+                        </Typography> 
+                        <Typography>
+                            {"  Telefono de contacto: "+ dataSolicitada.Users[0].phone}
+                        </Typography>
+                        <Typography>
+                            {"  Descripcion: "+ dataSolicitada.description}
+                        </Typography>
+                        <Typography>
+                            {"transportar en: " + dataSolicitada.Transports[0].nameTransport}
+                        </Typography>
+                        <Typography>
+                            {"  Cantidad: "+  dataSolicitada.numberPackages}
+                        </Typography>
+                        <Box>                           
                         <Input
                             sx={{ mt: 1, mr: 1 }}
                             type="file"
@@ -131,6 +154,7 @@ export function DeliverySearch(){
                             onChange={e => handleFoto(e.target.files[0],dataSolicitada.ListStates[0].id)}
                         >
                         </Input>
+                        </Box>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCloseCancel}>Cancelar</Button>

@@ -8,30 +8,39 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import '../styles/Mensajero.css'
 import { Box, Divider, Skeleton } from '@mui/material';
-import { API_AllUsers } from '../hooks/request';
+import { API_Allcouriers,API_DeleteCourier } from '../hooks/request';
 import { useFetchData } from '../hooks/consumer';
 import DeleteIcon from '@mui/icons-material/Delete';
 export default function Mensajero() {
-  const [data, loading] = useFetchData(API_AllUsers);
- 
-  // console.log('Datos mensajeros' + ' ' + nombre +''+apellido)
+  //const [refresh,setRefresh] = React.useState(false)
+  const [data, loading] = useFetchData(API_Allcouriers);
+
+  //const [ setUserData] = React.useState()
+
+   const hanledClick = ()=>{
+   
+   }
+   const eliminarUser =  (id)=>{
+     API_DeleteCourier(id)
+    console.log(id)
+     }
+  //console.log(data)
 
   return (
     <List id="item-mensajero" sx={{ width: '100%', maxWidth: 500 }}>
       {loading ? <Skeleton variant="rectangular" width={210} height={118} /> :
         data.map((listname) => (
-        
+
           < Box key={listname.id}>
-            
-            <ListItem alignItems="flex-start">
+
+            <ListItem alignItems="flex-start" onClick={()=>hanledClick(listname)}>
               <ListItemAvatar>
                 <Avatar sx={{ width: 50, height: 50 }}
-                  className='avatar-user' alt="avatar usuario"
+                  className='avatar-user' alt={listname.User.firstname}
                   src="/static/images/avatar/1.jpg" />
               </ListItemAvatar>
               <ListItemText className='text-position'
-                // primary= {`${data.firstname} ${data.lastname}`}
-                primary={listname.firstname + ' ' + listname.lastname}
+                primary={listname.User.firstname + ' ' + listname.User.lastname}
                 secondary={
                   <React.Fragment>
                     <Typography
@@ -46,15 +55,7 @@ export default function Mensajero() {
                   </React.Fragment>
                 }
               />
-              {/* <ListItemAvatar  >
-                <Avatar sx={{ width: 50, height: 50 }} className='avatar-vehiculo' alt="icono veiculo" src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar> */}
-              <DeleteIcon  onClick={()=>{
-                
-                console.log('Escuchando el click' )
-              }}  className='delete'/>
-
-             
+              <DeleteIcon onClick={() =>eliminarUser(listname.id) } className='delete' />
             </ListItem>
             <Divider variant="inset" component="li" />
           </Box>

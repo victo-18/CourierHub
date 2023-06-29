@@ -2,7 +2,7 @@
      .request {
          display: grid;
          grid-template-columns: repeat(2, 1fr);
-       
+         gap:1px;
          justify-content: center;
          justify-items: center;
      }
@@ -22,22 +22,24 @@
          margin-right: 2rem;
      }
  }
+
  @media (max-width:820px) {
-    .request {
-        margin-right: 0.5rem;
-        margin-left: 0.5rem;
-        justify-content: center;
-        justify-items: center;
-    }
+     .request {
+         margin-right: 0.5rem;
+         margin-left: 0.5rem;
+         justify-content: center;
+         justify-items: center;
+     }
 
-    #item {
-        gap: 0.5rem;
-    }
+     #item {
+         gap: 0.5rem;
+     }
 
-    #pedido {
-        margin-right: 2rem;
-    }
-}
+     #pedido {
+         margin-right: 2rem;
+     }
+ }
+
  /* .request{
     display: flex;
     justify-content:center;

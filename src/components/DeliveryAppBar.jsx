@@ -43,7 +43,6 @@ export function DeliveryAppBar () {
                 horizontal: 'left',
               }}
             >
-              <MenuItem onClick={handleClose}>Usuario</MenuItem>
               <MenuItem onClick={handleLogout}>Cerrar sesion</MenuItem>
             </Menu>
             <Typography variant="h5" color="inherit" component="div">

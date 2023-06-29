@@ -56,14 +56,22 @@
 
     .MuiTableCell-root[data-title]::before{
         content:attr(data-title);
-        width: 90px;
+        display: flex;
+        margin-right: .1em;
+        width: 95px;
         font-weight: bold;
-        margin-right: 1em;
         padding: .1em;
     }
 
     .MuiTableHead-root{
         display: none;
+    }
+}
+
+@media (max-width: 280px){
+    
+    .MuiTableContainer-root{
+        max-height: 455px;
     }
 }
 
@@ -73,7 +81,7 @@
         font-size: x-small;
     }
 
-    .MuiTableCell-root[data-titulo]{
+    .MuiTableCell-root[data-titulo], .MuiTableCell-root[data-title]{
         font-size: small;
     }
     

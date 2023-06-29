@@ -16,6 +16,7 @@ import '../styles/SummaryRequest.css';
 export default function TableClient(datos) {
   const [item, setItem] = useState(datos.datos);
   const message = "USTED NO HA REALIZADO PEDIDOS TODAVÍA";
+  const secondM = "USTED NO HA REGISTRADO SUCURSALES TODAVÍA";
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.dark,
@@ -59,7 +60,7 @@ export default function TableClient(datos) {
   return (
     <TableContainer sx={{ maxHeight: 600 }}>
       {datos.tipo == 'historial' ?
-        <Table aria-label="customized table" size="small">
+        <Table stickyHeader aria-label="customized table" size='small'>
           <TableHead>
             <TableRow>
               <StyledTableCell align='center'>Fecha Solicitud</StyledTableCell>
@@ -73,7 +74,7 @@ export default function TableClient(datos) {
             {item !== null ? item.map((row) => (
               <StyledTableRow key={row.fecha}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Fecha Solicitud" align='center'>
+                  data-titulo="Fecha Solicitud" align='center' size='medium'>
                   {row.fecha}
                 </StyledTableCell>
                 <StyledTableCell data-titulo="Número De Paquetes" align='center'>{row.paquetes}</StyledTableCell>
@@ -109,13 +110,13 @@ export default function TableClient(datos) {
             {item !== null ? item.map((row) => (
               <StyledTableRow key={row.nit}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Nit" align='center' padding='normal'>
+                  data-title="Nit" align='center'>
                   {row.nit}
                 </StyledTableCell>
-                <StyledTableCell data-titulo="Nombre" align='center' padding='none'>{row.name}</StyledTableCell>
-                <StyledTableCell data-titulo="Dirección" align='center' padding='none'>{row.address}</StyledTableCell>
-                <StyledTableCell data-titulo="Teléfono" align='center' padding='normal'>{row.phone}</StyledTableCell>
-                <StyledTableCell data-titulo="Opciones" align='center' padding='none'>
+                <StyledTableCell data-title="Nombre" align='center' >{row.name}</StyledTableCell>
+                <StyledTableCell data-title="Dirección" align='center' >{row.address}</StyledTableCell>
+                <StyledTableCell data-title="Teléfono" align='center' >{row.phone}</StyledTableCell>
+                <StyledTableCell data-title="Opciones" align='center' >
                   {
                     <IconButton onClick={() => modalControl("editar", row)} aria-label="edit">
                       <EditIcon />
@@ -131,9 +132,10 @@ export default function TableClient(datos) {
             )) :
               <StyledTableRow key={'null'}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Nombre" align='center'>
-                  {" "}
+                  data-titulo="Nit" align='center' size='medium'>
+                  {item == null & alert(secondM)}
                 </StyledTableCell>
+                <StyledTableCell data-titulo="Nombre" align='center'>{" "}</StyledTableCell>
                 <StyledTableCell data-titulo="Dirección" align='center'>{" "}</StyledTableCell>
                 <StyledTableCell data-titulo="Teléfono" align='center'>{" "}</StyledTableCell>
                 <StyledTableCell data-titulo="Opciones" align='center'>{" "}</StyledTableCell>

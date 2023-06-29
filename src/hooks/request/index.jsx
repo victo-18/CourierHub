@@ -57,3 +57,47 @@ export function API_AllRequest() {
     return axios.get("/request");
 }
 
+/**
+ * Realiza una solicitud al servidor para obtener el historial de pedidos que han sido realizados por el cliente.
+ * @param {Object} data - Un objeto que contiene el id del cliente logueado.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllHistoryById(data) {
+    return axios.get(`/delegates/${data}`);
+}
+
+/**
+ * Realiza una solicitud al servidor con el objetivo de enlistar las sucursales de un cliente.
+ * @param {Object} data - Un objeto que contiene el id del cliente logueado.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllBranchesById(data) {
+    return axios.get(`/branches/${data}`);
+}
+
+/**
+ * Crea una nueva sucursal en la base de datos.
+ * @param {Object} data - Un objeto que contiene el cuerpo de la sucursal.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_POSTBranch(data){
+    return axios.post(`/branches/crear`, data);
+}
+
+/**
+ * Realiza una modificación de una sucursal en la base de datos.
+ * @param {Object} body - Un objeto que contiene los nuevos datos de la sucursal. 
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_PutBranch(body) {
+    return axios.put(`/branches/modifica`, body);
+}
+
+/**
+ * Elimina una sucursal en la base de datos.
+ * @param {Object} data - Un objeto que contiene el nit de la sucursal a eliminar.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_DeleteBranch(data) {
+    return axios.delete(`/branches/elimina/${data}`);
+}

@@ -1,0 +1,80 @@
+#contenedorPpal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    padding: 8px 8px 8px 8px;
+    background: #faf9f9;
+    border-color: #dad3d3;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#tabla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+@media ( max-width: 414px) {
+
+    .MuiTable-root{
+        width: 100%;
+        font-size: .3em;
+    }
+
+    .MuiTableRow-root{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid grey;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+
+    .MuiTableCell-root[data-titulo]{
+        display: flex;
+        align-items: center;
+        font-size: small;
+    }
+
+    .MuiTableCell-root[data-titulo]::before{
+        content:attr(data-titulo);
+        width: 90px;
+        font-weight: bold;
+        margin-right: 1em;
+    }
+
+    .MuiTableCell-root[data-title]{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: small;
+    }
+
+    .MuiTableCell-root[data-title]::before{
+        content:attr(data-title);
+        width: 90px;
+        font-weight: bold;
+        margin-right: 1em;
+        padding: .1em;
+    }
+
+    .MuiTableHead-root{
+        display: none;
+    }
+}
+
+@media ( max-width: 540px) {
+   
+    .MuiTableCell-root{
+        font-size: x-small;
+    }
+
+    .MuiTableCell-root[data-titulo]{
+        font-size: small;
+    }
+    
+}

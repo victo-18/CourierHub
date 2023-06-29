@@ -7,6 +7,8 @@ import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
 import UserProfile from '../pages/UserProfile';
 import NewRequest from '../sections/NewRequest';
+import BranchesControl from '../pages/BranchesControl';
+import OrderSummary from '../pages/OrderSummary'; 
 
 const routes = [
   {
@@ -36,6 +38,14 @@ const routes = [
   {
     path: '/profile',
     element: <UserProfile />
+  },
+  {
+    path: '/sucursales',
+    element: <BranchesControl />
+  },
+  {
+    path: '/historialpedidos',
+    element: < OrderSummary />
   },
   {
     children: [

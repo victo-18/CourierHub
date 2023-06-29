@@ -1,0 +1,86 @@
+#panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    padding: 8px 8px 8px 8px;
+    background: #faf9f9;
+    border-color: #dad3d3;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 2em;
+}
+
+#tituloModal {
+    margin-top: 1%;
+    font-weight: bold;
+}
+
+#descripcion {
+    margin-top: 1%;
+}
+
+#btn {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width: 95%;
+}
+
+#btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin-top: 1em;
+}
+
+
+#miboton,
+#aceptar,
+#cancelar {
+    width: 25%;
+    padding: 0px 10px 0px 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 65%;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    height: 35px;
+}
+
+#aceptar, #cancelar{
+    margin: 1em;
+}
+
+
+#miboton:hover,
+#aceptar:hover,
+#cancelar:hover {
+    background: #555b6e;
+    color: #ffffff;
+    cursor: pointer;
+    border-color: #232323;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#tabla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+}
+
+#mimodal {
+    padding: 8px 8px 8px 8px;
+    background: #faf9f9;
+    border-color: #dad3d3;
+    border-width: 1px;
+    border-style: solid;
+}

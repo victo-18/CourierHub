@@ -38,15 +38,34 @@ function getProxy() {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Login(data) {
-    return axios.post("/login", data);
+    return axios.post("login", data);
 }
+
+/**
+ * Realiza una solicitud de inicio de sesión al servidor.
+ * @param {Object} data - Un objeto que contiene los datos de inicio de sesión del usuario.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_Profile() {
+    return axios.get("user/profile");
+}
+
+/**
+ * Realiza una solicitud de inicio de sesión al servidor.
+ * @param {Object} data - Un objeto que contiene los datos de inicio de sesión del usuario.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_UpdateProfile(data) {
+    return axios.post("user/profile", data);
+}
+
 
 /**
  * Realiza una solicitud al servidor para obtener información protegida.
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_Protected() {
-    return axios.get("/users");
+    return axios.get("users");
 }
 
 /**
@@ -54,7 +73,40 @@ export function API_Protected() {
  * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
  */
 export function API_AllRequest() {
-    return axios.get("/request");
+    return axios.get("request");
+}
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_NewRequest(data) {
+    return axios.post("request", data);
+}
+
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllCities(stateId) {
+    return axios.get("general/cities/" + stateId);
+}
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllStates() {
+    return axios.get("general/states/");
+}
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida.
+ * @returns {Promise} Una promesa que se resuelve con la respuesta del servidor o se rechaza con un error.
+ */
+export function API_AllTransport() {
+    return axios.get("general/transport/");
 }
 
 /**

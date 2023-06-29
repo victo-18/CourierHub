@@ -5,15 +5,21 @@ import ListaMensajeros from '../pages/ListaMensajeros';
 import LoginPage from '../pages/LoginPage';
 import { Logout } from '../pages/Logout';
 import ErrorPage from '../pages/PageError';
-import UserProfile from '../pages/UserProfile';
+import Perfil from '../pages/Perfil';
 import NewRequest from '../sections/NewRequest';
 import BranchesControl from '../pages/BranchesControl';
 import OrderSummary from '../pages/OrderSummary'; 
+import EditarPerfil from '../pages/EditarPerfil';
+import { NuevoPedido } from '../pages/NuevoPedido';
 
 const routes = [
   {
     path: "/dashboard",
-    element: <Home />
+    label: "Inicio",
+    element: <Home />,
+    children: [
+      { path: "nuevo", element: <NuevoPedido /> }
+    ]
   },
   {
     path: "/login",
@@ -37,7 +43,11 @@ const routes = [
   },
   {
     path: '/profile',
-    element: <UserProfile />
+    label: 'Perfil',
+    element: <Perfil />,
+    children: [
+      { path: "edit", element: <EditarPerfil /> }
+    ]
   },
   {
     path: '/sucursales',

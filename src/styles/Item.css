@@ -26,3 +26,14 @@
 .custom-item .MuiBadge-root:hover span.MuiBadge-badge .MuiTypography-root {
     display: block;
 }
+
+.custom-item .MuiListItemText-secondary {
+    width: calc(100% - 75px);
+}
+
+.custom-item .MuiListItemText-primary {
+    width: calc(100% - 75px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -557,11 +557,11 @@ BranchOffice.init({
 class ListState extends Model { };
 
 ListState.init({
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
+    // id: {
+    //     type: DataTypes.INTEGER,
+    //     primaryKey: true,
+    //     autoIncrement: true,
+    // },
     requestCode: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -589,6 +589,7 @@ ListState.init({
 });
 
 Request.hasMany(ListState, { foreignKey: "requestCode" });
+ListState.belongsTo(Request, { sourceKey: "code", foreignKey: 'requestCode' });
 
 Transport.belongsToMany(Request, { through: Travel, foreignKey: "transportId" });
 Request.belongsToMany(Transport, { through: Travel, foreignKey: "requestCode" });

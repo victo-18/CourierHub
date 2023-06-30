@@ -205,3 +205,22 @@ export function API_DeliveryStatusCreateF(dataFinal) {
 export function API_DeliveryUploadFS(firstData) {
     return axios.post("/imgFileS",firstData)
 }
+
+/* parte Vic*/
+
+
+export function API_AllUsers(){
+    return axios.get("user/all");
+}
+//obtener todos los courrier
+export function API_Allcouriers(){
+    return axios.get("user/allcouriers");
+}
+//Eliminando courier
+export function API_DeleteCourier(id){
+    return axios.post("user/deleteCourier",{id})
+}
+//Ver todos los paquetes solicitaados
+export function API_AllinProgress(){
+    return axios.get("request/inProgress")
+}

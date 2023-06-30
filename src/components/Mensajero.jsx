@@ -1,4 +1,4 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 //import Divider from '@mui/material/Divider';
@@ -13,7 +13,7 @@ import { useFetchData } from '../hooks/consumer';
 import DeleteIcon from '@mui/icons-material/Delete';
 export default function Mensajero() {
   //const [refresh,setRefresh] = React.useState(false)
-  const [data, loading] = useFetchData(API_Allcouriers);
+const [data, loading] = useFetchData(API_Allcouriers);
 
   //const [ setUserData] = React.useState()
 
@@ -62,4 +62,4 @@ export default function Mensajero() {
         ))}
     </List>
   );
-}
+}*/

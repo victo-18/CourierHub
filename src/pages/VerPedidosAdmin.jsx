@@ -1,4 +1,4 @@
-import Navbar from '../sections/NavbarMensajeros'
+import {NavBarMensajeros} from "../sections/NabarMensajeros"
 import '../styles/NewRequest.css'
 import { useFetchData } from '../hooks/consumer'
 //import { API_AllUsers} from '../hooks/request'
@@ -12,7 +12,7 @@ export default function VerPedidosAdmin() {
     console.log('Data desde ver pedidos'+' ' + data)
     return (
         <Fragment>
-            <Navbar />
+            <NavBarMensajeros />
             {
                 loading
                     ? <Skeleton variant="rectangular" width={210} height={118} />

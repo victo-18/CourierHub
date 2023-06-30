@@ -160,21 +160,21 @@ export function API_DeleteBranch(data) {
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryInProgress() {
-    return axios.get('/request/inProgress');
+    return axios.get("/request/inProgress");
 }
 /**
  * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryOnWay() {
-    return axios.get('/request/onWay');
+    return axios.get("/request/onWay");
 }
 /**
  * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryFinish() {
-    return axios.get('/request/finished');
+    return axios.get("/request/finished");
 }
 
 /**
@@ -183,7 +183,7 @@ export function API_DeliveryFinish() {
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryStatusUpdate1(code) {
-    return axios.post('/request/updateStatus1',{code})
+    return axios.post("/request/updateStatus1",{code})
 }
 
 /**
@@ -193,7 +193,7 @@ export function API_DeliveryStatusUpdate1(code) {
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryStatusCreateF(dataFinal) {
-    return axios.post('/imgFileF',dataFinal)
+    return axios.post("/imgFileF",dataFinal)
 }
 
 /**
@@ -203,5 +203,5 @@ export function API_DeliveryStatusCreateF(dataFinal) {
  * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
  */
 export function API_DeliveryUploadFS(firstData) {
-    return axios.post('/imgFileS',firstData)
+    return axios.post("/imgFileS",firstData)
 }

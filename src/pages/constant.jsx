@@ -3,10 +3,17 @@ import CustomBoolean from "../components/TextField/CustomBoolean"
 import CustomSelect from "../components/TextField/CustomSelect"
 import CustomTextField from "../components/TextField/CustomTextField"
 import NumericField from "../components/TextField/NumericField"
+import { ROLES } from "../hooks/roles/constants"
 
 const defaultHelpers = {
   required: "Este campo es requerido",
   pattern: "Verifica este campo"
+}
+
+const homePage = {
+  [ROLES.CLIENTE]: "/dashboard",
+  [ROLES.MENSAJERO]: "/entregas",
+  [ROLES.ADMINISTRADOR]: "/dashboard",
 }
 
 const CreateFields = {
@@ -36,4 +43,4 @@ const InputTypes = {
   boolean: CustomBoolean
 }
 
-export { CreateFields, defaultHelpers, InputTypes }
+export { CreateFields, defaultHelpers, InputTypes, homePage }

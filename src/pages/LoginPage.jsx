@@ -3,18 +3,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { Helmet } from "react-helmet-async";
-import LoginForm from "../components/LoginForm";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Banner from "../assets/banner_login.png";
 import Logo from "../assets/logo.png";
-import { useSelector } from "react-redux";
-
+import LoginForm from "../components/LoginForm";
+import useRole from "../hooks/roles/useRole";
 import "../styles/LoginPage.css";
-import { Navigate } from "react-router-dom";
+import { homePage } from "./constant";
 
 export default function LoginPage() {
     const { auth } = useSelector((state) => state.session);
+    const role = useRole();
 
-    return auth ? (<Navigate to="/dashboard" />) : (
+    return auth ? (role && <Navigate to={homePage[role]} />) : (
         <Box id="login-page">
             <Helmet>
                 <title>CourierHub - Inicio de sesion</title>

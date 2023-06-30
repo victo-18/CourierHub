@@ -1,24 +1,44 @@
 import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText, ListItemButton,Divider, IconButton, Grid, Box, 
-         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Stepper, Step,
-         StepLabel, StepContent, Paper , Input, Alert, Skeleton} from "@mui/material";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepContent from "@mui/material/StepContent";
+import Paper from "@mui/material/Paper";
+import Input from "@mui/material/Input";
+import Alert from "@mui/material/Alert";
+import Skeleton from "@mui/material/Skeleton";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CloseIcon from "@mui/icons-material/Close";
+import Typography from "@mui/material/Typography";
 import {API_DeliveryOnWay, API_DeliveryStatusCreateF} from "../hooks/request";
 import { useFetchData } from "../hooks/consumer";
 import { Fragment } from "react";
 
 const steps = [
   {
-    label: 'Pedido en recorrido',
+    label: "Pedido en recorrido",
     description:
-      'Estas en Camino, solo da en continuar cuando llegues al destino',
+      "Estas en Camino, solo da en continuar cuando llegues al destino",
     foto: "no",  
   },
   {
-    label: 'Entrega realizada',
+    label: "Entrega realizada",
     description: `Coloca la foto que muestra que el pedido llego al destino`,
     foto: "si",
   },
@@ -52,8 +72,8 @@ export function DeliveryAcept(){
       setOpenAletF(true)
     }
     if(foto !=""){
-        fileData.append('file',foto);
-        fileData.append('code',codeR);
+        fileData.append("file",foto);
+        fileData.append("code",codeR);
         console.log(dataPedidosE)
         console.log(fileData)
         /*recibe la foto y crea el estado ENTREGADO con la foto file 
@@ -112,13 +132,13 @@ export function DeliveryAcept(){
         </Grid>
         <Grid item xs={1}>
             <List sx={{
-              width: '100%',
-              bgcolor: 'background.paper',
-              overflow: 'auto',
+              width: "100%",
+              bgcolor: "background.paper",
+              overflow: "auto",
               }}>
                 {
                   cargando ?
-                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                  <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
                     : dataPedidosE.map((enCamino)=>(
                                          <Box
                                           key={enCamino.code}
@@ -194,7 +214,7 @@ export function DeliveryAcept(){
                                 sx={{ mt: 1, mr: 1 }}
                                 type="file"
                                 variant="outlined"
-                                name='file'
+                                name="file"
                                 disabled={index === 0}
                                 onChange={e => handleFoto(e.target.files[0])}
                                 >
@@ -206,7 +226,7 @@ export function DeliveryAcept(){
                                 onClick={()=>{handleNext(dataSolicitadaE.code)}}
                                 sx={{ mt: 1, mr: 1 }}
                                 >
-                                  {index === steps.length - 1 ? 'Finalizar' : 'continuar'}
+                                  {index === steps.length - 1 ? "Finalizar" : "continuar"}
                                 </Button>
                                 <Button
                                 variant="contained"

@@ -1,14 +1,28 @@
 import React, { Fragment } from "react";
-import { List, ListItemButton, ListItemIcon, ListItemText, Divider, Grid, 
-         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button,
-         Skeleton, Box, Input ,Alert, IconButton} from "@mui/material";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import Typography from '@mui/material/Typography';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import PersonIcon from '@mui/icons-material/Person';
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import Skeleton from "@mui/material/Skeleton";
+import Box from "@mui/material/Box";
+import Input from "@mui/material/Input";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import Typography from "@mui/material/Typography";
+import DeleteIcon from "@mui/icons-material/Delete";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import PersonIcon from "@mui/icons-material/Person";
 import { useFetchData } from "../hooks/consumer";
 import { API_DeliveryInProgress, API_DeliveryStatusUpdate1,API_DeliveryUploadFS} from "../hooks/request";
 
@@ -44,8 +58,8 @@ export function DeliverySearch(){
     const handleFoto = (valueFoto,phaseDataId) =>{
         console.log(phaseDataId)
         const fileData = new FormData();
-              fileData.append('file', valueFoto);
-              fileData.append('code',phaseDataId);
+              fileData.append("file", valueFoto);
+              fileData.append("code",phaseDataId);
               setFoto(fileData)
         console.log(fileData)
     };
@@ -76,14 +90,14 @@ export function DeliverySearch(){
           </Grid>
           <Grid item xs={1}>
             <List sx={{
-                width: '100%',
-                bgcolor: 'background.paper',
-                overflow: 'auto'
+                width: "100%",
+                bgcolor: "background.paper",
+                overflow: "auto"
                 }}
                 >
                 {
                     cargando ?
-                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
                     : dataPedidos.map((solicitado)=>(
                         <Box
                          key={solicitado.code}
@@ -150,7 +164,7 @@ export function DeliverySearch(){
                             sx={{ mt: 1, mr: 1 }}
                             type="file"
                             variant="outlined"
-                            name='file'
+                            name="file"
                             onChange={e => handleFoto(e.target.files[0],dataSolicitada.ListStates[0].id)}
                         >
                         </Input>

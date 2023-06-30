@@ -1,9 +1,23 @@
 import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText, ListItemButton,Divider, IconButton, Grid, Box, 
-         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, Skeleton} from "@mui/material";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Typography from '@mui/material/Typography';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import Skeleton from "@mui/material/Skeleton";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Typography from "@mui/material/Typography";
 import { useFetchData } from "../hooks/consumer";
 import { API_DeliveryFinish } from "../hooks/request";
 
@@ -31,12 +45,12 @@ export function DeliveryHistory(){
         </Grid>
         <Grid item xs={1}>
             <List sx={{
-              width: '100%',
-              bgcolor: 'background.paper',
-              overflow: 'auto',
+              width: "100%",
+              bgcolor: "background.paper",
+              overflow: "auto",
               }}>
                 { cargando ?
-                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                  <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
                     : dataPedidosF.map((finish) =>(
                       <Box
                       key={finish.code}

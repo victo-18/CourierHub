@@ -37,7 +37,7 @@ function Dialogo({ userdata }) {
   const onSubmit = async (data) => {
     console.log(data)
     console.log(filterObj(data));
-    const { status, response } = await API_UpdateProfile(data)
+    const { status, response } = await API_UpdateProfile(filterObj(data))
     if (status === 200) {
       dispatch(addSnackbar('¡Cliente añadido correctamente!', 'success'))
       handleBack()

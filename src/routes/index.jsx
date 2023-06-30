@@ -8,42 +8,47 @@ import ErrorPage from "../pages/PageError";
 import Perfil from "../pages/Perfil";
 import NewRequest from "../sections/NewRequest";
 import BranchesControl from "../pages/BranchesControl";
-import OrderSummary from "../pages/OrderSummary"; 
+import OrderSummary from "../pages/OrderSummary";
 import EditarPerfil from "../pages/EditarPerfil";
 import { NuevoPedido } from "../pages/NuevoPedido";
+import { ROLES } from "../hooks/roles/constants";
 
 const routes = [
   {
     path: "/dashboard",
     label: "Inicio",
+    role: ROLES.CLIENTE,
     element: <Home />,
     children: [
       { path: "nuevo", element: <NuevoPedido /> }
     ]
   },
   {
+    path: "/nuevospedidos",
+    label: "Nuevos pedidos",
+    role: ROLES.ADMINISTRADOR,
+    element: <NewRequest />,
+  },
+  {
+    path: "/mensajero",
+    label: "Mensajeros",
+    role: ROLES.ADMINISTRADOR,
+    element: < ListaMensajeros />,
+  },
+  {
     path: "/login",
     element: <LoginPage />,
   },
   {
-    path: "/mensajero",
-    element: < ListaMensajeros />,
-  },
-  {
     path: "/entregas",
+    label: "Entregas",
+    role: ROLES.MENSAJERO,
     element: <Entregas />,
-  },
-  {
-    path: "/nuevospedidos",
-    element: <NewRequest />,
-  },
-  {
-    path: "/logout",
-    element: <Logout />,
   },
   {
     path: "/profile",
     label: "Perfil",
+    role: ROLES.ALL,
     element: <Perfil />,
     children: [
       { path: "edit", element: <EditarPerfil /> }
@@ -51,11 +56,21 @@ const routes = [
   },
   {
     path: "/sucursales",
+    label: "Sucursales",
+    role: ROLES.CLIENTE,
     element: <BranchesControl />
   },
   {
     path: "/historialpedidos",
+    label: "Historial",
+    role: ROLES.CLIENTE,
     element: < OrderSummary />
+  },
+  {
+    path: "/logout",
+    label: "Cerrar sesion",
+    role: ROLES.ALL,
+    element: <Logout />,
   },
   {
     children: [

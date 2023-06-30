@@ -17,8 +17,10 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PropTypes from "prop-types";
 import * as React from "react";
-import routes from "../routes";
 import { Link } from "react-router-dom";
+import { ROLES } from "../hooks/roles/constants";
+import useRole from "../hooks/roles/useRole";
+import routes from "../routes";
 
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -43,10 +45,11 @@ HideOnScroll.propTypes = {
 };
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
 export default function HideAppBar(props) {
+    const role = useRole();
     const { window, children } = props;
+    const { ADMINISTRADOR, ALL } = ROLES;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -60,19 +63,18 @@ export default function HideAppBar(props) {
             </Typography>
             <Divider />
             <List>
-                {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
+                {routes.map((item) => (item.label && (role == ALL || role == ADMINISTRADOR || role == item.role)) ? (
+                    <ListItem component={Link} to={item.path} key={item.path} disablePadding>
                         <ListItemButton sx={{ textAlign: "center" }}>
-                            <ListItemText primary={item} />
+                            <ListItemText primary={item.label} />
                         </ListItemButton>
                     </ListItem>
-                ))}
+                ) : null)}
             </List>
         </Box>
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
-
 
     return (
         <React.Fragment>
@@ -97,7 +99,7 @@ export default function HideAppBar(props) {
                             CourierHub
                         </Typography>
                         <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                            {routes.map((item) => item.label ? (
+                            {routes.map((item) => (item.label && (role == ALL || role == ADMINISTRADOR || role == item.role)) ? (
                                 <Button component={Link} to={item.path} key={item.path} sx={{ color: "#fff" }}>
                                     {item.label}
                                 </Button>

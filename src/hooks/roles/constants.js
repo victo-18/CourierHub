@@ -1,0 +1,8 @@
+const ROLES = {
+    ALL: "ALL_ROLES",
+    ADMINISTRADOR: "ADMIN",
+    MENSAJERO: "COURIER",
+    CLIENTE: "CLIENT"
+}
+
+export { ROLES };

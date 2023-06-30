@@ -6,9 +6,8 @@ import { useEffect } from "react";
 export function Logout() {
     const navigate = useNavigate();
 
-    store.dispatch(unAuthorize());
-
     useEffect(() => {
+        store.dispatch(unAuthorize());
         navigate("/login");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

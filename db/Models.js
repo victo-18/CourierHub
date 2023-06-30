@@ -329,7 +329,7 @@ User.init({
         type: DataTypes.STRING(50),
         allowNull: false,
         validate: {
-            isIn: [['ADMIN', 'CLIENT', 'COURIER']],
+            isIn: [['ADMIN', 'CLIENT', 'COURIER','INACTIVO']],
         },
     },
     cityId: {

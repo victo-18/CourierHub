@@ -38,7 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/general/', authMiddleware, generalRouter);
-app.use('/api/v1/user/', authMiddleware, userRouter);
+app.use('/api/v1/user/', authMiddleware, adminMiddleware,userRouter);
 
 app.use('/api/v1/admin/', authMiddleware, adminMiddleware, adminRouter);
 

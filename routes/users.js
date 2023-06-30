@@ -1,5 +1,5 @@
 var express = require('express');
-const { User, City, State } = require('../db/Models');
+const { User, City, State,DeliveryCourier } = require('../db/Models');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 
@@ -11,13 +11,29 @@ router.get('/', function (req, res, next) {
 /* Obtiene todos los usuarios registrados en la BD*/
 router.get('/all', async (req, res) => {
   try {
-    const response = await User.findAll();
-    res.json(response);
+    const response = await User.findAll({
+      attributes:[
+        "firstname",
+        "lastname",
+        "phone"
+      ]
+    });
+
+    const respuesta =JSON.parse(JSON.stringify(response))
+    //res.send(response);
+    res.json(respuesta)
   } catch (error) {
     console.error("ha ocurrido un error: ", error);
   }
 });
-
+// Get courrier
+router.get("/allcouriers", async function (req, res) {
+  const result = await DeliveryCourier.findAll({
+      attributes: ["id"],
+      include: { model: User, attributes: ["firstname", "lastname","phone"] }
+  });
+  res.status(200).json(result);
+})
 /* GET users listing. */
 router.get('/profile', async function (req, res, next) {
   const result = await User.findOne({
@@ -33,5 +49,10 @@ router.post('/profile', async function (req, res, next) {
   const result = await User.update({ ...req.body }, { where: { phone: req.user.phone } })
   res.status(200).json(result);
 });
-
+//UPDATE user state
+ router.post('/deleteCourier',async function(req, res){
+  const {courierid}=req.body;
+  const result = await DeliveryCourier.update({role:'INACTIVO'},{where:{id:courierid}})
+  res.status(200).json(result);
+ } )
 module.exports = router;

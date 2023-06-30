@@ -1,8 +1,16 @@
 const { Router } = require("express");
-const { GetAllCouriers } = require("./couriers");
-const router = Router();
+var express = require("express");
+//const { GetAllCouriers } = require("./couriers");
+var router= express.Router();
+const { DeliveryCourier, User } = require("../../db/Models");
 
-require("dotenv").config();
+//require("dotenv").config();
 
-router.get("/couriers", GetAllCouriers);
+router.get("couriers", async function (req, res) {
+    const result = await DeliveryCourier.findAll({
+        attributes: ["id"],
+        include: { model: User, attributes: ["firstname", "lastname","phone"] }
+    });
+    res.status(200).json(result);
+})
 module.exports = router;

@@ -1,15 +1,13 @@
 import NabarMensajeros from "../sections/NabarMensajeros"
-import DeliveryDay from "../sections/DeliveryDay"
+//import DeliveryDay from "../sections/DeliveryDay"
+import { Box, Stack } from "@mui/material"
+import {DeliveryTabs} from "../components/DeliveryTabs"
 import "../styles/Entrega.css"
 export default function Entregas() {
     return (
-        <div className="entregas">
+        <Box>
             <NabarMensajeros />
-            <div className="entregas__componente">
-                <DeliveryDay />
-                <DeliveryDay />
-                <DeliveryDay />
-            </div>
-        </div>
+            <DeliveryTabs/>
+        </Box>
     )
 }

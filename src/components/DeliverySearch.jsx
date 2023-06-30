@@ -1,57 +1,172 @@
-import React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Grid";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
-import SearchIcon from "@mui/icons-material/Search";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import PersonIcon from "@mui/icons-material/Person";
+import React, { Fragment } from "react";
+import { List, ListItemButton, ListItemIcon, ListItemText, Divider, Grid, 
+         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button,
+         Skeleton, Box, Input ,Alert, IconButton} from "@mui/material";
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import PersonIcon from '@mui/icons-material/Person';
+import { useFetchData } from "../hooks/consumer";
+import { API_DeliveryInProgress, API_DeliveryStatusUpdate1,API_DeliveryUploadFS} from "../hooks/request";
 
 export function DeliverySearch(){
+
+    const [open, setOpen] = React.useState(false);
+    const [openAlertF, setOpenAletF] = React.useState(false);
+    const [refresh,setRefresh] = React.useState(false)
+    const [dataPedidos,cargando] = useFetchData(API_DeliveryInProgress,[refresh]); 
+    const [dataSolicitada,setDataSolicitada] = React.useState();
+    const [foto, setFoto] = React.useState(""); 
+
+    const handleClickOpen = (infoPedidos) => {
+        setDataSolicitada(infoPedidos)
+        setOpen(true);
+
+    };
+  
+    const handleCloseCancel= () => {
+      setRefresh((prev)=>!prev)  
+      setOpen(false);
+      setFoto("");
+    };
+    const handleCloseAcept = async(codeRequest) => {
+        setOpen(false);
+        console.log(codeRequest)
+        await API_DeliveryStatusUpdate1(codeRequest);
+        //await API_DeliveryStatusUpdate2(codeRequest);
+        await API_DeliveryUploadFS(foto);
+        setOpenAletF(true)
+        setRefresh((prev)=>!prev)
+      };
+    const handleFoto = (valueFoto,phaseDataId) =>{
+        console.log(phaseDataId)
+        const fileData = new FormData();
+              fileData.append('file', valueFoto);
+              fileData.append('code',phaseDataId);
+              setFoto(fileData)
+        console.log(fileData)
+    };
     return(
-        <Grid container spacing={1} columns={1} justifyContent="center">
+        <Grid container columns={1} justifyContent="center">
           <Grid item xs={1}>
-            Busqueda Pedidos
+          { openAlertF === true && (<Alert severity="success"
+                    action={
+                         <IconButton
+                           aria-label="close"
+                           color="inherit"
+                           size="small"
+                           onClick={() => {
+                             setOpenAletF(false);
+                           }}
+                         >
+                           <CloseIcon fontSize="inherit" />
+                         </IconButton>
+                       }
+                       sx={{ mb: 2 }}>
+                         se acepto exitosamente el pedido
+                    </Alert>)
+                    
+                  }
+            <Typography variant="h6" color="inherit" component="div">
+                Pedidos Disponibles
+            </Typography>
           </Grid>
           <Grid item xs={1}>
-            <List>
-                <ListItem button >
-                    <ListItemIcon>
-                        <DeliveryDiningIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Pedido 1" secondary="carrera 7L # 25- 88"/>
-                </ListItem>
-                <Divider/>
-                <ListItem button >
-                    <ListItemIcon>
-                        <DeliveryDiningIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Pedido 2" secondary="avenida los camellos # 65-88" />
-                </ListItem>
-                <Divider/>
-                <ListItem button >
-                    <ListItemIcon>
-                        <DeliveryDiningIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary="Pedido 3" secondary="calle 5 diagonal 25 # 45-45"/>
-                </ListItem>
-                <Divider/>
+            <List sx={{
+                width: '100%',
+                bgcolor: 'background.paper',
+                overflow: 'auto'
+                }}
+                >
+                {
+                    cargando ?
+                    <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    : dataPedidos.map((solicitado)=>(
+                        <Box
+                         key={solicitado.code}
+                         >
+                            <ListItemButton onClick={() => handleClickOpen(solicitado)} >
+                                <ListItemIcon>
+                                    <DeliveryDiningIcon/>
+                                </ListItemIcon>
+                                <ListItemText>
+                                    <Fragment>
+                                        <Typography>
+                                            {"Pedido: " +solicitado.code}
+                                        </Typography>
+                                        <Typography>
+                                            {"Recoger en: " +solicitado.origin}
+                                        </Typography>
+                                        <Typography>
+                                            {"transportar en: " +solicitado.Transports[0].nameTransport}
+                                        </Typography>
+                                    </Fragment>
+                                </ListItemText>
+                            </ListItemButton>
+                            <Divider/>
+                        </Box>
+                    )) 
+                }
             </List>
-           </Grid>
-           <Grid item xs={1}>
-           <BottomNavigation
-          showLabels
-        >
-          <BottomNavigationAction label="Historial" icon={<ListAltIcon />} />
-          <BottomNavigationAction label="Buscar" icon={<SearchIcon />} />
-          <BottomNavigationAction label="Perfil" icon={<PersonIcon />} />
-        </BottomNavigation>
-           </Grid>
+            
+            { dataSolicitada &&
+
+            <Dialog
+                    open={open}
+                    onClose={handleCloseCancel}
+                    aria-labelledby="alert-dialog-title"
+                    >   
+                    <DialogTitle id="alert-dialog-title">
+                        {"Pedido "+dataSolicitada.code}
+                    </DialogTitle>
+                    <DialogContent>
+                        <Typography>
+                            {"Recoger en: " + dataSolicitada.origin}
+                        </Typography>
+                        <Typography>
+                            {"Destino: " + dataSolicitada.destination}
+                        </Typography>
+                        <Typography>
+                            {"Nombre cliente: "+ dataSolicitada.Users[0].firstname
+                                 +" "+ dataSolicitada.Users[0].lastname}
+                        </Typography> 
+                        <Typography>
+                            {"  Telefono de contacto: "+ dataSolicitada.Users[0].phone}
+                        </Typography>
+                        <Typography>
+                            {"  Descripcion: "+ dataSolicitada.description}
+                        </Typography>
+                        <Typography>
+                            {"transportar en: " + dataSolicitada.Transports[0].nameTransport}
+                        </Typography>
+                        <Typography>
+                            {"  Cantidad: "+  dataSolicitada.numberPackages}
+                        </Typography>
+                        <Box>                           
+                        <Input
+                            sx={{ mt: 1, mr: 1 }}
+                            type="file"
+                            variant="outlined"
+                            name='file'
+                            onChange={e => handleFoto(e.target.files[0],dataSolicitada.ListStates[0].id)}
+                        >
+                        </Input>
+                        </Box>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseCancel}>Cancelar</Button>
+                        <Button 
+                            disabled={foto == ""} 
+                            onClick={() =>handleCloseAcept(dataSolicitada.code)} autoFocus>
+                            Aceptar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            }
+            </Grid>
         </Grid>
     );
 }

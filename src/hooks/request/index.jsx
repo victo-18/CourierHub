@@ -153,3 +153,55 @@ export function API_PutBranch(body) {
 export function API_DeleteBranch(data) {
     return axios.delete(`/branches/elimina/${data}`);
 }
+
+
+/**
+ * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryInProgress() {
+    return axios.get('/request/inProgress');
+}
+/**
+ * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryOnWay() {
+    return axios.get('/request/onWay');
+}
+/**
+ * Realiza una solicitud al servidor para obtener información protegida de los pedidos solicitados.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryFinish() {
+    return axios.get('/request/finished');
+}
+
+/**
+ * Realiza una solicitud al servidor para ingresar datos a la BD que cambien el estado de el pedido a EN_CAMINO.
+ * @param {Object} code - Un objeto que contiene el codigo del pedido a actualizar su estado.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryStatusUpdate1(code) {
+    return axios.post('/request/updateStatus1',{code})
+}
+
+/**
+ * Recibe un FormData que contiene una imagen tipo File  en el req.file y un requestCode para
+ * con estos crear el estado entregado finaliza el pedido
+ * @param {Object} code - Un objeto que contiene el codigo del pedido a actualizar su estado.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryStatusCreateF(dataFinal) {
+    return axios.post('/imgFileF',dataFinal)
+}
+
+/**
+ * Recibe un FormData que contiene una imagen tipo File en el req.file y el id del Listate
+ * solicitado para actualizarlo con la foto  contenida en req.file
+ * @param {Object} formData - Una imagen que demuestra que se recogio el pedido y que se esta avanzando de fases.
+ * @returns {Promise} Una promesa que contiene todos los datos de los pedidos solicitados.
+ */
+export function API_DeliveryUploadFS(firstData) {
+    return axios.post('/imgFileS',firstData)
+}

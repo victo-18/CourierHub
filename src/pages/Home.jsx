@@ -10,12 +10,19 @@ import HideAppBar from "../components/Navbar";
 import { useFetchData } from "../hooks/consumer";
 import { API_AllRequest } from "../hooks/request";
 import { CustomList } from "../components/List/CustomList";
+import { Typography } from "@mui/material";
+import { useState } from "react";
 
 export function Home() {
+    const [refresh, setRefresh] = useState(false);
     const { auth } = useSelector((state) => state.session);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [shipments, loadingShipments] = useFetchData(API_AllRequest);
+    const [shipments, loadingShipments] = useFetchData(API_AllRequest, [refresh]);
+
+    const handleRefresh = () => {
+        setRefresh(prev => !prev)
+    }
 
     return auth ?
         (<Box sx={{ textAlign: "center" }}>
@@ -28,7 +35,13 @@ export function Home() {
                         <Backdrop open sx={{ zIndex: 1, bgcolor: "background.paper" }}>
                             <CircularProgress />
                         </Backdrop>
-                        : <CustomList data={shipments} />
+                        : shipments.length > 0 ?
+                            <CustomList data={shipments} />
+                            : <Box sx={{ zIndex: 1, m: 2 }}>
+                                <Typography variant="h5">
+                                    No hay envios aún
+                                </Typography>
+                            </Box>
                 }
             </HideAppBar>
             <Box sx={{ position: "fixed", right: 16, bottom: 16 }}>
@@ -36,7 +49,7 @@ export function Home() {
                     <AddIcon />
                 </Fab>
             </Box>
-            <Outlet />
+            <Outlet context={[handleRefresh]} />
         </Box>)
         :
         (<Navigate to="/login" />)

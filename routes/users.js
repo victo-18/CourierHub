@@ -17,7 +17,13 @@ router.get('/all', async (req, res) => {
     console.error("ha ocurrido un error: ", error);
   }
 });
-
+router.get("/allcouriers", async function (req, res) {
+  const result = await DeliveryCourier.findAll({
+      attributes: ["id"],
+      include: { model: User, attributes: ["firstname", "lastname","phone"] }
+  });
+  res.status(200).json(result);
+})
 /* GET users listing. */
 router.get('/profile', async function (req, res, next) {
   const result = await User.findOne({
@@ -34,4 +40,9 @@ router.post('/profile', async function (req, res, next) {
   res.status(200).json(result);
 });
 
+router.post('/deleteCourier',async function(req, res){
+  const {courierid}=req.body;
+  const result = await DeliveryCourier.update({role:'INACTIVO'},{where:{id:courierid}})
+  res.status(200).json(result);
+ } )
 module.exports = router;

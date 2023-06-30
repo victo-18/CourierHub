@@ -4,7 +4,7 @@ import { ConfigToken, StateError, StateResponse } from "./interceptors";
 // eslint-disable-next-line no-undef
 export const isProduction = process.env.NODE_ENV === "production";
 
-axios.defaults.baseURL = isProduction ? "" : getProxy();
+axios.defaults.baseURL = isProduction ? "/api/v1/" : getProxy();
 axios.defaults.withCredentials = true;
 
 /**

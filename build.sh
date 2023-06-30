@@ -1,4 +1,5 @@
-#bin/bash/
+# https://api.render.com/deploy/srv-cif6j195rnujc4ph1hr0?key=HEaYw4dk_JE
+# bin/bash/
 export GCM_CREDENTIAL_STORE=secretservice
 
 rm -r ../server-courierhub/dist/

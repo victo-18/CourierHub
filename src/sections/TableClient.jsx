@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import IconButton from '@mui/material/IconButton';
+import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
 
-import '../styles/SummaryRequest.css';
+import "../styles/SummaryRequest.css";
 
 
 export default function TableClient(datos) {
@@ -28,11 +28,11 @@ export default function TableClient(datos) {
   }));
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
     // hide last border
-    /*'&:last-child td, &:last-child th': {
+    /*"&:last-child td, &:last-child th": {
       border: 0,
     },*/
   }));
@@ -40,7 +40,7 @@ export default function TableClient(datos) {
 
   const modalControl = (value, fila) => {
     if (value == "editar") {
-      datos.setTypeModal('editar');
+      datos.setTypeModal("editar");
       datos.setOpen(true);
       datos.setValores({
         nit: fila.nit,
@@ -49,7 +49,7 @@ export default function TableClient(datos) {
         phone: fila.phone
       });
     } else if (value == "eliminar") {
-      datos.setTypeModal('eliminar');
+      datos.setTypeModal("eliminar");
       datos.setOpen(true);
       datos.setValores({
         nit: fila.nit
@@ -59,39 +59,39 @@ export default function TableClient(datos) {
 
   return (
     <TableContainer sx={{ maxHeight: 600 }}>
-      {datos.tipo == 'historial' ?
-        <Table stickyHeader aria-label="customized table" size='small'>
+      {datos.tipo == "historial" ?
+        <Table stickyHeader aria-label="customized table" size="small">
           <TableHead>
             <TableRow>
-              <StyledTableCell align='center'>Fecha Solicitud</StyledTableCell>
-              <StyledTableCell align='center'>Número Paquetes</StyledTableCell>
-              <StyledTableCell align='center'>Descripción</StyledTableCell>
-              <StyledTableCell align='center'>Dirección De Entrega</StyledTableCell>
-              <StyledTableCell align='center'>Mensajero</StyledTableCell>
+              <StyledTableCell align="center">Fecha Solicitud</StyledTableCell>
+              <StyledTableCell align="center">Número Paquetes</StyledTableCell>
+              <StyledTableCell align="center">Descripción</StyledTableCell>
+              <StyledTableCell align="center">Dirección De Entrega</StyledTableCell>
+              <StyledTableCell align="center">Mensajero</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {item !== null ? item.map((row) => (
               <StyledTableRow key={row.fecha}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Fecha Solicitud" align='center' size='medium'>
+                  data-titulo="Fecha Solicitud" align="center" size="medium">
                   {row.fecha}
                 </StyledTableCell>
-                <StyledTableCell data-titulo="Número De Paquetes" align='center'>{row.paquetes}</StyledTableCell>
-                <StyledTableCell data-titulo="Descripción" align='center'>{row.descripcion}</StyledTableCell>
-                <StyledTableCell data-titulo="Destino" align='center'>{row.direccion}</StyledTableCell>
-                <StyledTableCell data-titulo="Mensajero" align='center'>{row.mensajero}</StyledTableCell>
+                <StyledTableCell data-titulo="Número De Paquetes" align="center">{row.paquetes}</StyledTableCell>
+                <StyledTableCell data-titulo="Descripción" align="center">{row.descripcion}</StyledTableCell>
+                <StyledTableCell data-titulo="Destino" align="center">{row.direccion}</StyledTableCell>
+                <StyledTableCell data-titulo="Mensajero" align="center">{row.mensajero}</StyledTableCell>
               </StyledTableRow>
             )) :
-              <StyledTableRow key={'null'}>
+              <StyledTableRow key={"null"}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Fecha Solicitud" align='center'>
+                  data-titulo="Fecha Solicitud" align="center">
                   {item == null & alert(message)}
                 </StyledTableCell>
-                <StyledTableCell data-titulo="Número De Paquetes" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Descripción" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Destino" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Mensajero" align='center'>{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Número De Paquetes" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Descripción" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Destino" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Mensajero" align="center">{" "}</StyledTableCell>
               </StyledTableRow>
             }
           </TableBody>
@@ -99,24 +99,24 @@ export default function TableClient(datos) {
         <Table stickyHeader aria-label="customized table" size="small">
           <TableHead>
             <TableRow>
-              <StyledTableCell align='center'>Nit</StyledTableCell>
-              <StyledTableCell align='center'>Nombre</StyledTableCell>
-              <StyledTableCell align='center'>Dirección</StyledTableCell>
-              <StyledTableCell align='center'>Teléfono</StyledTableCell>
-              <StyledTableCell align='center'>Opciones</StyledTableCell>
+              <StyledTableCell align="center">Nit</StyledTableCell>
+              <StyledTableCell align="center">Nombre</StyledTableCell>
+              <StyledTableCell align="center">Dirección</StyledTableCell>
+              <StyledTableCell align="center">Teléfono</StyledTableCell>
+              <StyledTableCell align="center">Opciones</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {item !== null ? item.map((row) => (
               <StyledTableRow key={row.nit}>
                 <StyledTableCell component="th" scope="row"
-                  data-title="Nit" align='center'>
+                  data-title="Nit" align="center">
                   {row.nit}
                 </StyledTableCell>
-                <StyledTableCell data-title="Nombre" align='center' >{row.name}</StyledTableCell>
-                <StyledTableCell data-title="Dirección" align='center' >{row.address}</StyledTableCell>
-                <StyledTableCell data-title="Teléfono" align='center' >{row.phone}</StyledTableCell>
-                <StyledTableCell data-title="Opciones" align='center' >
+                <StyledTableCell data-title="Nombre" align="center" >{row.name}</StyledTableCell>
+                <StyledTableCell data-title="Dirección" align="center" >{row.address}</StyledTableCell>
+                <StyledTableCell data-title="Teléfono" align="center" >{row.phone}</StyledTableCell>
+                <StyledTableCell data-title="Opciones" align="center" >
                   {
                     <IconButton onClick={() => modalControl("editar", row)} aria-label="edit">
                       <EditIcon />
@@ -130,15 +130,15 @@ export default function TableClient(datos) {
                 </StyledTableCell>
               </StyledTableRow>
             )) :
-              <StyledTableRow key={'null'}>
+              <StyledTableRow key={"null"}>
                 <StyledTableCell component="th" scope="row"
-                  data-titulo="Nit" align='center' size='medium'>
+                  data-titulo="Nit" align="center" size="medium">
                   {item == null & alert(secondM)}
                 </StyledTableCell>
-                <StyledTableCell data-titulo="Nombre" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Dirección" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Teléfono" align='center'>{" "}</StyledTableCell>
-                <StyledTableCell data-titulo="Opciones" align='center'>{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Nombre" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Dirección" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Teléfono" align="center">{" "}</StyledTableCell>
+                <StyledTableCell data-titulo="Opciones" align="center">{" "}</StyledTableCell>
               </StyledTableRow>
             }
           </TableBody>

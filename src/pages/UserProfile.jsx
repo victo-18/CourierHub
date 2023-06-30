@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";

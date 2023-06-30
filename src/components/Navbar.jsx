@@ -1,24 +1,24 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Slide from '@mui/material/Slide';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import PropTypes from 'prop-types';
-import * as React from 'react';
-import routes from '../routes';
-import { Link } from 'react-router-dom';
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Slide from "@mui/material/Slide";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import PropTypes from "prop-types";
+import * as React from "react";
+import routes from "../routes";
+import { Link } from "react-router-dom";
 
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -43,7 +43,7 @@ HideOnScroll.propTypes = {
 };
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ["Home", "About", "Contact"];
 
 export default function HideAppBar(props) {
     const { window, children } = props;
@@ -54,7 +54,7 @@ export default function HideAppBar(props) {
     };
 
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
             <Typography variant="h6" sx={{ my: 2 }}>
                 MUI
             </Typography>
@@ -62,7 +62,7 @@ export default function HideAppBar(props) {
             <List>
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <ListItemButton sx={{ textAlign: "center" }}>
                             <ListItemText primary={item} />
                         </ListItemButton>
                     </ListItem>
@@ -85,20 +85,20 @@ export default function HideAppBar(props) {
                             aria-label="open drawer"
                             edge="start"
                             onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: 'none' } }}
+                            sx={{ mr: 2, display: { sm: "none" } }}
                         >
                             <MenuIcon />
                         </IconButton>
                         <Typography
                             variant="h6"
                             component="div"
-                            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: 'left' }}
+                            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, textAlign: "left" }}
                         >
                             CourierHub
                         </Typography>
-                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        <Box sx={{ display: { xs: "none", sm: "block" } }}>
                             {routes.map((item) => item.label ? (
-                                <Button component={Link} to={item.path} key={item.path} sx={{ color: '#fff' }}>
+                                <Button component={Link} to={item.path} key={item.path} sx={{ color: "#fff" }}>
                                     {item.label}
                                 </Button>
                             ) : null)}
@@ -116,8 +116,8 @@ export default function HideAppBar(props) {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        display: { xs: "block", sm: "none" },
+                        "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
                     }}
                 >
                     {drawer}

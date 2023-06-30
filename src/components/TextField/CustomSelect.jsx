@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-handler-names */
-import FormControl from '@mui/material/FormControl'
-import FormHelperText from '@mui/material/FormHelperText'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
-import Skeleton from '@mui/material/Skeleton'
-import PropTypes from 'prop-types'
-import { Controller } from 'react-hook-form'
-import { useFetchData } from '../../hooks/consumer'
-import { SelectValidator } from './validators'
-import { endpoints } from '../../hooks/endpoints'
-import useSmall from '../../hooks/breakpoints/useSmall'
+import FormControl from "@mui/material/FormControl"
+import FormHelperText from "@mui/material/FormHelperText"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import Select from "@mui/material/Select"
+import Skeleton from "@mui/material/Skeleton"
+import PropTypes from "prop-types"
+import { Controller } from "react-hook-form"
+import { useFetchData } from "../../hooks/consumer"
+import { SelectValidator } from "./validators"
+import { endpoints } from "../../hooks/endpoints"
+import useSmall from "../../hooks/breakpoints/useSmall"
 
 function CustomSelect({ input, control, rules, watchRef }) {
   if (input.dependsOn)
@@ -18,16 +18,16 @@ function CustomSelect({ input, control, rules, watchRef }) {
       return (<MySelect {...{ input, control, rules, dependencyValue: watchRef.current(input.dependsOn) }} />)
     else
       return (
-        <FormControl disabled sx={{ width: 'calc(50% - 8px)', m: 0.5, ...input?.sx }}>
+        <FormControl disabled sx={{ width: "calc(50% - 8px)", m: 0.5, ...input?.sx }}>
           <InputLabel>{input.label}</InputLabel>
           <Select
             required={input?.rules?.required}
-            value=''
+            value=""
             label={input?.label}
           >
             <MenuItem disabled>Cargando...</MenuItem>
           </Select>
-          <FormHelperText>{' '}</FormHelperText>
+          <FormHelperText>{" "}</FormHelperText>
         </FormControl>
       )
   else
@@ -41,19 +41,19 @@ function MySelect({ input, control, rules, dependencyValue }) {
 
   const [options, optionsLoading] = useFetchData(consumer, dependencyArr)
 
-  const label = input.label + (rules.required ? ' *' : '')
+  const label = input.label + (rules.required ? " *" : "")
   const isSmall = useSmall();
 
   return (
     optionsLoading
-      ? <Skeleton sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', height: 56, m: 0.5, ...input?.sx }} />
+      ? <Skeleton sx={{ width: isSmall ? "calc(100% - 8px)" : "calc(50% - 8px)", height: 56, m: 0.5, ...input?.sx }} />
       : <Controller
         render={({ field }) => (
-          <FormControl sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', m: 0.5, ...input?.sx }}>
+          <FormControl sx={{ width: isSmall ? "calc(100% - 8px)" : "calc(50% - 8px)", m: 0.5, ...input?.sx }}>
             <InputLabel>{label}</InputLabel>
             <Select
               required={input?.rules?.required}
-              value={field?.value ?? ''}
+              value={field?.value ?? ""}
               label={label}
               onChange={field.onChange}
             >
@@ -65,7 +65,7 @@ function MySelect({ input, control, rules, dependencyValue }) {
                   ))
               }
             </Select>
-            <FormHelperText>{' '}</FormHelperText>
+            <FormHelperText>{" "}</FormHelperText>
           </FormControl>
         )}
         name={input.id}

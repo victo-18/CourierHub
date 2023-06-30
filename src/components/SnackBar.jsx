@@ -4,7 +4,7 @@ import MuiAlert from "@mui/material/Alert";
 import { removeSnackbar } from "../hooks/redux/actions/snackbarActions";
 
 import "../styles/SnackBars.css";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;

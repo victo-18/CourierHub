@@ -1,11 +1,11 @@
 import { useState } from "react";
-import TableClient from '../sections/TableClient';
+import TableClient from "../sections/TableClient";
 import { store } from "../hooks/redux/store";
 import { API_AllHistoryById } from "../hooks/request";
 import { useFetchData } from "../hooks/consumer";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import '../styles/SummaryRequest.css';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import "../styles/SummaryRequest.css";
 
 
 export default function SummaryRequest() {
@@ -15,13 +15,13 @@ export default function SummaryRequest() {
     return (
         <div id="contenedorPpal">
             {cargando ?
-                <div id='tabla'>
-                    <Box  sx={{ display: 'flex'}}>
+                <div id="tabla">
+                    <Box  sx={{ display: "flex"}}>
                         <CircularProgress />
                     </Box>
                 </div>
                 :
-                <div id='tabla'>
+                <div id="tabla">
                     <TableClient
                         datos={data}
                         tipo={tipo} />

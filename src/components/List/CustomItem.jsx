@@ -1,15 +1,17 @@
-import { useTheme } from '@emotion/react';
-import AllInboxIcon from '@mui/icons-material/AllInbox';
-import { Stack, Tooltip, useMediaQuery } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
+import { useTheme } from "@emotion/react";
+import AllInboxIcon from "@mui/icons-material/AllInbox";
+import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Avatar from "@mui/material/Avatar";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
 import "@styles/Item.css";
 import PropTypes from "prop-types";
-import { Fragment } from 'react';
-import { transportIcon } from './constant';
+import { Fragment } from "react";
+import { transportIcon } from "./constant";
 
 const useListStates = () => {
     const theme = useTheme();
@@ -25,7 +27,7 @@ function CustomIndicator(props) {
     const { title, children, bgcolor, textSecondary, ...others } = props;
     return (
         <Stack alignItems="center" {...others}>
-            <Tooltip placement='top' arrow title={title}>
+            <Tooltip placement="top" arrow title={title}>
                 <Avatar sx={{ width: "32px", height: "32px", backgroundColor: bgcolor }}>
                     {children}
                 </Avatar>
@@ -46,7 +48,7 @@ CustomIndicator.propTypes = {
 
 export default function CustomItem({ shipment }) {
     const theme = useTheme();
-    const isWide = useMediaQuery(theme.breakpoints.up('sm'));
+    const isWide = useMediaQuery(theme.breakpoints.up("sm"));
     const states = useListStates();
     const userFullname = shipment?.Users[0]?.firstname + " " + shipment?.Users[0]?.lastname;
     const transport = shipment?.Transports[0];
@@ -60,8 +62,8 @@ export default function CustomItem({ shipment }) {
                     <Stack direction="row">
                         <CustomIndicator
                             title={`Vehiculo: ${transport.nameTransport}`}
-                            bgcolor={states[phase]?.color ?? 'red'}
-                            textSecondary={`${states[phase]?.content ?? 'ERROR'}`}
+                            bgcolor={states[phase]?.color ?? "red"}
+                            textSecondary={`${states[phase]?.content ?? "ERROR"}`}
                             sx={{ minWidth: "67px" }}
                         >
                             {transportIcon[transport.id]}
@@ -76,8 +78,8 @@ export default function CustomItem({ shipment }) {
                 </>
             }
             alignItems="flex-start"
-            sx={{ width: isWide ? "calc(50% - (8px * 0.2) * 2)" : "calc(100% - (8px * 0.2) * 2)", border: 1, borderColor: 'divider', m: 0.2 }}
-            className='custom-item'
+            sx={{ width: isWide ? "calc(50% - (8px * 0.2) * 2)" : "calc(100% - (8px * 0.2) * 2)", border: 1, borderColor: "divider", m: 0.2 }}
+            className="custom-item"
         >
             <ListItemAvatar>
                 <Avatar alt={`Una foto de perfil de ${userFullname}`} />
@@ -87,7 +89,7 @@ export default function CustomItem({ shipment }) {
                 secondary={
                     <Fragment>
                         <Typography
-                            sx={{ display: 'inline' }}
+                            sx={{ display: "inline" }}
                             component="span"
                             variant="body2"
                             color="text.primary"

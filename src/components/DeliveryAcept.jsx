@@ -1,7 +1,14 @@
 import React from "react";
-import { List, ListItem, ListItemIcon, ListItemText, Divider, IconButton, Grid, Box } from "@mui/material";
-import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
-import DeleteIcon from '@mui/icons-material/Delete';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export function DeliveryAcept(){
     return(

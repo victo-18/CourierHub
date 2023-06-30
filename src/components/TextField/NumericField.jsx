@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-handler-names */
-import TextField from '@mui/material/TextField'
-import { Controller } from 'react-hook-form'
-import PropTypes from 'prop-types'
-import { textHelperHandler } from './functions'
-import useSmall from '../../hooks/breakpoints/useSmall'
+import TextField from "@mui/material/TextField"
+import { Controller } from "react-hook-form"
+import PropTypes from "prop-types"
+import { textHelperHandler } from "./functions"
+import useSmall from "../../hooks/breakpoints/useSmall"
 
 function NumericField({ input, control, rules, sx }) {
   const isSmall = useSmall();
 
   const handleFormat = (e) => {
     const { target: { value } } = e
-    if (value === '') { return e }
+    if (value === "") { return e }
     e.target.value = value.trim()
     return e
   }
@@ -25,14 +25,14 @@ function NumericField({ input, control, rules, sx }) {
         <TextField
           required={input?.rules?.required}
           label={input.label}
-          autoComplete='none'
+          autoComplete="none"
           error={(errors[input.id] !== undefined)}
           helperText={textHelperHandler(errors, input)}
-          value={field.value ?? ''}
+          value={field.value ?? ""}
           onChange={field.onChange}
           onBlur={(e) => handleBlur(field, e)}
           inputRef={field.ref}
-          sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', m: 0.5, ...sx }}
+          sx={{ width: isSmall ? "calc(100% - 8px)" : "calc(50% - 8px)", m: 0.5, ...sx }}
         />
       )}
       name={input.id}

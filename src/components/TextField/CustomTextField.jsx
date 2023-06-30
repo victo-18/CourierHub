@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-handler-names */
-import TextField from '@mui/material/TextField'
-import PropTypes from 'prop-types'
-import { Controller } from 'react-hook-form'
-import { textHelperHandler } from './functions'
-import useSmall from '../../hooks/breakpoints/useSmall';
+import TextField from "@mui/material/TextField"
+import PropTypes from "prop-types"
+import { Controller } from "react-hook-form"
+import { textHelperHandler } from "./functions"
+import useSmall from "../../hooks/breakpoints/useSmall";
 
 function CustomTextField({ input, control, rules, sx }) {
   const isSmall = useSmall();
 
   const handleFormat = (e) => {
     const { target: { value } } = e
-    if (value === '') { return e }
+    if (value === "") { return e }
     e.target.value = value.trim()
     return e
   }
@@ -27,12 +27,12 @@ function CustomTextField({ input, control, rules, sx }) {
           required={input?.rules?.required}
           error={(errors[input.id] !== undefined)}
           helperText={textHelperHandler(errors, input)}
-          value={field.value ?? ''}
+          value={field.value ?? ""}
           onChange={field.onChange}
           onBlur={(e) => handleBlur(field, e)}
           inputRef={field.ref}
-          autoComplete='none'
-          sx={{ width: isSmall ? 'calc(100% - 8px)' : 'calc(50% - 8px)', m: 0.5, mb: 0, ...sx }}
+          autoComplete="none"
+          sx={{ width: isSmall ? "calc(100% - 8px)" : "calc(50% - 8px)", m: 0.5, mb: 0, ...sx }}
         />
       )}
       name={input.id}

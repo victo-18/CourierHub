@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { TextField, Button, LinearProgress, Select, MenuItem, InputLabel, FormControl, Typography} from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import LinearProgress from "@mui/material/LinearProgress";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Typography from "@mui/material/Typography";
 
 import "../styles/AdministratorClient.css";
 

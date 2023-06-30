@@ -1,5 +1,5 @@
 function SelectValidator (value) {
-  return value !== undefined && value !== ''
+  return value !== undefined && value !== ""
 }
 
 export { SelectValidator }

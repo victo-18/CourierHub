@@ -1,6 +1,7 @@
-import { Box, Fab } from "@mui/material";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
 import { Link, Outlet } from "react-router-dom";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import HideAppBar from "../components/Navbar";
 
 function Perfil() {

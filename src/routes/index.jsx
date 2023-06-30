@@ -1,16 +1,16 @@
-import { Navigate } from 'react-router-dom';
-import Entregas from '../pages/Entregas';
-import { Home } from '../pages/Home';
-import ListaMensajeros from '../pages/ListaMensajeros';
-import LoginPage from '../pages/LoginPage';
-import { Logout } from '../pages/Logout';
-import ErrorPage from '../pages/PageError';
-import Perfil from '../pages/Perfil';
-import NewRequest from '../sections/NewRequest';
-import BranchesControl from '../pages/BranchesControl';
-import OrderSummary from '../pages/OrderSummary'; 
-import EditarPerfil from '../pages/EditarPerfil';
-import { NuevoPedido } from '../pages/NuevoPedido';
+import { Navigate } from "react-router-dom";
+import Entregas from "../pages/Entregas";
+import { Home } from "../pages/Home";
+import ListaMensajeros from "../pages/ListaMensajeros";
+import LoginPage from "../pages/LoginPage";
+import { Logout } from "../pages/Logout";
+import ErrorPage from "../pages/PageError";
+import Perfil from "../pages/Perfil";
+import NewRequest from "../sections/NewRequest";
+import BranchesControl from "../pages/BranchesControl";
+import OrderSummary from "../pages/OrderSummary"; 
+import EditarPerfil from "../pages/EditarPerfil";
+import { NuevoPedido } from "../pages/NuevoPedido";
 
 const routes = [
   {
@@ -26,15 +26,15 @@ const routes = [
     element: <LoginPage />,
   },
   {
-    path: '/mensajero',
+    path: "/mensajero",
     element: < ListaMensajeros />,
   },
   {
-    path: '/entregas',
+    path: "/entregas",
     element: <Entregas />,
   },
   {
-    path: '/nuevospedidos',
+    path: "/nuevospedidos",
     element: <NewRequest />,
   },
   {
@@ -42,19 +42,19 @@ const routes = [
     element: <Logout />,
   },
   {
-    path: '/profile',
-    label: 'Perfil',
+    path: "/profile",
+    label: "Perfil",
     element: <Perfil />,
     children: [
       { path: "edit", element: <EditarPerfil /> }
     ]
   },
   {
-    path: '/sucursales',
+    path: "/sucursales",
     element: <BranchesControl />
   },
   {
-    path: '/historialpedidos',
+    path: "/historialpedidos",
     element: < OrderSummary />
   },
   {

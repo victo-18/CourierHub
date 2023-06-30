@@ -4,28 +4,19 @@ const { Request, ListState, User, Customer, sequelize, Travel, Transport } = req
 var router = express.Router();
 
 router.get('/', async function (req, res) {
-  let result;
-  if (req?.user?.role === "ADMIN")
-    result = await Request.findAll({
-      attributes: ["code", "destination", "numberPackages"],
-      include: [
-        { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
-        { model: Transport, attributes: ["id", "nameTransport"] },
-        { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
-      ],
-    });
-  else
-    result = await Request.findAll({
-      attributes: ["code", "destination", "numberPackages"],
-      include: [
-        { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
-        { model: Transport, attributes: ["id", "nameTransport"] },
-        { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"], as: "Users" }
-      ],
-      where: {
-        '$Users.phone$': req.user.phone
-      }
-    });
+  const userRole = req?.user?.role;
+  const whereClause = userRole === "ADMIN" ? {} : { '$Users.phone$': req.user.phone };
+
+  const result = await Request.findAll({
+    attributes: ["code", "destination", "numberPackages"],
+    include: [
+      { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
+      { model: Transport, attributes: ["id", "nameTransport"] },
+      { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"], as: "Users" }
+    ],
+    where: whereClause
+  });
+  
   res.status(200).json(result);
 });
 

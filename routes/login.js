@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
   }
 
   // Si las contraseñas coinciden, genera un token de autenticación y lo devuelve en la respuesta
-  const token = jwt.sign({ phone: user.dataValues.phone }, process.env.SECRET, { expiresIn: "1d" });
+  const token = jwt.sign({ phone: user.dataValues.phone, role: user.dataValues.role }, process.env.SECRET, { expiresIn: "1d" });
 
   const user_copy = { ...user.dataValues };
   delete user_copy.password;

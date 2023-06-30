@@ -20,6 +20,16 @@
     "cityId": 20634
   },
   {
+    "phone": "99",
+    "firstname": "Johan",
+    "lastname": "Ruiz",
+    "address": "Calle 44B #8-142",
+    "email": "johanruiz0237@gmail.com",
+    "password": "$2a$12$Yuq4/IOsjlgDVFQQYUlDCu6e0y47r.1yhUpLVyPUaX/.cvUhnp1sK",
+    "role": "CLIENT",
+    "cityId": 20634
+  },
+  {
     "phone": "2",
     "firstname": "Juan Sebastian",
     "lastname": "Camino Muñoz",

@@ -4,14 +4,28 @@ const { Request, ListState, User, Customer, sequelize, Travel, Transport } = req
 var router = express.Router();
 
 router.get('/', async function (req, res) {
-  const result = await Request.findAll({
-    attributes: ["code", "destination", "numberPackages"],
-    include: [
-      { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
-      { model: Transport, attributes: ["id", "nameTransport"] },
-      { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
-    ],
-  });
+  let result;
+  if (req?.user?.role === "ADMIN")
+    result = await Request.findAll({
+      attributes: ["code", "destination", "numberPackages"],
+      include: [
+        { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
+        { model: Transport, attributes: ["id", "nameTransport"] },
+        { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
+      ],
+    });
+  else
+    result = await Request.findAll({
+      attributes: ["code", "destination", "numberPackages"],
+      include: [
+        { model: ListState, attributes: ["date", "phase", "image"], order: [["date", "DESC"]], limit: 1, separate: true },
+        { model: Transport, attributes: ["id", "nameTransport"] },
+        { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"], as: "Users" }
+      ],
+      where: {
+        '$Users.phone$': req.user.phone
+      }
+    });
   res.status(200).json(result);
 });
 
@@ -27,9 +41,9 @@ router.post('/', async function (req, res) {
 });
 router.get("/inProgress", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code","destination","description","numberPackages","origin"],
+    attributes: ["code", "destination", "description", "numberPackages", "origin"],
     include: [
-      { model: ListState, attributes: ["id","date", "image", "phase"] },
+      { model: ListState, attributes: ["id", "date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] },
       { model: Transport, attributes: ["id", "nameTransport"] }
     ]
@@ -43,15 +57,16 @@ router.get("/inProgress", async function (req, res) {
 // => hostname/api/v1/request/inProgress
 router.get("/onWay", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code","destination","description","numberPackages","origin"],
+    attributes: ["code", "destination", "description", "numberPackages", "origin"],
     include: [
-      { model: ListState, attributes: ["id","date", "image", "phase"]
+      {
+        model: ListState, attributes: ["id", "date", "image", "phase"]
       },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] }
     ]
   });
 
-  const r = result.filter((item) => (item.ListStates.length ==2 ));
+  const r = result.filter((item) => (item.ListStates.length == 2));
   res.status(200).json(r);
 });
 // multer
@@ -61,15 +76,15 @@ router.get("/onWay", async function (req, res) {
 // => hostname/api/v1/request/inProgress
 router.get("/finished", async function (req, res) {
   const result = await Request.findAll({
-    attributes: ["code","destination","description","numberPackages","origin"],
+    attributes: ["code", "destination", "description", "numberPackages", "origin"],
     include: [
-      { model: ListState, attributes: ["id","date", "image", "phase"]},
+      { model: ListState, attributes: ["id", "date", "image", "phase"] },
       { model: User, attributes: ["phone", "firstname", "lastname", "address", "email"] },
       { model: Transport, attributes: ["id", "nameTransport"] }
     ]
   });
 
-  const r = result.filter((item) => item.ListStates.length ==3);
+  const r = result.filter((item) => item.ListStates.length == 3);
   res.status(200).json(r);
 });
 

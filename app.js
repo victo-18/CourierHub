@@ -76,7 +76,7 @@ app.use('/api/v1/user/', authMiddleware, userRouter);
 
 app.use('/api/v1/admin/', authMiddleware, adminMiddleware, adminRouter);
 
-app.use('/api/v1/request', authMiddleware, courierMiddleware, requestRouter);
+app.use('/api/v1/request', authMiddleware, clientMiddleware, requestRouter);
 app.use('/api/v1/clients', authMiddleware, clientMiddleware, clientRouter);
 app.use('/api/v1/delegates', authMiddleware, clientMiddleware, delegatesRouter);
 app.use('/cities', authMiddleware, clientMiddleware, citiesRouter);

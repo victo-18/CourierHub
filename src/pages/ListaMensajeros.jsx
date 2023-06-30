@@ -1,15 +1,16 @@
 
 import Mensajero from '../components/Mensajero';
+import HideAppBar from '../components/Navbar';
 import '../styles/DeliveryList.css'
-import Navbar from '../sections/NavbarMensajeros'
 
 export default function ListaMensajeros() {
   return (
-    <div className='container' >
-      <Navbar/>
-      <div className='centrado'>
-      <Mensajero/>
+    <HideAppBar>
+      <div className='container' >
+        <div className='centrado'>
+          <Mensajero />
+        </div>
       </div>
-    </div>
+    </HideAppBar>
   );
 }

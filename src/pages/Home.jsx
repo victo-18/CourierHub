@@ -17,10 +17,6 @@ export function Home() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [shipments, loadingShipments] = useFetchData(API_AllRequest);
 
-    // const handleLogout = () => {
-    //     location.href = "/logout";
-    // }
-
     return auth ?
         (<Box sx={{ textAlign: "center" }}>
             <Helmet>

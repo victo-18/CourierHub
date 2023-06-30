@@ -62,7 +62,7 @@ const routes = [
   },
   {
     path: "/logout",
-    label: "Cerrar sesion",
+    label: "Cerrar sesión",
     role: ROLES.ALL,
     element: <Logout />,
   },

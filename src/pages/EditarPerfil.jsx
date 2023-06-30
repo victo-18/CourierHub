@@ -1,6 +1,5 @@
-import { Backdrop, CircularProgress } from "@mui/material"
+import { Backdrop, Box, CircularProgress } from "@mui/material"
 import Button from "@mui/material/Button"
-import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogTitle from "@mui/material/DialogTitle"
@@ -51,7 +50,7 @@ function Dialogo({ userdata }) {
   }
 
   return (
-    <Dialog open fullWidth maxWidth="lg">
+    <Box open fullWidth maxWidth="lg">
       <DialogTitle>
         Editar perfil
       </DialogTitle>
@@ -68,7 +67,7 @@ function Dialogo({ userdata }) {
           Guardar
         </Button>
       </DialogActions>
-    </Dialog>
+    </Box>
   )
 }
 

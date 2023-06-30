@@ -4,6 +4,7 @@ import BranchesControl from "../pages/BranchesControl";
 import Entregas from "../pages/Entregas";
 import { Home } from "../pages/Home";
 import ListaMensajeros from "../pages/ListaMensajeros";
+import VerPedidosAdmin from "../pages/VerPedidosAdmin";
 import LoginPage from "../pages/LoginPage";
 import { Logout } from "../pages/Logout";
 import { NuevoPedido } from "../pages/NuevoPedido";
@@ -43,6 +44,10 @@ const routes = [
     label: "Mensajeros",
     role: ROLES.ADMINISTRADOR,
     element: <ListaMensajeros />,
+  },
+  {
+    path: '/solicitudes',
+    element: <VerPedidosAdmin/>,
   },
   {
     path: "/login",

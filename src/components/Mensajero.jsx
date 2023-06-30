@@ -1,31 +1,37 @@
-/*import * as React from 'react';
+import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-//import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import '../styles/Mensajero.css'
-import { Box, Divider, Skeleton } from '@mui/material';
-import { API_Allcouriers,API_DeleteCourier } from '../hooks/request';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Skeleton } from '@mui/material';
+import { API_Allcouriers } from '../hooks/request';
 import { useFetchData } from '../hooks/consumer';
 import DeleteIcon from '@mui/icons-material/Delete';
+//import ComfirmarEliminar from '../sections/Confirmar';
+
 export default function Mensajero() {
-  //const [refresh,setRefresh] = React.useState(false)
-const [data, loading] = useFetchData(API_Allcouriers);
 
-  //const [ setUserData] = React.useState()
+  const [data, loading] = useFetchData(API_Allcouriers);
 
-   const hanledClick = ()=>{
-   
-   }
-   const eliminarUser =  (id)=>{
-     API_DeleteCourier(id)
-    console.log(id)
-     }
-  //console.log(data)
+  // const [users, setUsers] = React.useState(data)
+  // //ALMACENAR INFORMACION DEL USUARIO
+  // const [seleccionado, setSelecionado] = React.useState({
+  //   "firstname": "",
+  //   "lastname": "",
+  //   "role": "",
+  //   "ACTIVO": ""
+  // })
+  // const hanledClick = () => {
+  //   return
+  // }
+  // const eliminarUser = (id) => {
+  //   console.log(id)
+  //   API_DeleteCourier(id)
 
+  // }
   return (
     <List id="item-mensajero" sx={{ width: '100%', maxWidth: 500 }}>
       {loading ? <Skeleton variant="rectangular" width={210} height={118} /> :
@@ -33,7 +39,7 @@ const [data, loading] = useFetchData(API_Allcouriers);
 
           < Box key={listname.id}>
 
-            <ListItem alignItems="flex-start" onClick={()=>hanledClick(listname)}>
+            <ListItem alignItems="flex-start" onClick={() => hanledClick()}>
               <ListItemAvatar>
                 <Avatar sx={{ width: 50, height: 50 }}
                   className='avatar-user' alt={listname.User.firstname}
@@ -51,15 +57,30 @@ const [data, loading] = useFetchData(API_Allcouriers);
                     >
 
                     </Typography>
-                    {"disponible"}
+                    {'Estado'}
                   </React.Fragment>
                 }
               />
-              <DeleteIcon onClick={() =>eliminarUser(listname.id) } className='delete' />
+              <DeleteIcon onClick={() => eliminarUser(listname.id)} className='delete' />
             </ListItem>
             <Divider variant="inset" component="li" />
           </Box>
         ))}
+      <Dialog>
+        <DialogTitle></DialogTitle>
+        <DialogContent>
+          <DialogContentText sx={{ mb: 1 }}>
+            Para solicitar un nuevo envio, por favor completa toda la informacion
+            siguiente
+          </DialogContentText>
+
+        </DialogContent>
+        <DialogActions>
+          <Button >Cancelar</Button>
+          <Button >Solicitar</Button>
+        </DialogActions>
+      </Dialog>
+
     </List>
   );
-}*/
+}

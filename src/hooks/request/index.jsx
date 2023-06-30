@@ -221,6 +221,7 @@ export function API_DeleteCourier(id){
     return axios.post("user/deleteCourier",{id})
 }
 //Ver todos los paquetes solicitaados
+
 export function API_AllinProgress(){
     return axios.get("request/inProgress")
 }

@@ -6,6 +6,7 @@
 .componente {
     margin-top: 1rem;
 }
+
 @media (max-width:1080px) {
     .entregas__componente {
         display: grid;
@@ -16,7 +17,7 @@
     }
 }
 
- @media (max-width:1366px) {
+@media (max-width:1366px) {
     .entregas__componente {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -24,7 +25,8 @@
         margin-left: 1rem;
         margin-right: 1rem;
     }
-} 
+}
+
 @media (max-width:810px) {
     .entregas__componente {
         display: grid;
@@ -34,6 +36,7 @@
         margin-right: 1rem;
     }
 }
+
 @media (max-width:375px) {
     .entregas__componente {
         display: flex;
@@ -60,6 +63,7 @@
     }
 
 }
+
 @media (max-width:414px) {
     .entregas__componente {
         display: flex;
